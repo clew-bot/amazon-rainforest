@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      display: ['Raleway', 'sans-serif'],
+    }
   },
   plugins: [],
 }
