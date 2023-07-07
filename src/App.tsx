@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import  Nav from './components/Nav/Nav'
+import Dropdown from './components/Dropdown/Dropdown'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,9 +9,7 @@ function App() {
   return (
     <>
     <Nav />
-        <h1 className="text-3xl font-bold underline bg-yellow-300">
-      Hello world!
-    </h1>
+    <Dropdown />
     </>
   )
 }
