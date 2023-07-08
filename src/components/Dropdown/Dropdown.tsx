@@ -59,7 +59,7 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="flex-col sm:flex-row border-4 w-full flex justify-between sm:items-start h-96" ref={scope}>
+    <div className="flex-col sm:flex-row  w-full flex justify-between sm:items-start h-96" ref={scope}>
         <div className="inline-block w-1/3">
       <button
         className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-yellow-300 shadow-md text-left"
@@ -67,7 +67,7 @@ const Dropdown = () => {
       >
         Learn
       </button>
-      <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-2 border-t-0 border-black">
+      <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black sm:text-2xl">
         {tabs.map((tab: string, index) => {
           return (
 
@@ -79,9 +79,7 @@ const Dropdown = () => {
                   {hoverSelectedTab === tab && (
                 <motion.div
                 layoutId="active-pill"
-                  className="bg-zinc-900 w-full h-8 absolute inset-0 -z-10"
-                //   transition={{ duration: 0.5 }}
-                //   animate={{ x: 100 }}
+                  className="bg-zinc-900 w-full h-10 absolute inset-0 -z-10"
                 ></motion.div>
                 )}
               <span className=" z-10">{tab}</span>

@@ -11,22 +11,6 @@ const staggerHeaderLetters2 = stagger(0.1, { startDelay: 1 });
 const Nav = () => {
   const [scope, animate] = useAnimate();
   const ref = useRef<HTMLDivElement>(null);
-  const randomColor = () => {
-    const colors = [
-      "#339dd6",
-      "#d63384",
-      "#d633d6",
-      "#d6d633",
-      "#33d6d6",
-      "#33d684",
-      "#84d633",
-      "#84d6d6",
-      "#d684d6",
-      "#d68433",
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
-
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     void animate(
@@ -37,12 +21,12 @@ const Nav = () => {
 
     void animate(
       "span",
-      { filter: "blur(0px)", opacity: 1, color: "#2c3a54", padding: "2px" },
+      { filter: "blur(0px)", opacity: 1, color: "white", padding: "2px" },
       { type: "spring", duration: 2, delay: staggerHeaderLetters }
     );
     void animate(
       "span",
-      { filter: "blur(0px)", opacity: 1, color: "green", padding: "2px" },
+      { filter: "blur(0px)", opacity: 1, color: "white", padding: "2px" },
       { type: "spring", duration: 2, delay: staggerHeaderLetters }
     );
 
@@ -56,7 +40,7 @@ const Nav = () => {
   }, [animate]);
 
   return (
-    <nav className="border-8 rounded-xl border-black -z-10 w-full" ref={scope}>
+    <nav className="border-4 rounded-xl border-black -z-10 w-full" ref={scope}>
       <div className="relative w-full h-96">
         <img
           src={Header}
