@@ -3,7 +3,7 @@ import riverSystem from "../../assets/images/riversystem.jpg"
 import climate from "../../assets/images/climate.jpg"
 import biodiversity from "../../assets/images/biodiversity.jpg"
 import threat from "../../assets/images/threat.jpg"
-import { motion, animate, useAnimate, AnimatePresence} from "framer-motion";
+import { motion, animate, useAnimate, AnimatePresence, stagger} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 interface ImageContainerProps {
   selectedImage: keyof typeof imageMap
@@ -16,6 +16,8 @@ interface ImageContainerProps {
     "Cultural Diversity": cultural,
     "Threats and Conservation": threat,
   };
+
+  const staggerText = stagger(0.1, { startDelay: 0.15 });
 
   interface TextContainerProps {
     selectedText: keyof typeof textMap
@@ -43,11 +45,21 @@ const ImageContainer = ({selectedImage}: ImageContainerProps) => {
   // Format string by period followed by space into bullet points
   function formatText(text: string) {
     return text.split('. ').map((item, i) => (
-      <li key={i}>{item}</li>
+      <p key={i}>{item}</p>
     ));
   }
   useEffect(() => {
 
+    // void animate(
+    //   "p",
+    //   selectedImage 
+    //     ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+    //     : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+    //   {
+    //     duration: 0.2,
+    //     delay: staggerText,
+    //   }
+    // );
    
 
     setSelectedImageSrc(imageMap[selectedImage]);
@@ -56,7 +68,19 @@ const ImageContainer = ({selectedImage}: ImageContainerProps) => {
  
   return (
     <div ref={scope} className=" max-h-full h-full w-2/3 flex justify-center items-start relative gap-1 pl-1">
-    <AnimatePresence>
+      <img src={selectedImageSrc} alt={selectedImage} className="h-full w-full object-cover rounded"/>
+
+
+
+
+
+
+
+
+
+
+
+    {/* <AnimatePresence>
       <div className="h-full w-full border-4 border-black p-2 bg-slate-100 rounded object-cover">
       {Object.keys(imageMap).map((imageKey, i) => (
         <motion.img
@@ -74,7 +98,7 @@ const ImageContainer = ({selectedImage}: ImageContainerProps) => {
       <div className="h-full w-1/3 border-4 border-black p-2 bg-slate-100 rounded overflow-auto">
       {Object.keys(textMap).map((textKey, i) => (
         <motion.p
-
+          layoutId="text"
           key={i}
           className={`${getVisibilityClass(textKey)} w-full object-cover rounded whitespace-pre-line overflow-ellipsis`}
           variants={imageVariants}
@@ -88,7 +112,7 @@ const ImageContainer = ({selectedImage}: ImageContainerProps) => {
 
       ))}
       </div>
-    </AnimatePresence>
+    </AnimatePresence> */}
   </div>
   );
 }

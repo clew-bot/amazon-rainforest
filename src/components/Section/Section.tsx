@@ -1,6 +1,6 @@
 const Section = () => {
   return (
-    <div>Section</div>
+    <div className="h-64">Section</div>
   )
 }
 
