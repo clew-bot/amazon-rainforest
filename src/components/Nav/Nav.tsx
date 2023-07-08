@@ -1,10 +1,7 @@
 import Header from "./header.jpg";
 import {
-  animate,
-  motion,
   stagger,
   useAnimate,
-  useAnimationFrame,
 } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -14,15 +11,6 @@ const staggerHeaderLetters2 = stagger(0.1, { startDelay: 1 });
 const Nav = () => {
   const [scope, animate] = useAnimate();
   const ref = useRef<HTMLDivElement>(null);
-  // useAnimationFrame((t, delta) => {
-  //     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  //     if (ref.current) {
-
-  //     }
-
-  //   });
-
-  //Generate random color for each letter
   const randomColor = () => {
     const colors = [
       "#339dd6",
@@ -68,7 +56,7 @@ const Nav = () => {
   }, [animate]);
 
   return (
-    <nav className="-z-10 border-amber-500 border-2 w-full" ref={scope}>
+    <nav className="border-8 rounded-xl border-black -z-10 w-full" ref={scope}>
       <div className="relative w-full h-96">
         <img
           src={Header}
