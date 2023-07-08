@@ -36,6 +36,27 @@ const useMenuAnimation = (isOpen: boolean) => {
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
+    void animate(
+        "img",
+        isOpen
+          ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+          : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+        {
+          duration: 0.2,
+          delay: isOpen ? staggerMenuItems : 0,
+        }
+      );
+
+      void animate(
+        ".imageButton",
+        isOpen
+          ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+          : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+        {
+          duration: 0.2,
+          delay: isOpen ? staggerMenuItems : 0,
+        }
+      );
   }, [animate, isOpen]);
 
   return scope;
