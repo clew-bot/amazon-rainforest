@@ -36,16 +36,7 @@ const useMenuAnimation = (isOpen: boolean) => {
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
-    // void animate(
-    //     "img",
-    //     isOpen
-    //       ? { opacity: 1, scale: 1, filter: "blur(0px)", }
-    //       : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
-    //     {
-    //       duration: 0.2,
-    //       delay: isOpen ? staggerMenuItems : 0,
-    //     }
-    //   );
+  
 
 
       void animate(
@@ -58,6 +49,8 @@ const useMenuAnimation = (isOpen: boolean) => {
           delay: isOpen ? staggerMenuItems : 0,
         }
       );
+
+  
   }, [animate, isOpen]);
 
   return scope;
@@ -73,11 +66,17 @@ const Dropdown = () => {
   ];
   type Tab = "Biodiversity" | "River System" | "Climate and Environment" | "Cultural Diversity" | "Threats and Conservation";
   const [isOpen, setIsOpen] = useState(false);
+  const [isImageOpen, setIsImageOpen] = useState(false);
   const [hoverSelectedTab, setHoverSelectedTab] = useState<Tab>(tabs[0]);
 
   const scope = useMenuAnimation(isOpen);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const triggerImage = (tab: Tab) => {
+    setIsImageOpen(true);
+    setHoverSelectedTab(tab);
   };
 
   return (
@@ -90,13 +89,13 @@ const Dropdown = () => {
         Learn
       </button>
       <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black sm:text-2xl">
-        {tabs.map((tab: string, index) => {
+        {tabs.map((tab, index) => {
           return (
 
             <motion.li
-              key={index}
-              className={`${hoverSelectedTab === tab ? "text-white" : "text-slate-900"} relative cursor-pointer hover:text-white transition-colors duration-300 underlineease-in-out p-1`}
-              onHoverStart={() => setHoverSelectedTab(tab)}
+              key={tab}
+              className={`${hoverSelectedTab === tab ? "text-white" : "text-slate-900"} relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
+              onClick={() => triggerImage(tab)}
             >
                   {hoverSelectedTab === tab && (
                 <motion.div
@@ -113,7 +112,8 @@ const Dropdown = () => {
       </ul>
       {/* {hoverSelectedTab} */}
       </div>
-      <ImageContainer isOpen={isOpen} selectedImage={hoverSelectedTab}/>
+      <ImageContainer
+      isOpen={isImageOpen} selectedImage={hoverSelectedTab}/>
     </div>
   );
 };

@@ -44,56 +44,55 @@ const textMap = {
 };
 
 const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
-  const [selectedImageSrc, setSelectedImageSrc] = useState("");
   const [scope, animate] = useAnimate();
   const images = [biodiversity, riverSystem, climate, cultural, threat];
+  // const imageVariants = {
+  //   hidden: {  opacity: 0, transition: { duration: 1 } },
+  //   visible: { opacity: 1, transition: { duration: 1 } },
+  //   start: { x : [100, 0], opacity: 1, transition: { duration: 1 } },
+  // };
   const imageVariants = {
-    hidden: {  y: [-100], transition: { duration: 5 } },
-    visible: { y: 0, transition: { duration: 1 } },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   };
   function getVisibilityClass(imageName: string) {
-    return selectedImage === imageName ? "visible" : "hidden";
+    return imageMap[selectedImage] === imageName ? "visible" : "hidden";
   }
 
   // Format string by period followed by space into bullet points
-  function formatText(text: string) {
-    return text.split(". ").map((item, i) => <p key={i}>{item}</p>);
-  }
-  useEffect(() => {
-    setSelectedImageSrc(imageMap[selectedImage]);
-    console.log("run");
-  }, [animate, selectedImage]);
 
-  const preloadedImages = images.map((image) => {
-    const img = new Image();
-    img.src = image;
-    return img;
-  });
+  useEffect(() => {
+
+    console.log("ISOPEN: ", isOpen)
+    if(isOpen) {
+      // void animate("img",{ x: [100, 0] }, { duration: 2 })
+    } 
+
+
+
+
+  }, [animate, isOpen, selectedImage]);
+
 
   return (
     <div className=" max-h-full h-full w-2/3 flex justify-center items-start relative gap-1 pl-1">
       <motion.button className="imageButton left-6 top-6 font-display absolute z-10 rounded p-2 border-black bg-zinc-500 shadow-lg font-bold ">
         More Info
       </motion.button>
-    <div className="h-full w-full bg-black p-4 rounded-md">
-      <AnimatePresence
-      >
-      {images.map((image) => (
-        image === selectedImageSrc && (
+      <AnimatePresence>
+        {isOpen && (
           <motion.img
-            key={image}
-            src={image}
-            alt={selectedImage}
-            className="h-full w-full object-contain rounded opacity-1 p-0 rounded-br-[100px]"
+            key={selectedImage}
+            src={imageMap[selectedImage]}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
             variants={imageVariants}
-
-
-            
+            transition={{ duration: 1 }}
+            className="h-full w-full object-cover rounded-md"
           />
-        )
-      ))}
+        )}
       </AnimatePresence>
-        </div>
     </div>
   
   );
