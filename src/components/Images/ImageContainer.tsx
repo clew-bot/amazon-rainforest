@@ -89,7 +89,7 @@ const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
             exit="hidden"
             variants={imageVariants}
             transition={{ duration: 1 }}
-            className="h-full w-full object-cover rounded-md"
+            className="absolute h-full w-full object-cover rounded-md"
           />
         )}
       </AnimatePresence>
