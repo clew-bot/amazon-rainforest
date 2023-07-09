@@ -36,16 +36,17 @@ const useMenuAnimation = (isOpen: boolean) => {
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
-    void animate(
-        "img",
-        isOpen
-          ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-          : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
-        {
-          duration: 0.2,
-          delay: isOpen ? staggerMenuItems : 0,
-        }
-      );
+    // void animate(
+    //     "img",
+    //     isOpen
+    //       ? { opacity: 1, scale: 1, filter: "blur(0px)", }
+    //       : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+    //     {
+    //       duration: 0.2,
+    //       delay: isOpen ? staggerMenuItems : 0,
+    //     }
+    //   );
+
 
       void animate(
         ".imageButton",
@@ -83,7 +84,7 @@ const Dropdown = () => {
     <div className="flex-col sm:flex-row  w-full flex justify-between sm:items-start h-96" ref={scope}>
         <div className="inline-block w-1/3">
       <button
-        className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-yellow-300 shadow-md text-left"
+        className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
         onClick={toggleDropdown}
       >
         Learn
@@ -112,7 +113,7 @@ const Dropdown = () => {
       </ul>
       {/* {hoverSelectedTab} */}
       </div>
-      <ImageContainer selectedImage={hoverSelectedTab}/>
+      <ImageContainer isOpen={isOpen} selectedImage={hoverSelectedTab}/>
     </div>
   );
 };

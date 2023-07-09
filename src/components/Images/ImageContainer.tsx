@@ -13,6 +13,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 interface ImageContainerProps {
   selectedImage: keyof typeof imageMap;
+  isOpen: boolean;
 }
 
 const imageMap = {
@@ -42,13 +43,13 @@ const textMap = {
     "The Amazon Rainforest is home to more than 400 distinct indigenous groups, some of which have remained uncontacted. Indigenous cultures in the Amazon have a profound knowledge of the forest and its diverse flora and fauna, with unique languages, customs, and traditions. Each tribe has its distinct languages, with more than 170 different languages spoken in the Amazon Rainforest.",
 };
 
-const ImageContainer = ({ selectedImage }: ImageContainerProps) => {
+const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
   const [selectedImageSrc, setSelectedImageSrc] = useState("");
   const [scope, animate] = useAnimate();
   const images = [biodiversity, riverSystem, climate, cultural, threat];
   const imageVariants = {
-    hidden: { opacity: 0, transition: { duration: 5 } },
-    visible: { opacity: 1, transition: { duration: 1 } },
+    hidden: {  y: [-100], transition: { duration: 5 } },
+    visible: { y: 0, transition: { duration: 1 } },
   };
   function getVisibilityClass(imageName: string) {
     return selectedImage === imageName ? "visible" : "hidden";
@@ -63,19 +64,38 @@ const ImageContainer = ({ selectedImage }: ImageContainerProps) => {
     console.log("run");
   }, [animate, selectedImage]);
 
+  const preloadedImages = images.map((image) => {
+    const img = new Image();
+    img.src = image;
+    return img;
+  });
+
   return (
     <div className=" max-h-full h-full w-2/3 flex justify-center items-start relative gap-1 pl-1">
-      <motion.button className="imageButton left-2 top-2 font-display absolute z-10 rounded p-2 border-black bg-green-500 shadow-lg">
+      <motion.button className="imageButton left-6 top-6 font-display absolute z-10 rounded p-2 border-black bg-zinc-500 shadow-lg font-bold ">
         More Info
       </motion.button>
+    <div className="h-full w-full bg-black p-4 rounded-md">
+      <AnimatePresence
+      >
+      {images.map((image) => (
+        image === selectedImageSrc && (
+          <motion.img
+            key={image}
+            src={image}
+            alt={selectedImage}
+            className="h-full w-full object-contain rounded opacity-1 p-0 rounded-br-[100px]"
+            variants={imageVariants}
 
-        <motion.img
-          src={imageMap[selectedImage]}
-          alt={selectedImage}
-          className="h-full w-full object-cover rounded opacity-0 p-0
-             rounded-br-[100px]"
-        />
+
+            
+          />
+        )
+      ))}
+      </AnimatePresence>
+        </div>
     </div>
+  
   );
 };
 
