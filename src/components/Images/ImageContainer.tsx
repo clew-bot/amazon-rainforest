@@ -3,14 +3,8 @@ import riverSystem from "../../assets/images/riversystem.jpg";
 import climate from "../../assets/images/climate.jpg";
 import biodiversity from "../../assets/images/biodiversity.jpg";
 import threat from "../../assets/images/threat.jpg";
-import {
-  motion,
-  animate,
-  useAnimate,
-  AnimatePresence,
-  stagger,
-} from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useAnimate, AnimatePresence, stagger } from "framer-motion";
+
 interface ImageContainerProps {
   selectedImage: keyof typeof imageMap;
   isOpen: boolean;
@@ -44,35 +38,10 @@ const textMap = {
 };
 
 const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
-  const [scope, animate] = useAnimate();
-  const images = [biodiversity, riverSystem, climate, cultural, threat];
-  // const imageVariants = {
-  //   hidden: {  opacity: 0, transition: { duration: 1 } },
-  //   visible: { opacity: 1, transition: { duration: 1 } },
-  //   start: { x : [100, 0], opacity: 1, transition: { duration: 1 } },
-  // };
   const imageVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
+    hidden: { y: [0, 100], opacity: 0 },
+    visible: { y: [-100, 0], opacity: 1 },
   };
-  function getVisibilityClass(imageName: string) {
-    return imageMap[selectedImage] === imageName ? "visible" : "hidden";
-  }
-
-  // Format string by period followed by space into bullet points
-
-  useEffect(() => {
-
-    console.log("ISOPEN: ", isOpen)
-    if(isOpen) {
-      // void animate("img",{ x: [100, 0] }, { duration: 2 })
-    } 
-
-
-
-
-  }, [animate, isOpen, selectedImage]);
-
 
   return (
     <div className=" max-h-full h-full w-2/3 flex justify-center items-start relative gap-1 pl-1">
@@ -94,7 +63,6 @@ const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
         )}
       </AnimatePresence>
     </div>
-  
   );
 };
 
