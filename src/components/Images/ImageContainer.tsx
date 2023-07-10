@@ -4,6 +4,7 @@ import climate from "../../assets/images/climate.jpg";
 import biodiversity from "../../assets/images/biodiversity.jpg";
 import threat from "../../assets/images/threat.jpg";
 import { motion, useAnimate, AnimatePresence, stagger } from "framer-motion";
+import { useEffect } from "react";
 
 interface ImageContainerProps {
   selectedImage: keyof typeof imageMap;
@@ -43,14 +44,18 @@ const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
     visible: { y: [-100, 0], opacity: 1 },
   };
 
+  useEffect(() => {
+    console.log("isOpen", isOpen);
+  }
+  , [isOpen])
+
   return (
     <div className=" max-h-full h-full w-2/3 flex justify-center items-start relative gap-1 pl-1">
       <motion.button className="imageButton left-6 top-6 font-display absolute z-10 rounded p-2 border-black bg-zinc-500 shadow-lg font-bold ">
         More Info
       </motion.button>
       <AnimatePresence>
-        {isOpen && (
-          <motion.img
+        { isOpen && (<motion.img
             key={selectedImage}
             src={imageMap[selectedImage]}
             initial="hidden"

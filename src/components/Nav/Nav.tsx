@@ -15,18 +15,18 @@ const Nav = () => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     void animate(
       "p",
-      { filter: "blur(0px)", opacity: 1, padding: "10px", background: "black" },
+      { filter: "blur(0px)", opacity: 1, padding: "10px" },
       { type: "spring", duration: 2 }
     );
 
     void animate(
       "span",
-      { filter: "blur(0px)", opacity: 1, color: "white", padding: "2px" },
+      { filter: "blur(0px)", opacity: 1, padding: "2px" },
       { type: "spring", duration: 2, delay: staggerHeaderLetters }
     );
     void animate(
       "span",
-      { filter: "blur(0px)", opacity: 1, color: "white", padding: "2px" },
+      { filter: "blur(0px)", opacity: 1, padding: "2px" },
       { type: "spring", duration: 2, delay: staggerHeaderLetters }
     );
 
@@ -81,7 +81,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-function useState(arg0: string[]): [any, any] {
-  throw new Error("Function not implemented.");
-}
