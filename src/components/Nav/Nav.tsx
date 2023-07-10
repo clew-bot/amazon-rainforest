@@ -2,13 +2,19 @@ import Header from "./header.jpg";
 import {
   stagger,
   useAnimate,
+  useScroll,
+  useTransform,
+  motion
 } from "framer-motion";
 import { useEffect, useRef } from "react";
+
 
 const staggerHeaderLetters = stagger(0.1, { startDelay: 0.5 });
 const staggerHeaderLetters2 = stagger(0.1, { startDelay: 1 });
 
 const Nav = () => {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1], ["0%", "100%"]);
   const [scope, animate] = useAnimate();
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -41,11 +47,14 @@ const Nav = () => {
 
   return (
     <nav className="border-4 rounded-xl border-black -z-10 w-full" ref={scope}>
-      <div className="relative w-full h-96">
-        <img
+      <motion.div 
+      className="relative w-full h-screen"
+      >
+        <motion.img
+     
           src={Header}
           alt=""
-          className="absolute inset-0 object-cover w-full h-full z-10"
+          className="absolute inset-0 object-cover w-full h-full z-10 rounded-lg"
         />
         <ul className="flex z-20">
           <li>
@@ -75,7 +84,7 @@ const Nav = () => {
             <span className="opacity-0">T</span>
           </p>
         </div>
-      </div>
+      </motion.div>
     </nav>
   );
 };

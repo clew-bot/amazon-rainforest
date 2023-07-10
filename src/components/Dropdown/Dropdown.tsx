@@ -43,10 +43,10 @@ const useMenuAnimation = (isOpen: boolean) => {
     void animate(
       ".imageButton",
       isOpen
-        ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+        ? { opacity: 1, x: [0,20], scale: 1, filter: "blur(0px)" }
         : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
       {
-        duration: 0.2,
+        duration: 2,
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
@@ -59,7 +59,7 @@ const useMenuAnimation = (isOpen: boolean) => {
 
 const Dropdown = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
   const tabs: Tab[] = [
     "Biodiversity",
     "River System",
@@ -114,7 +114,7 @@ const Dropdown = () => {
           opacity: isInView ? 1 : 0,
           transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
         }}
-        className="inline-block w-1/3"
+        className="inline-block sm:w-1/3"
         ref={ref}
       >
         <button

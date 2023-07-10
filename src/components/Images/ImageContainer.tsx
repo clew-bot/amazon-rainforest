@@ -5,6 +5,7 @@ import biodiversity from "../../assets/images/biodiversity.jpg";
 import threat from "../../assets/images/threat.jpg";
 import { motion, useAnimate, AnimatePresence, stagger } from "framer-motion";
 import { useEffect } from "react";
+import info from "../../assets/images/info.png";
 
 interface ImageContainerProps {
   selectedImage: keyof typeof imageMap;
@@ -40,8 +41,8 @@ const textMap = {
 
 const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
   const imageVariants = {
-    hidden: { y: [0, 100], opacity: 0 },
-    visible: { y: [-100, 0], opacity: 1 },
+    hidden: { filter: "blur(10px)", opacity: 0 },
+    visible: {filter: "blur(0px)", opacity: 1 },
   };
 
   useEffect(() => {
@@ -50,12 +51,15 @@ const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
   , [isOpen])
 
   return (
-    <div className=" max-h-full h-full w-2/3 flex justify-center items-start relative gap-1 pl-1">
-      <motion.button className="imageButton left-6 top-6 font-display absolute z-10 rounded p-2 border-black bg-zinc-500 shadow-lg font-bold ">
-        More Info
+    <div className=" max-h-full h-full sm:w-2/3 flex justify-center items-start relative gap-1 border-4 border-black rounded-lg">
+      <div>
+      <motion.button className="imageButton -left-2 top-2 font-display absolute z-10 rounded p-2 border-black bg-amber-400 shadow-lg font-bold rounded-r-lg">
+      <img width="25px" src={info} alt="" />
       </motion.button>
+      </div>
       <AnimatePresence>
-        { isOpen && (<motion.img
+        { isOpen && (
+        <motion.img
             key={selectedImage}
             src={imageMap[selectedImage]}
             initial="hidden"
@@ -63,7 +67,7 @@ const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
             exit="hidden"
             variants={imageVariants}
             transition={{ duration: 1 }}
-            className="absolute h-full w-full object-cover rounded-md"
+            className="absolute h-full w-full object-cover rounded"
           />
         )}
       </AnimatePresence>
