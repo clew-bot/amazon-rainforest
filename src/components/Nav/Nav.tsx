@@ -21,13 +21,13 @@ const Nav = () => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     void animate(
       "p",
-      { filter: "blur(0px)", opacity: 1, padding: "10px" },
+      { filter: "blur(0px)",backgroundColor:"black", opacity: 1, padding: "10px" },
       { type: "spring", duration: 2 }
     );
 
     void animate(
       "span",
-      { filter: "blur(0px)", opacity: 1, padding: "2px" },
+      { filter: "blur(0px)",  opacity: 1, padding: "2px" },
       { type: "spring", duration: 2, delay: staggerHeaderLetters }
     );
     void animate(
