@@ -6,52 +6,71 @@ import {
   useTransform,
   motion,
   useAnimationFrame,
+  useInView,
 } from "framer-motion";
 import { useEffect, useRef } from "react";
 import tree from "../../assets/tree.svg";
+import elephant from "../../assets/elephant.svg";
 interface HeaderProps {
   content: string;
 }
 
 const Header = ({ content }: HeaderProps) => {
   const ref = useRef(null);
-  // useAnimationFrame((time, delta) => {
-  //     console.log(time, delta);
-  //   const speed = 10 * 99; 
-  //   const percent = ((Math.sin(time * speed) + 1) / 2) * 100; 
-
-  //   // Create a random color gradient 
-  //   const hue = Math.round(Math.random() * 360);
-  //   const randomColor1 = `hsl(${hue}, 100%, 50%)`;
-  //   const randomColor2 = `hsl(${(hue + 180) % 360}, 100%, 50%)`; 
-
-  //   ref.current!.style.backgroundImage = `linear-gradient(120deg,${randomColor1} ${percent}%, ${randomColor2} ${percent + 1}%)`;
-  //   ref.current!.style.webkitBackgroundClip = "text";
-  //   ref.current!.style.webkitTextFillColor = "transparent";
-  // });
+  const isInView = useInView(ref, { once: true });
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    void animate(
-      "img",
-      { y: [100, 0], opacity: 1 },
-      { type: "spring", duration: 2, delay: 1 }
-    );
-  }, [animate]);
+    if (isInView) {
+      void animate(
+        ".content",
+        { y: [0, -250], opacity: 1 },
+        { type: "spring", duration: 2, delay: 1.5 }
+      );
+      void animate(
+        ".desc",
+        { y: [-250], opacity: 1 },
+        { type: "spring", duration: 2, delay: 2.5 }
+      );
+      void animate(
+        "img",
+        { y: [100, 0], opacity: 1 },
+        { type: "spring", duration: 2, delay: 1 }
+      );
+      void animate(
+        ".env",
+        { y: [100, 0], opacity: 1 },
+        { type: "spring", duration: 2, delay: 1.5 }
+      );
+    }
+  }, [animate, isInView]);
 
   return (
     <div
+    id="section"
       ref={scope}
       className="h-screen my-10 flex justify-center flex-col relative"
     >
       <h2
         ref={ref}
-        className="font-display font-bold text-black text-6xl text-center flex justify-center items-center z-10"
+        className="content head-content font-display font-bold text-black text-6xl text-center flex justify-center items-center z-10"
       >
         {content}
       </h2>
-      <img 
-      className="absolute bottom-24 opacity-0"
-      src={tree}height="1000px" width="700px"alt="" />
+      <img
+        className="env absolute bottom-24 opacity-0"
+        src={tree}
+        height="800px"
+        width="600px"
+        alt=""
+      />
+
+      <img
+        className="env absolute bottom-12 right-0 opacity-0"
+        height="100%"
+        width="600px"
+        src={elephant}
+        alt=""
+      />
       <img
         style={{
           transform: "translateY(100px)",
@@ -60,6 +79,14 @@ const Header = ({ content }: HeaderProps) => {
         src={grass}
         alt=""
       />
+      <p  className="desc head-content font-display font-bold text-black text-xl text-center flex justify-center items-center z-10 opacity-0">This is the Amazon</p>
+      <span>River of Life</span>
+      <span>Threats</span>
+      <span>Indigenous Cultures</span>
+      <span>Conservation Efforts</span>
+      <span>Lungs of the Earth</span>
+      <span>Climate and Seasons</span>
+      <span>Spectrum</span>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import {
   motion
 } from "framer-motion";
 import { useEffect, useRef } from "react";
+import downArrow from "../../assets/downArrow.svg";
 
 
 const staggerHeaderLetters = stagger(0.1, { startDelay: 0.5 });
@@ -83,6 +84,10 @@ const Nav = () => {
             <span className="opacity-0">S</span>
             <span className="opacity-0">T</span>
           </p>
+        </div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-60 z-20 bg-green-500 rounded-xl p-4 cursor-pointer">
+          <a href="#section">  <img className="animate-pulse" width="45px" src={downArrow} alt="" /></a>
+      
         </div>
       </motion.div>
     </nav>
