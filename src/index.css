@@ -8,3 +8,12 @@ body {
     padding-top: 10px;
     background-color: white;
   }
+
+
+.height {
+  height: calc(100vh - 20px);
+}
+
+.width {
+  width: calc(100000px);
+}

@@ -46,10 +46,17 @@ const Nav = () => {
     }, 3000);
   }, [animate]);
 
+  const scrollToSection = () => {
+    window.scrollTo({
+      top: window.innerHeight + 50,
+      behavior: "smooth"
+    });
+  };
+
   return (
-    <nav className="border-4 rounded-xl border-black -z-10 w-full" ref={scope}>
+    <nav className="height border-4 rounded-xl border-black -z-10 w-full" ref={scope}>
       <motion.div 
-      className="relative w-full h-screen"
+      className="relative w-full h-full pb-10"
       >
         <motion.img
      
@@ -85,8 +92,8 @@ const Nav = () => {
             <span className="opacity-0">T</span>
           </p>
         </div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-60 z-20 bg-green-500 rounded-xl p-4 cursor-pointer">
-          <a href="#section">  <img className="animate-pulse" width="45px" src={downArrow} alt="" /></a>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-60 z-20 bg-green-500 rounded-xl p-4 cursor-pointer" onClick={scrollToSection}>
+           <img className="animate-pulse" width="45px" src={downArrow} alt="" />
       
         </div>
       </motion.div>
