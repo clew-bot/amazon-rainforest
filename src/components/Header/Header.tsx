@@ -60,7 +60,7 @@ const Header = ({ content }: HeaderProps) => {
       >
         {content}
       </h2>
-     <div className="grassy absolute bottom-0 left-0 w-full h-full bg-bottom flex justify-evenly items-end ">
+     <div className="grassy absolute bottom-0 left-0 w-full h-full bg-bottom flex justify-evenly items-end snap-center">
       {/* <img
         style={{
           transform: "translateY(100px)",
