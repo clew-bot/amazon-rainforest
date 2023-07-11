@@ -25,18 +25,19 @@ const Header = ({ content }: HeaderProps) => {
     if (isInView) {
       void animate(
         ".content",
-        { y: [0, -160], opacity: 1, fontSize: ["6rem", "4rem"] },
+        matches ?
+        { y: [0, -160], opacity: 1, fontSize: ["6rem", "4rem"] } : { y: [0, -160], opacity: 1, fontSize: ["2rem", "1.5rem"] },
         { type: "spring", duration: 2, delay: 3 }
       );
       void animate(
         ".desc",
-        { y: [-50], opacity: 1 },
-        { type: "spring", duration: 2, delay: 2.5 }
+        { y: [0,100], opacity: 1 },
+        { type: "spring", duration: 2, delay: 3.5 }
       );
       void animate(
-        "img",
-        { y: [100, 0], opacity: 1 },
-        { type: "spring", duration: 2, delay: 1 }
+        ".grassy",
+        { y: [1000, 0], opacity: 1 },
+        { type: "spring", duration: 1, delay: .2}
       );
       void animate(
         ".env",
@@ -51,7 +52,7 @@ const Header = ({ content }: HeaderProps) => {
     <div
       id="section"
       ref={scope}
-      className="h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px]"
+      className="h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px] "
     >
       <h2
         ref={ref}
@@ -59,17 +60,17 @@ const Header = ({ content }: HeaderProps) => {
       >
         {content}
       </h2>
-     
-      <img
+     <div className="grassy absolute bottom-0 left-0 w-full h-full bg-bottom flex justify-evenly items-end ">
+      {/* <img
         style={{
           transform: "translateY(100px)",
         }}
         className="width absolute bottom-0 opacity-0 -translate-y-96 "
         src={grass}
         alt=""
-      />
+      /> */}
       <img
-         className="env w-1/2 absolute bottom-[4%] left-0 opacity-0"
+         className="env w-1/2 sm:w-1/3  bottom-[4%] md:bottom-[14%] left-0 opacity-0"
          height="100%"
          width="600px"
          src={tree}
@@ -77,13 +78,13 @@ const Header = ({ content }: HeaderProps) => {
       />
 
       <img
-        className="env w-1/2 absolute -bottom-[1%] right-0 opacity-0"
+        className="env w-1/4 right-0 opacity-0"
         height="100%"
-        width="600px"
+        width="400px"
         src={elephant}
         alt=""
       />
-
+</div>
 
    
       <p  className="desc head-content font-display font-bold text-black text-xl text-center flex justify-center items-center z-10 opacity-0">This is the Amazon</p>

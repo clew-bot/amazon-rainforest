@@ -15,5 +15,13 @@ body {
 }
 
 .width {
-  width: calc(100000px);
+  width: 20%;
+  background-repeat: repeat-y;
+}
+
+.grassy{
+  background-image: url("./assets/images/grass.svg");
+  background-repeat: repeat-x;
+  /* height: 9rem; */
+  width: 100%;;
 }
