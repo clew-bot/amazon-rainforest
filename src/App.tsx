@@ -4,17 +4,30 @@ import  Nav from './components/Nav/Nav'
 import Dropdown from './components/Dropdown/Dropdown'
 import Header from './components/Header/Header'
 import Section from './components/Section/Section'
-import { LayoutGroup } from 'framer-motion'
+import { useTransform, useScroll, motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
+
+
+
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const { scrollYProgress } = useScroll()
+
+  useEffect(() => {
+    console.log(scrollYProgress)
+  }, [scrollYProgress])
 
   return (
-    <div >
-      <div className="snap-start">
+    <div>
+       <motion.div
+        className="progress-bar"
+        style={{ scaleX: scrollYProgress }}
+      />
+
+      <div className="">
     <Nav />
     </div>
-    <div className="border-4 border-blue-700">
+    <div className="">
     <Header content="Explore the Rainforest" />
     </div>
     <Dropdown />
