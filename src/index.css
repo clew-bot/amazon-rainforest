@@ -9,7 +9,20 @@ body {
     background-color: white;
   }
 
+html {
+  scroll-snap-type: y mandatory;
+  height: 100vh; 
+}
 
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: center;
+  perspective: 500px;
+}
 
 .height {
   height: calc(100vh - 20px);
@@ -27,11 +40,11 @@ body {
   width: 100%;;
 }
 
-.scroll-container {
-  height: 100vh; /* Set the desired height */
+/* .scroll-container {
+  height: 100vh; 
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-}
+} */
 
 .progress-bar {
   position: fixed;

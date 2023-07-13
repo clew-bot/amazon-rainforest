@@ -23,43 +23,48 @@ const Header = ({ content }: HeaderProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [scope, animate] = useAnimate();
+
+
+  const { scrollYProgress } = useScroll();
   useEffect(() => {
-    // Always snap to the center of the section
+    // Check if the element is in view
+    console.log(scrollYProgress)
 
     if (isInView) {
       void animate(
         ".content",
         matches
-          ? { y: [0, -160], opacity: 1, fontSize: ["6rem", "4rem"] }
+          ? {  y2: [0, -160], opacity: 1, fontSize: ["6rem", "4rem"] }
           : { y: [0, -160], opacity: 1, fontSize: ["2rem", "1.5rem"] },
-        { type: "spring", duration: 2, delay: 3 }
+        { type: "spring", duration: 2, delay: 1.5 }
       );
       void animate(
         ".desc",
         { y: [0, -170], opacity: 1 },
-        { type: "spring", duration: 2, delay: 3.5 }
+        { type: "spring", duration: 2, delay: 345 }
       );
+
       void animate(
         ".grassy",
-        { y: [1000, 0], opacity: 1 },
-        { type: "spring", duration: 1.5, delay: 0.2 }
-        
+        {  opacity: 1 },
+        { type: "spring", duration: 1.5, delay: 4.2 }
       );
+
       void animate(
         ".env",
         matches ?
         { y: [1100, 0], opacity: 1, scale: [0, 1] }
         : { y: [1100, -30], opacity: 1, scale: [0, 1] },
-        { type: "spring", duration: 1.2, delay: 1 }
+        { type: "spring", duration: 1.2, delay: 4 }
       );
     }
-  }, [animate, isInView]);
+  }, [animate, isInView, matches, scrollYProgress]);
 
   return (
     <div
       id="section"
       ref={scope}
-      className="h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px] "
+      className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px] border-4`}
     >
       <h2
         ref={ref}
