@@ -88,17 +88,13 @@ const Header = ({ content }: HeaderProps) => {
       if (isNotMobile) {
       void animate(
         ".sub-text:nth-child(even)",
-        isNotMobile ?
-        {  opacity: 1, border: "solid 2px black", padding: "6px", background: "#FFF", borderBottomRightRadius: "20px",borderTopLeftRadius: "20px", x: [0, 100] }
-        : {  opacity: 1, scale: [0, 1], border: "solid 2px black", padding: "4px", borderRadius: "4px", y: -100 },
+        {  opacity: 1, x: [0, 100] }, 
         { type: "spring", duration: .6, delay: staggerSpanLettersEven }
       );
  
       void animate(
         ".sub-text:nth-child(odd)",
-        isNotMobile ?
-        {opacity: 1, border: "solid 2px black", padding: "6px", background: "#FFF", borderRadius: "4px",borderBottomRightRadius: "20px",borderTopLeftRadius: "20px", x: [0, -100] }
-        : {  opacity: 1, scale: [0, 1], border: "solid 2px black", padding: "4px", borderRadius: "4px", y: -100 },
+        {opacity: 1, x: [0, -100] },
         { type: "spring", duration: .6, delay: staggerSpanLettersEven }
       );
       }
@@ -149,17 +145,20 @@ const Header = ({ content }: HeaderProps) => {
       <p className="desc head-content font-display font-bold text-black text-xl text-center flex justify-center items-center z-10 opacity-0">
         This is the Amazon
       </p>
-      <div className="absolute inset-16 flex justify-center flex-col items-center h-screen">
+      <div className="absolute inset-16 flex justify-center flex-col items-center h-screen z-10">
       {topics.map((topic) => (
-        <motion.div
-          key={topic}
-          className={`relative display-font sub-text opacity-0 w-fit cursor-pointer rounded border-2 border-black p-1 mb-2 bg-white z-10`}
-        >
-          {topic}
-          <div className="absolute top-0 left-0 w-full h-full bg-red-600 opacity-50 -z-10 m-2">
+     <motion.div
+     key={topic}
 
-          </div>
-        </motion.div>
+     className={`relative display-font sub-text opacity-0 w-fit cursor-pointer p-1 mb-2 z-50`}
+   >
+     <div className="absolute top-2 left-2 w-full h-full bg-slate-600 -z-10 rounded border-2 border-black rounded-br-xl"></div>
+     <motion.div
+          whileTap={{ x: 5, y: 5 }}
+     className="inner-div relative z-0 p-2 rounded border-2 border-black rounded-br-xl" style={{ backgroundColor: "#06B6D4" }}>
+       {topic}
+     </motion.div>
+   </motion.div>
       ))}
     </div>
     </div>

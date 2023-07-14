@@ -83,3 +83,12 @@ section {
   border-top-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
 }
+
+/* .inner-div:active {
+  transform: translateX(12px) translateY(12px);
+  transition: transform 0.2s ease 0s, border-radius ease .3s !important;
+}
+
+.inner-div {
+  transition: transform 0.2s ease 0s, border-radius ease .3s !important;
+} */
