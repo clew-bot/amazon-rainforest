@@ -9,7 +9,7 @@ import {
   useInView,
 } from "framer-motion";
 import TopicItem from "../TopicItem/TopicItem";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import tree from "../../assets/tree.svg";
 import elephant from "../../assets/elephant.svg";
 import { useMediaQuery } from "usehooks-ts";
@@ -26,6 +26,8 @@ const Header = ({ content }: HeaderProps) => {
   const [scope, animate] = useAnimate();
   const staggerSpanLettersEven = stagger(0.3, { startDelay: 4 });
   const staggerSpanLettersOdd = stagger(0.2, { startDelay: 3 });
+  const [openTopic, setOpenTopic] = useState(false);
+  const [theTopic, setTheTopic] = useState("");
   const topics: string[] = [
     "River of Life",
     "Threats",
@@ -100,6 +102,12 @@ const Header = ({ content }: HeaderProps) => {
     staggerSpanLettersOdd,
   ]);
 
+  const handleTopicItemClick = (topic:string) => {
+    setTopic(topic);
+    setOpenTopic(true);
+    return "Hi!"
+  };
+
   return (
     <div
       id="section"
@@ -154,12 +162,17 @@ const Header = ({ content }: HeaderProps) => {
               whileTap={{ x: 5, y: 5 }}
               className="inner-div relative z-0 p-2 rounded border-2 border-black rounded-br-xl text-slate-100 "
               style={{ backgroundColor: "#635799" }}
+              onClick={() => handleTopicItemClick(topic)}
             >
               {topic}
             </motion.div>
+            {openTopic && theTopic === topic && (
+              <TopicItem/>
+            )}
+        <TopicItem/>
           </motion.div>
         ))}
-        {/* <TopicItem/> */}
+     
       </div>
     </div>
   );
