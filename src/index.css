@@ -62,8 +62,8 @@ section {
 }
 
 .sub-text:hover:nth-child(even) {
-  transform: translateX(100px) translateY(0px) scale(1) translateZ(0px) !important;
-  transition: transform 0.5s ease 0s, border-radius ease .5s !important;
+  transform: translateX(100px) translateY(-5px) scale(1) translateZ(0px) !important;
+  transition: transform 0.2s ease 0s, border-radius ease .3s !important;
   border-top-right-radius: 20px !important;
   border-bottom-left-radius: 20px !important;
   border-top-left-radius: 0px !important;
@@ -71,11 +71,15 @@ section {
 }
 
 .sub-text {
-  transition: transform 0.5s ease 0s, border-radius ease .5s !important;
+  transition: transform 0.2s ease 0s, border-radius ease .3s !important;
+  font-weight: bolder;
 }
 
 .sub-text:hover:nth-child(odd) {
-  transform: translateX(-100px) translateY(0px) scale(1) translateZ(0px) !important;
-  transition: transform 0.5s ease 0s !important;
-  background:hsl(from green h s l)
+  transform: translateX(-100px) translateY(-5px) scale(1) translateZ(0px) !important;
+  transition: transform 0.2s ease 0s, border-radius ease .3s !important;
+  border-top-right-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
 }
