@@ -19,11 +19,21 @@ interface HeaderProps {
 }
 
 const Header = ({ content }: HeaderProps) => {
-  const matches = useMediaQuery("(min-width: 768px)");
+  const isNotMobile = useMediaQuery("(min-width: 768px)");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [scope, animate] = useAnimate();
+  const staggerSpanLetters = stagger(.5, { startDelay: 2 });
 
+  const topics:string[] = [
+    'River of Life',
+    'Threats',
+    'Indigenous Cultures',
+    'Conservation Efforts',
+    'Lungs of the Earth',
+    'Climate and Seasons',
+    'Spectrum',
+  ]
 
   const { scrollYProgress } = useScroll();
   useEffect(() => {
@@ -33,7 +43,7 @@ const Header = ({ content }: HeaderProps) => {
     if (isInView) {
       void animate(
         ".content",
-        matches
+        isNotMobile
           ? {  y2: [0, -160], opacity: 1, fontSize: ["6rem", "4rem"] }
           : { y: [0, -160], opacity: 1, fontSize: ["2rem", "1.5rem"] },
         { type: "spring", duration: 2, delay: 1.5 }
@@ -41,30 +51,44 @@ const Header = ({ content }: HeaderProps) => {
       void animate(
         ".desc",
         { y: [0, -170], opacity: 1 },
-        { type: "spring", duration: 2, delay: 345 }
+        { type: "spring", duration: 2, delay: 2 }
       );
 
       void animate(
         ".grassy",
         {  opacity: 1 },
-        { type: "spring", duration: 1.5, delay: 4.2 }
+        { type: "spring", duration: 1.5, delay: 2.2 }
       );
 
       void animate(
         ".env",
-        matches ?
-        { y: [1100, 0], opacity: 1, scale: [0, 1] }
-        : { y: [1100, -30], opacity: 1, scale: [0, 1] },
-        { type: "spring", duration: 1.2, delay: 4 }
+        isNotMobile ?
+        {  opacity: 1, scale: [0, 0.9], y: 12 }
+        : {  opacity: 1, scale: [0, 0.9], y: -30 },
+        { type: "keyframes", duration: 1.2, delay: 3 }
+      );
+      void animate(
+        ".sub-text:nth-child(even)",
+        isNotMobile ?
+        {  opacity: 1, scale: [0, 1], y: 12, border: "solid 2px black", padding: "10px", background: "#FFF", borderBottomRightRadius: "20px",borderTopLeftRadius: "20px", x: [0, 100] }
+        : {  opacity: 1, scale: [0, 1], border: "solid 2px black", padding: "4px", borderRadius: "4px", y: -100 },
+        { type: "spring", duration: 2, delay: staggerSpanLetters }
+      );
+      void animate(
+        ".sub-text:nth-child(odd)",
+        isNotMobile ?
+        {  opacity: 1, scale: [0, 1], y: 12, border: "solid 2px black", padding: "10px", background: "#FFF", borderRadius: "4px",borderBottomRightRadius: "20px",borderTopLeftRadius: "20px", x: [0, -100] }
+        : {  opacity: 1, scale: [0, 1], border: "solid 2px black", padding: "4px", borderRadius: "4px", y: -100 },
+        { type: "spring", duration: 2, delay: staggerSpanLetters }
       );
     }
-  }, [animate, isInView, matches, scrollYProgress]);
+  }, [animate, isInView, isNotMobile, scrollYProgress, staggerSpanLetters]);
 
   return (
     <div
       id="section"
       ref={scope}
-      className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px] border-4`}
+      className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
     >
       <h2
         ref={ref}
@@ -80,11 +104,17 @@ const Header = ({ content }: HeaderProps) => {
           src={elephantLottie}
         ></Player>
         <img
-          className="env w-1/2 sm:w-1/3  bottom-[4%] md:bottom-[14%] left-0 opacity-0"
+          className="env w-1/2 sm:w-1/3 opacity-0"
           height="100%"
-          width="600px"
           src={tree}
           alt=""
+        />
+            <img
+          className="env w-1/4 opacity-0"
+          height="100%"
+          src={elephant}
+          alt=""
+          style={{transform: "translateY(50px) translateX(50px)"}}
         />
      <Player
       className="player hidden sm:block w-1/3"
@@ -92,25 +122,25 @@ const Header = ({ content }: HeaderProps) => {
           loop
           src={elephantLottie}
         ></Player>
-        <img
-          className="env w-1/4 right-0 opacity-0"
-          height="100%"
-          width="400px"
-          src={elephant}
-          alt=""
-        />
+    
       </div>
 
       <p className="desc head-content font-display font-bold text-black text-xl text-center flex justify-center items-center z-10 opacity-0">
         This is the Amazon
       </p>
-      {/* <span>River of Life</span>
-      <span>Threats</span>
-      <span>Indigenous Cultures</span>
-      <span>Conservation Efforts</span>
-      <span>Lungs of the Earth</span>
-      <span>Climate and Seasons</span>
-      <span>Spectrum</span> */}
+      <div className="relative flex justify-center flex-col items-center gap-2">
+      {topics.map((topic, index) => (
+        <motion.div
+          key={topic}
+          initial={{ }} 
+          animate={{ opacity: 1, scale: [0, 0.9] }} // Animate opacity to make the span visible
+          transition={{ delay: index * 0.2 }} 
+          className="display-font sub-text opacity-0 translate-x-3 w-fit cursor-pointer"
+        >
+          {topic}
+        </motion.div>
+      ))}
+    </div>
     </div>
   );
 };
