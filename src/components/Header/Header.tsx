@@ -29,6 +29,7 @@ const Header = ({ content }: HeaderProps) => {
   const staggerSpanLettersOdd = stagger(0.2, { startDelay: 3 });
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
+  const [reset, setReset] = useState(true);
   const topics: string[] = [
     "River of Life",
     "Threats",
@@ -46,7 +47,7 @@ const Header = ({ content }: HeaderProps) => {
     console.log("Running Header Animation")
     console.log("the topic: ",theTopic)
     console.log("open topic: ",openTopic)
-    if (!openTopic && isInView) {
+    if (reset && isInView) {
       void animate(
         ".desc",
         { y: [0, -240], opacity: 1 },
@@ -59,7 +60,7 @@ const Header = ({ content }: HeaderProps) => {
         { type: "spring", duration: 1.5, delay: 2.2 }
       );
     }
-      if (!openTopic && !isNotMobile) {
+      if (reset && !isNotMobile) {
         void animate(
           ".sub-text",
           { opacity: 1 },
@@ -77,7 +78,7 @@ const Header = ({ content }: HeaderProps) => {
         );
       }
 
-      if (!openTopic && isNotMobile) {
+      if (reset && isNotMobile) {
         void animate(
           ".sub-text",
           { opacity: 1 },
@@ -105,13 +106,19 @@ const Header = ({ content }: HeaderProps) => {
      
       }
 
-  }, [animate, isInView, isNotMobile, openTopic, scrollYProgress, staggerSpanLettersEven, staggerSpanLettersOdd, theTopic]);
+  }, [animate, isInView, isNotMobile, openTopic, reset, scrollYProgress, staggerSpanLettersEven, staggerSpanLettersOdd, theTopic]);
 
   const handleTopicItemClick = (topic:string) => {
+    setReset(() => false);
     setTheTopic(topic);
     setOpenTopic(() => true);
     console.log("Topic: ", theTopic)
   };
+
+  const closeTopic = () => {
+    setOpenTopic(() => false);
+    setReset(() => false);
+  }
 
   return (
     <div
@@ -178,11 +185,13 @@ const Header = ({ content }: HeaderProps) => {
           
           </motion.div>
         ))}
-        {openTopic && (
+
           <TopicItem
+            isOpen={openTopic}
+            closeTopic={closeTopic}
             topic={theTopic}
         />
-        )}
+
       </div>
     </div>
   );

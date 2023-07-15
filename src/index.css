@@ -28,6 +28,12 @@ section {
   height: calc(100vh - 20px);
 }
 
+
+.height2 {
+  height: calc(100vh - 10rem);
+}
+
+
 .width {
   width: 20%;
   background-repeat: repeat-y;
