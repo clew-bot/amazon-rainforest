@@ -27,6 +27,7 @@ const Header = ({ content }: HeaderProps) => {
   const [scope, animate] = useAnimate();
   const staggerSpanLettersEven = stagger(0.3, { startDelay: 4 });
   const staggerSpanLettersOdd = stagger(0.2, { startDelay: 3 });
+  const staggerTopicItems = stagger(0.2, { startDelay: .1 });
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
   const [reset, setReset] = useState(true);
@@ -104,6 +105,7 @@ const Header = ({ content }: HeaderProps) => {
           { type: "spring", duration: 2, delay: 0 }
         );
      
+        void animate("p, li", { opacity: 1, scale: [0, 0.9] }, { type: "spring", duration: .4, delay: staggerTopicItems });
       }
 
   }, [animate, isInView, isNotMobile, openTopic, reset, scrollYProgress, staggerSpanLettersEven, staggerSpanLettersOdd, theTopic]);
@@ -173,8 +175,8 @@ const Header = ({ content }: HeaderProps) => {
             <motion.div
 
               whileTap={{ x: 5, y: 5 }}
-              className="inner-div relative z-0 p-2 rounded border-2 border-black rounded-br-xl text-slate-100 "
-              style={{ backgroundColor: "#635799" }}
+              className="inner-div relative z-0 p-2 rounded border-2 border-slate-800 rounded-br-xl text-slate-100 "
+              style={{ backgroundColor: "black" }}
               onClick={() => handleTopicItemClick(topic)}
             >
               {topic}
@@ -189,7 +191,7 @@ const Header = ({ content }: HeaderProps) => {
           <TopicItem
             isOpen={openTopic}
             closeTopic={closeTopic}
-            topic={theTopic}
+            theTopic={theTopic}
         />
 
       </div>
