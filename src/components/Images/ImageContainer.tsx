@@ -20,8 +20,6 @@ const imageMap = {
   "Threats and Conservation": threat,
 };
 
-const staggerText = stagger(0.1, { startDelay: 0.15 });
-
 interface TextContainerProps {
   selectedText: keyof typeof textMap;
 }
@@ -45,10 +43,6 @@ const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
     visible: {filter: "blur(0px)", opacity: 1 },
   };
 
-  useEffect(() => {
-    console.log("isOpen", isOpen);
-  }
-  , [isOpen])
 
   return (
     <div className=" max-h-full h-full sm:w-2/3 flex justify-center items-start relative gap-1 border-4 border-black rounded-lg">

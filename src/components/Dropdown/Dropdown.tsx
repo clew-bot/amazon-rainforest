@@ -14,7 +14,6 @@ const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const useMenuAnimation = (isOpen: boolean) => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    console.log(isOpen)
     void animate(
       "ul",
       {

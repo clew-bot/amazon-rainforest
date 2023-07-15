@@ -7,6 +7,7 @@ import {
   motion,
   useAnimationFrame,
   useInView,
+  AnimatePresence,
 } from "framer-motion";
 import TopicItem from "../TopicItem/TopicItem";
 import { useEffect, useRef, useState } from "react";
@@ -42,9 +43,10 @@ const Header = ({ content }: HeaderProps) => {
   const { scrollYProgress } = useScroll();
   useEffect(() => {
     // Check if the element is in view
-    console.log(scrollYProgress);
-
-    if (isInView) {
+    console.log("Running Header Animation")
+    console.log("the topic: ",theTopic)
+    console.log("open topic: ",openTopic)
+    if (!openTopic && isInView) {
       void animate(
         ".desc",
         { y: [0, -240], opacity: 1 },
@@ -56,8 +58,8 @@ const Header = ({ content }: HeaderProps) => {
         { opacity: 1 },
         { type: "spring", duration: 1.5, delay: 2.2 }
       );
-
-      if (!isNotMobile) {
+    }
+      if (!openTopic && !isNotMobile) {
         void animate(
           ".sub-text",
           { opacity: 1 },
@@ -75,7 +77,7 @@ const Header = ({ content }: HeaderProps) => {
         );
       }
 
-      if (isNotMobile) {
+      if (!openTopic && isNotMobile) {
         void animate(
           ".sub-text",
           { opacity: 1 },
@@ -92,20 +94,23 @@ const Header = ({ content }: HeaderProps) => {
           { type: "keyframes", duration: 1.2, delay: 3 }
         );
       }
-    }
-  }, [
-    animate,
-    isInView,
-    isNotMobile,
-    scrollYProgress,
-    staggerSpanLettersEven,
-    staggerSpanLettersOdd,
-  ]);
+
+      if (openTopic) {
+        console.log("Running Open Topic Animation")
+        void animate(
+          ".topic",
+          { opacity: 1, },
+          { type: "spring", duration: 2, delay: 0 }
+        );
+     
+      }
+
+  }, [animate, isInView, isNotMobile, openTopic, scrollYProgress, staggerSpanLettersEven, staggerSpanLettersOdd, theTopic]);
 
   const handleTopicItemClick = (topic:string) => {
-    setTopic(topic);
-    setOpenTopic(true);
-    return "Hi!"
+    setTheTopic(topic);
+    setOpenTopic(() => true);
+    console.log("Topic: ", theTopic)
   };
 
   return (
@@ -155,24 +160,29 @@ const Header = ({ content }: HeaderProps) => {
         {topics.map((topic) => (
           <motion.div
             key={topic}
-            className={`relative display-font sub-text opacity-0 w-fit cursor-pointer p-1 mb-2 z-50`}
+            className={`topic relative display-font sub-text opacity-0 w-fit cursor-pointer p-1 mb-2 z-50`}
           >
             <div className="absolute top-2 left-2 w-full h-full bg-slate-600 -z-10 rounded border-2 border-black rounded-br-xl blur-sm"></div>
             <motion.div
+
               whileTap={{ x: 5, y: 5 }}
               className="inner-div relative z-0 p-2 rounded border-2 border-black rounded-br-xl text-slate-100 "
               style={{ backgroundColor: "#635799" }}
               onClick={() => handleTopicItemClick(topic)}
             >
               {topic}
-            </motion.div>
-            {openTopic && theTopic === topic && (
+              {/* {theTopic === topic && (
               <TopicItem/>
-            )}
-        <TopicItem/>
+            )} */}
+            </motion.div>
+          
           </motion.div>
         ))}
-     
+        {openTopic && (
+          <TopicItem
+            topic={theTopic}
+        />
+        )}
       </div>
     </div>
   );

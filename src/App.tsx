@@ -13,11 +13,6 @@ import { useEffect, useRef } from 'react'
 function App() {
   const { scrollYProgress } = useScroll();
 
-
-  useEffect(() => {
-    console.log(scrollYProgress)
-  }, [scrollYProgress])
-
   return (
     <div className="scroll-container">
        <motion.div
