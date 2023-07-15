@@ -14,7 +14,7 @@ function App() {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="scroll-container">
+    <>
        <motion.div
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
@@ -23,7 +23,7 @@ function App() {
     <Header content="Explore the Rainforest" />
     <Dropdown />
     <Section />
-    </div>
+    </>
   )
 }
 

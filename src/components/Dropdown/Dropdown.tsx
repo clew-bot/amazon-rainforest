@@ -103,6 +103,7 @@ const Dropdown = () => {
   };
 
   return (
+    <div className="h-screen snap-start p-10">
     <div
       className="flex-col sm:flex-row  w-full flex justify-between sm:items-start h-96"
       ref={scope}
@@ -148,7 +149,7 @@ const Dropdown = () => {
       <ImageContainer isOpen={isOpen} selectedImage={hoverSelectedTab} />
       {/* {hoverSelectedTab} */}
     </div>
-
+    </div>
   );
 };
 
