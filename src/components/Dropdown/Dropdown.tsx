@@ -103,7 +103,7 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="h-screen snap-start p-10">
+    <div className="h-screen snap-start p-10 border-4">
     <div
       className="flex-col sm:flex-row  w-full flex justify-between sm:items-start h-96"
       ref={scope}
