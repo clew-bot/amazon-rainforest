@@ -33,6 +33,10 @@ section {
   height: calc(100vh - 10rem);
 }
 
+.height3 {
+  height: calc(100% - 10%);
+}
+
 
 .width {
   width: 20%;

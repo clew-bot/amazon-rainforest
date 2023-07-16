@@ -23,19 +23,17 @@ interface imageMapper {
   [key: string]: string;
 }
 
-const TopicItem = ({ isOpen, theTopic, closeTopic }: 
-TopicItemProps) => {
-
+const TopicItem = ({ isOpen, theTopic, closeTopic }: TopicItemProps) => {
   const imageMapper: imageMapper = {
     "River of Life": river,
-    "Threats": threats,
+    Threats: threats,
     "Indigenous Cultures": tribes,
     "Conservation Efforts": conservation,
     "Lungs of the Earth": lungs,
     "Climate and Seasons": climate,
-    "Spectrum": spectrum,
-    "Biodiversity": biodiversity,
-  }
+    Spectrum: spectrum,
+    Biodiversity: biodiversity,
+  };
   return (
     <AnimatePresence>
       {isOpen && (
@@ -46,23 +44,28 @@ TopicItemProps) => {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="height2 absolute my-10  w-full min-w-[320px] top-0 right-[50%]] z-[99999] bg-black opacity-5 rounded-lg border-dotted bg-opacity-10 backdrop-filter backdrop-blur-lg font-display overflow-scroll
-          lg:overflow-auto"
+          lg:overflow-auto text-container"
         >
           <div className="h-full relative">
-            <h2 className="pt-4 text-center text-lg lg:text-3xl font-bold text-blue-00">{
-            theTopic}</h2>
+            <h2 className="pt-4 text-center text-lg lg:text-3xl font-bold text-blue-00">
+              {theTopic}
+            </h2>
             <div
               onClick={closeTopic}
               className="cursor-pointer absolute top-2 right-2"
             >
               X
             </div>
-            <div className="h-fit">
-              {topics.map((topic) => (
-                <div key={topic.title} className="h-full overflow-auto">
-                  {topic.title === theTopic && (
+            {/* <div className="relative border-4 border-red-900 h-[12rem]"> */}
+            {topics.map(
+              (topic) =>
+                topic.title === theTopic && (
+                  <div
+                    key={topic.title}
+                    className="overflow-hidden height3"
+                  >
                     <div className="flex flex-col-reverse md:flex-row justify-center mt-5 sm:mx-5 h-full">
-                      <div className="w-full md:w-1/2 p-4 mb-4 md:mb-0 rounded-md shadow-md bg-white bg-opacity-50 overflow-scroll lg:overflow-auto max-h-[32rem] text-container">
+                      <div className="w-full md:w-1/2 p-4 mb-4 md:mb-0 rounded-md shadow-md bg-white bg-opacity-50 overflow-scroll lg:overflow-auto 2xl:height3 text-container 2xl:h-full ">
                         <p className="opacity-0 font-bold text-2xl text-slate-900 mb-2">
                           {topic.sections[0].title}
                         </p>
@@ -87,10 +90,11 @@ TopicItemProps) => {
                         </div>
                       </div>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                  </div>
+                )
+            )}
+
+            {/* </div> */}
           </div>
         </motion.div>
       )}
