@@ -16,6 +16,7 @@ import elephant from "../../assets/elephant.svg";
 import { useMediaQuery } from "usehooks-ts";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import elephantLottie from "../../assets/lottie/animation_lk01znle.json";
+import rainLottie from "../../assets/lottie/1PzCCI3SjG.json";
 interface HeaderProps {
   content: string;
 }
@@ -41,9 +42,10 @@ const Header = ({ content }: HeaderProps) => {
     "Spectrum",
     "Biodiversity",
   ];
-
+  const lottieRainRef = useRef(null);
   const { scrollYProgress } = useScroll();
   useEffect(() => {
+    console.log(lottieRainRef.current)
     // Check if the element is in view
     console.log("Running Header Animation")
     console.log("the topic: ",theTopic)
@@ -122,12 +124,28 @@ const Header = ({ content }: HeaderProps) => {
     setReset(() => false);
   }
 
+
+
   return (
+  
     <div
       id="section"
       ref={scope}
       className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
     >
+      <div className="rain-container">
+      {[...Array(4)].map((_, index) => (
+    <Player
+      ref={lottieRainRef}
+      key={index}
+      autoplay
+      loop
+      className="top-0 rain-player"
+      src={rainLottie}
+    />
+  ))}
+      </div>
+
       <h2
         ref={ref}
         className="content head-content font-display font-bold text-black text-center flex justify-center items-center z-10"
@@ -196,6 +214,7 @@ const Header = ({ content }: HeaderProps) => {
 
       </div>
     </div>
+
   );
 };
 
