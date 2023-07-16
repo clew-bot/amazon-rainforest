@@ -1,6 +1,8 @@
 const FunFact = () => {
   return (
-    <div>FunFact</div>
+    <div>
+        
+    </div>
   )
 }
 

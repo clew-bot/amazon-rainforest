@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { animate, motion, stagger, useAnimate, useInView } from "framer-motion";
-import ImageContainer from "../Images/ImageContainer";
 
 type Tab =
-| "Biodiversity"
-| "River System"
-| "Climate and Environment"
-| "Cultural Diversity"
-| "Threats and Conservation";
-
+  | "Biodiversity"
+  | "River System"
+  | "Climate and Environment"
+  | "Cultural Diversity"
+  | "Threats and Conservation";
 
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const useMenuAnimation = (isOpen: boolean) => {
@@ -38,25 +36,24 @@ const useMenuAnimation = (isOpen: boolean) => {
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
-
-    void animate(
-      ".imageButton",
-      isOpen
-        ? { opacity: 1, x: [0,20], scale: 1, filter: "blur(0px)" }
-        : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
-      {
-        duration: 2,
-        delay: isOpen ? staggerMenuItems : 0,
-      }
-    );
-
-    
   }, [animate, isOpen]);
 
   return scope;
 };
 
-const Dropdown = () => {
+interface DropdownProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  selectedTab: Tab;
+  clickSelectedTab: (tab: Tab) => void;
+}
+
+const Dropdown = ({
+  isOpen,
+  setIsOpen,
+  selectedTab,
+  clickSelectedTab,
+}: DropdownProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const tabs: Tab[] = [
@@ -67,45 +64,24 @@ const Dropdown = () => {
     "Threats and Conservation",
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isImageOpen, setIsImageOpen] = useState(false);
-  const [hoverSelectedTab, setHoverSelectedTab] = useState<Tab>(tabs[0]);
-
-
   useEffect(() => {
-      if (isInView) {
-        setTimeout(() => {
+    if (isInView) {
+      setTimeout(() => {
         setIsOpen(true);
       }, 1500);
-      } else {
-        setIsOpen(false);
-      }
-
-      // return () => {
-      //   setIsOpen(false);
-      // }
-  }
-  , [isImageOpen, isInView]);
-
+    } else {
+      setIsOpen(false);
+    }
+  }, [isInView, setIsOpen]);
 
   const scope = useMenuAnimation(isOpen);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const triggerImage = (tab: Tab) => {
-    if (isOpen) {
-      setIsImageOpen(true);
-    } else {
-      setIsImageOpen(false);
-    }
-    setHoverSelectedTab(tab);
-  };
-
   return (
-    <div className="h-screen snap-start p-10 border-4">
     <div
-      className="flex-col sm:flex-row  w-full flex justify-between sm:items-start h-96"
+      className="flex-col sm:flex-row  w-full flex justify-between sm:items-start border-4 border-green-900"
       ref={scope}
     >
       <div
@@ -114,7 +90,7 @@ const Dropdown = () => {
           opacity: isInView ? 1 : 0,
           transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
         }}
-        className="inline-block sm:w-1/3"
+        className="border-4"
         ref={ref}
       >
         <button
@@ -129,26 +105,26 @@ const Dropdown = () => {
               <motion.li
                 key={tab}
                 className={`${
-                  hoverSelectedTab === tab ? "text-white" : "text-slate-900"
+                  selectedTab === tab ? "text-white" : "text-slate-900"
                 } relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
-                onClick={() => triggerImage(tab)}
+                onClick={() => {
+                  clickSelectedTab(tab);
+                  setIsOpen(true);
+                }}
               >
-                {hoverSelectedTab === tab && (
+                {selectedTab === tab && (
                   <motion.div
                     layoutId="active-pill"
                     className="bg-zinc-900 w-full h-10 absolute inset-0 -z-10"
                   ></motion.div>
                 )}
+
                 <span className=" z-10">{tab}</span>
               </motion.li>
             );
           })}
         </ul>
-        {/* {hoverSelectedTab} */}
       </div>
-      <ImageContainer isOpen={isOpen} selectedImage={hoverSelectedTab} />
-      {/* {hoverSelectedTab} */}
-    </div>
     </div>
   );
 };

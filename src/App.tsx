@@ -21,8 +21,9 @@ function App() {
       />
     <Nav />
     <Header content="Explore the Rainforest" />
-    <Dropdown />
     <Section />
+    {/* <Dropdown /> */}
+    
     </>
   )
 }

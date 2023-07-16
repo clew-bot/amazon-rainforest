@@ -1,23 +1,35 @@
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import tiger from '../../assets/images/tiger.jpg'
+import { useRef, useState } from "react";
+import tiger from "../../assets/images/tiger.jpg";
+import Dropdown from "../Dropdown/Dropdown";
+
+type Tab =
+  | "Biodiversity"
+  | "River System"
+  | "Climate and Environment"
+  | "Cultural Diversity"
+  | "Threats and Conservation";
+
+const tabs: Tab[] = [
+  "Biodiversity",
+  "River System",
+  "Climate and Environment",
+  "Cultural Diversity",
+  "Threats and Conservation",
+];
 const Section = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
-
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
   return (
-    <div
-    ref={ref}
-    style={{
-        transform: isInView ? "none" : "translateX(-200px)",
-        opacity: isInView ? 1 : 0,
-        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-      }}
-    className="h-64 bg-black mt-64 text-white">
-        <img className="h-64" src={tiger} alt="" />
+    <div className="h-screen snap-start p-6">
+      <Dropdown
+        clickSelectedTab={clickSelectedTab}
+        selectedTab={selectedTab}
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+      />
+      <img className="h-64" src={tiger} alt="" />
     </div>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;
