@@ -19,10 +19,14 @@ interface TopicItemProps {
   isOpen: boolean;
 }
 
+interface imageMapper {
+  [key: string]: string;
+}
+
 const TopicItem = ({ isOpen, theTopic, closeTopic }: 
 TopicItemProps) => {
 
-  const imageMapper = {
+  const imageMapper: imageMapper = {
     "River of Life": river,
     "Threats": threats,
     "Indigenous Cultures": tribes,
@@ -32,7 +36,6 @@ TopicItemProps) => {
     "Spectrum": spectrum,
     "Biodiversity": biodiversity,
   }
-  console.log(theTopic);
   return (
     <AnimatePresence>
       {isOpen && (

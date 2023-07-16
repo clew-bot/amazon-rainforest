@@ -1,20 +1,16 @@
-import grass from "../../assets/images/grass.svg";
 import {
   stagger,
   useAnimate,
   useScroll,
-  useTransform,
   motion,
-  useAnimationFrame,
   useInView,
-  AnimatePresence,
 } from "framer-motion";
 import TopicItem from "../TopicItem/TopicItem";
 import { useEffect, useRef, useState } from "react";
 import tree from "../../assets/tree.svg";
 import elephant from "../../assets/elephant.svg";
 import { useMediaQuery } from "usehooks-ts";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { Player } from "@lottiefiles/react-lottie-player";
 import elephantLottie from "../../assets/lottie/animation_lk01znle.json";
 import rainLottie from "../../assets/lottie/1PzCCI3SjG.json";
 interface HeaderProps {
@@ -45,11 +41,6 @@ const Header = ({ content }: HeaderProps) => {
   const lottieRainRef = useRef(null);
   const { scrollYProgress } = useScroll();
   useEffect(() => {
-    console.log(lottieRainRef.current)
-    // Check if the element is in view
-    console.log("Running Header Animation")
-    console.log("the topic: ",theTopic)
-    console.log("open topic: ",openTopic)
     if (reset && isInView) {
       void animate(
         ".desc",
@@ -100,7 +91,6 @@ const Header = ({ content }: HeaderProps) => {
       }
 
       if (openTopic) {
-        console.log("Running Open Topic Animation")
         void animate(
           ".topic",
           { opacity: 1, },
@@ -110,13 +100,12 @@ const Header = ({ content }: HeaderProps) => {
         void animate("p, li", { opacity: 1, scale: [0, 0.9] }, { type: "spring", duration: .4, delay: staggerTopicItems });
       }
 
-  }, [animate, isInView, isNotMobile, openTopic, reset, scrollYProgress, staggerSpanLettersEven, staggerSpanLettersOdd, theTopic]);
+  }, [animate, isInView, isNotMobile, openTopic, reset, scrollYProgress, staggerSpanLettersEven, staggerSpanLettersOdd, staggerTopicItems, theTopic]);
 
   const handleTopicItemClick = (topic:string) => {
     setReset(() => false);
     setTheTopic(topic);
     setOpenTopic(() => true);
-    console.log("Topic: ", theTopic)
   };
 
   const closeTopic = () => {
@@ -134,16 +123,16 @@ const Header = ({ content }: HeaderProps) => {
       className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
     >
       <div className="rain-container">
-      {[...Array(4)].map((_, index) => (
-    <Player
-      ref={lottieRainRef}
-      key={index}
-      autoplay
-      loop
-      className="top-0 rain-player"
-      src={rainLottie}
-    />
-  ))}
+      {Array.from({ length: 4 }, (_, index) => (
+  <Player
+    ref={lottieRainRef}
+    key={index}
+    autoplay
+    loop
+    className="top-0 rain-player"
+    src={rainLottie}
+  />
+))}
       </div>
 
       <h2
