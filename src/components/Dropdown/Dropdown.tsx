@@ -2,11 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { animate, motion, stagger, useAnimate, useInView } from "framer-motion";
 
 type Tab =
-  | "Biodiversity"
-  | "River System"
-  | "Climate and Environment"
-  | "Cultural Diversity"
-  | "Threats and Conservation";
+  | "Amazon's Remarkable Canopy"
+  | "Flying Rivers"
+  | "Medicinal Treasure Chest"
+  | "Amazon's Nightlife"
+  | "The 'Garden Cities' of Leafcutter Ants"
+  | "Whispering Trees"
+  | "Resourceful Epiphytes";
+
 
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const useMenuAnimation = (isOpen: boolean) => {
@@ -57,11 +60,13 @@ const Dropdown = ({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const tabs: Tab[] = [
-    "Biodiversity",
-    "River System",
-    "Climate and Environment",
-    "Cultural Diversity",
-    "Threats and Conservation",
+    "Amazon's Remarkable Canopy",
+    "Flying Rivers",
+    "Medicinal Treasure Chest",
+    "Amazon's Nightlife",
+    "The 'Garden Cities' of Leafcutter Ants",
+    "Whispering Trees",
+    "Resourceful Epiphytes"
   ];
 
   useEffect(() => {
@@ -107,7 +112,7 @@ const Dropdown = ({
                 className={`${
                   selectedTab === tab ? "text-white" : "text-slate-900"
                 } relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
-                onClick={() => {
+                  onClick={() => {
                   clickSelectedTab(tab);
                   setIsOpen(true);
                 }}
@@ -115,7 +120,7 @@ const Dropdown = ({
                 {selectedTab === tab && (
                   <motion.div
                     layoutId="active-pill"
-                    className="bg-zinc-900 w-full h-10 absolute inset-0 -z-10"
+                    className="bg-zinc-900 w-full h-full absolute inset-0 -z-10"
                   ></motion.div>
                 )}
 
