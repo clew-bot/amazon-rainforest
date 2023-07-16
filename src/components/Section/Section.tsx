@@ -3,20 +3,23 @@ import Dropdown from "../Dropdown/Dropdown";
 import ImageContainer from "../Images/ImageContainer";
 
 type Tab =
-  | "Biodiversity"
-  | "River System"
-  | "Climate and Environment"
-  | "Cultural Diversity"
-  | "Threats and Conservation";
+  | "Amazon's Remarkable Canopy"
+  | "Flying Rivers"
+  | "Medicinal Treasure Chest"
+  | "Amazon's Nightlife"
+  | "The 'Garden Cities' of Leafcutter Ants"
+  | "Whispering Trees"
+  | "Resourceful Epiphytes";
 
 const tabs: Tab[] = [
-  "Biodiversity",
-  "River System",
-  "Climate and Environment",
-  "Cultural Diversity",
-  "Threats and Conservation",
+  "Amazon's Remarkable Canopy",
+  "Flying Rivers",
+  "Medicinal Treasure Chest",
+  "Amazon's Nightlife",
+  "The 'Garden Cities' of Leafcutter Ants",
+  "Whispering Trees",
+  "Resourceful Epiphytes",
 ];
-
 
 const Section = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,19 +27,16 @@ const Section = () => {
 
   useEffect(() => {
     console.log("selectedTab", selectedTab);
-  }
-  , [selectedTab]);
+  }, [selectedTab]);
   return (
-    <div className="h-screen snap-start p-6 flex justify-start">
+    <div className="h-screen snap-start p-6 flex justify-start gap-10">
       <Dropdown
         clickSelectedTab={clickSelectedTab}
         selectedTab={selectedTab}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
       />
-      <ImageContainer 
-      isOpen={isOpen}
-      selectedImage={selectedTab} />
+      <ImageContainer isOpen={isOpen} selectedImage={selectedTab} />
     </div>
   );
 };

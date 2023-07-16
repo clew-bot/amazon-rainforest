@@ -26,18 +26,24 @@ const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
   , [selectedImage]);
   return (
     <AnimatePresence>
+      <div className="right-0 absolute w-1/2 border-4 border-black rounded-md h-full font-display">
+      <div className="bg-black">
+        <h2 className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline ">Discover</h2>
+      </div>
     <motion.div
     key={selectedImage}
     initial={{ opacity: 0}}
     animate={{ opacity: 1, scale: [0, 1]}}
     exit={{ opacity: 0, scale: 0 }}
     transition={{ duration: .3, ease: "easeOut" }}
-    className="right-0 absolute w-1/2 border-4 border-red-900  h-full">
-
+    >
+  
+lorem*99
       {/* <img className="absolute opacity-1 object-fit inset-1" src={imageMap[selectedImage]} alt="" /> */}
 
     
     </motion.div>
+    </div>
     </AnimatePresence>
   );
 };

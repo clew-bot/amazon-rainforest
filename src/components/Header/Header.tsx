@@ -28,6 +28,7 @@ const Header = ({ content }: HeaderProps) => {
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
   const [reset, setReset] = useState(true);
+  const [textReset, setTextReset] = useState(false);
   const topics: string[] = [
     "River of Life",
     "Threats",
@@ -40,6 +41,47 @@ const Header = ({ content }: HeaderProps) => {
   ];
   const lottieRainRef = useRef(null);
   const { scrollYProgress } = useScroll();
+
+  const handleTopicItemClick = (topic:string) => {
+    setReset(() => false);
+    setTheTopic(topic);
+    setOpenTopic(() => true);
+
+  };
+
+  const closeTopic = () => {
+    setOpenTopic(() => false);
+    setReset(() => false);
+  }
+
+ const handleNext = () => {
+  if (isLastTopic()) {
+    setTheTopic(() => topics[0]);
+  } else {
+    setReset(() => false);
+
+    setTheTopic(() => topics[topics.indexOf(theTopic) + 1]);
+    setOpenTopic(() => true);
+  } 
+  }
+
+  const handlePrev = () => {
+    if (isFirstTopic()) {
+      setTheTopic(() => topics[topics.length - 1]);
+    } else {
+    setTheTopic(() => topics[topics.indexOf(theTopic) - 1]);
+    }
+  }
+
+  const isLastTopic = () => {
+    return topics.indexOf(theTopic) === topics.length - 1;
+  }
+
+  const isFirstTopic = () => {
+    return topics.indexOf(theTopic) === 0;
+  }
+
+
   useEffect(() => {
     if (reset && isInView) {
       void animate(
@@ -100,19 +142,8 @@ const Header = ({ content }: HeaderProps) => {
         void animate("p, li", { opacity: 1, scale: [0, 0.9] }, { type: "spring", duration: .4, delay: staggerTopicItems });
       }
 
+      
   }, [animate, isInView, isNotMobile, openTopic, reset, scrollYProgress, staggerSpanLettersEven, staggerSpanLettersOdd, staggerTopicItems, theTopic]);
-
-  const handleTopicItemClick = (topic:string) => {
-    setReset(() => false);
-    setTheTopic(topic);
-    setOpenTopic(() => true);
-  };
-
-  const closeTopic = () => {
-    setOpenTopic(() => false);
-    setReset(() => false);
-  }
-
 
 
   return (
@@ -169,7 +200,7 @@ const Header = ({ content }: HeaderProps) => {
         ></Player>
       </div>
 
-      <p className="desc head-content font-display font-bold text-black text-xl text-center flex justify-center items-center z-10 opacity-0">
+      <p className="desc head-content font-display font-bold text-black text-xl text-center flex justify-center items-center z-10 opacity-">
         This is the Amazon
       </p>
       <div className="absolute inset-16 flex justify-center flex-col items-center h-screen z-10">
@@ -199,6 +230,10 @@ const Header = ({ content }: HeaderProps) => {
             isOpen={openTopic}
             closeTopic={closeTopic}
             theTopic={theTopic}
+            handleNextTopic={handleNext}
+            handlePrevTopic={handlePrev}
+            isLastTopic={isLastTopic}
+            isFirstTopic={isFirstTopic}
         />
 
       </div>
