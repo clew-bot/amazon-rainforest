@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import river from "../../assets/topicImgs/river.jpeg";
 import threats from "../../assets/topicImgs/threats.jpeg";
-import tribes from "../../assets/topicImgs/tribes.jpg";
+import tribes from "../../assets/topicImgs/culture.jpeg";
 import conservation from "../../assets/topicImgs/conservation.jpeg";
 import lungs from "../../assets/topicImgs/lungs.png";
 import topics from "../../json/topics.json";
@@ -45,10 +45,11 @@ TopicItemProps) => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="height2 absolute border-2 border-black p-3  w-full min-w-[320px] top-0 right-[50%]] z-[99999] bg-black opacity-5 rounded-lg border-dotted bg-opacity-10 backdrop-filter backdrop-blur-lg font-display overflow-scroll lg:overflow-auto"
+          className="height2 absolute my-10  w-full min-w-[320px] top-0 right-[50%]] z-[99999] bg-black opacity-5 rounded-lg border-dotted bg-opacity-10 backdrop-filter backdrop-blur-lg font-display overflow-scroll
+          lg:overflow-auto"
         >
           <div className="h-full relative">
-            <h2 className="text-center text-lg lg:text-3xl font-bold text-blue-00">{
+            <h2 className="pt-4 text-center text-lg lg:text-3xl font-bold text-blue-00">{
             theTopic}</h2>
             <div
               onClick={closeTopic}
@@ -56,12 +57,12 @@ TopicItemProps) => {
             >
               X
             </div>
-            <div>
+            <div className="h-fit">
               {topics.map((topic) => (
                 <div key={topic.title} className="h-full overflow-auto">
                   {topic.title === theTopic && (
-                    <div className="flex flex-col md:flex-row justify-center mt-5 sm:mx-5 h-full">
-                      <div className="w-full md:w-1/2 p-4 mb-4 md:mb-0 rounded-md shadow-md bg-white bg-opacity-50 overflow-scroll lg:overflow-auto">
+                    <div className="flex flex-col-reverse md:flex-row justify-center mt-5 sm:mx-5 h-full">
+                      <div className="w-full md:w-1/2 p-4 mb-4 md:mb-0 rounded-md shadow-md bg-white bg-opacity-50 overflow-scroll lg:overflow-auto max-h-[32rem] text-container">
                         <p className="opacity-0 font-bold text-2xl text-slate-900 mb-2">
                           {topic.sections[0].title}
                         </p>
@@ -76,11 +77,11 @@ TopicItemProps) => {
                           ))}
                         </ul>
                       </div>
-                      <div className="w-full md:w-1/2 flex flex-col">
-                        <div className="h-full">
+                      <div className="w-full md:w-1/2 flex flex-col h-1/2">
+                        <div className="max-h-96">
                           <img
                             src={imageMapper[topic.title]}
-                            className="object-cover h-full w-full rounded-md shadow-md"
+                            className="object-cover max-h-full w-full rounded-md shadow-md mb-2"
                             alt={topic.sections[0].title}
                           />
                         </div>
