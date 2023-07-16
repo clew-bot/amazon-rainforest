@@ -1,5 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
+import river from "../../assets/topicImgs/river.jpeg";
+import threats from "../../assets/topicImgs/threats.jpeg";
+import tribes from "../../assets/topicImgs/tribes.jpg";
+import conservation from "../../assets/topicImgs/conservation.jpeg";
+import lungs from "../../assets/topicImgs/lungs.png";
 import topics from "../../json/topics.json";
+import climate from "../../assets/topicImgs/climate.jpeg";
+import spectrum from "../../assets/topicImgs/spectrum.jpeg";
+import biodiversity from "../../assets/topicImgs/biodiversity.jpg";
 const imageVariants = {
   hidden: { filter: "blur(10px)", opacity: 0 },
   visible: { filter: "blur(0px)", opacity: 1 },
@@ -11,7 +19,19 @@ interface TopicItemProps {
   isOpen: boolean;
 }
 
-const TopicItem = ({ isOpen, theTopic, closeTopic }: TopicItemProps) => {
+const TopicItem = ({ isOpen, theTopic, closeTopic }: 
+TopicItemProps) => {
+
+  const imageMapper = {
+    "River of Life": river,
+    "Threats": threats,
+    "Indigenous Cultures": tribes,
+    "Conservation Efforts": conservation,
+    "Lungs of the Earth": lungs,
+    "Climate and Seasons": climate,
+    "Spectrum": spectrum,
+    "Biodiversity": biodiversity,
+  }
   console.log(theTopic);
   return (
     <AnimatePresence>
@@ -25,7 +45,7 @@ const TopicItem = ({ isOpen, theTopic, closeTopic }: TopicItemProps) => {
           className="height2 absolute border-2 border-black p-3  w-full min-w-[320px] top-0 right-[50%]] z-[99999] bg-black opacity-5 rounded-lg border-dotted bg-opacity-10 backdrop-filter backdrop-blur-lg font-display overflow-scroll lg:overflow-auto"
         >
           <div className="h-full relative">
-            <h2 className="text-center text-lg lg:text-3xl font-bold text-blue-500">{
+            <h2 className="text-center text-lg lg:text-3xl font-bold text-blue-00">{
             theTopic}</h2>
             <div
               onClick={closeTopic}
@@ -56,7 +76,7 @@ const TopicItem = ({ isOpen, theTopic, closeTopic }: TopicItemProps) => {
                       <div className="w-full md:w-1/2 flex flex-col">
                         <div className="h-full">
                           <img
-                            src={topic.image}
+                            src={imageMapper[topic.title]}
                             className="object-cover h-full w-full rounded-md shadow-md"
                             alt={topic.sections[0].title}
                           />
