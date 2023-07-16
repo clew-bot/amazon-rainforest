@@ -18,8 +18,10 @@ const imageMap = {
 
 const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
   return (
-    <div className="right-0">
-      <img className="opacity-0 blur-lg" src={imageMap[selectedImage]} alt="" />
+    <div
+    key={selectedImage}
+    className="w-1/2">
+      <img className="opacity-1" src={imageMap[selectedImage]} alt="" />
     </div>
   );
 };

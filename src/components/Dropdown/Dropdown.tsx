@@ -81,7 +81,7 @@ const Dropdown = ({
 
   return (
     <div
-      className="flex-col sm:flex-row  w-full flex justify-between sm:items-start border-4 border-green-900"
+      className="w-1/2"
       ref={scope}
     >
       <div

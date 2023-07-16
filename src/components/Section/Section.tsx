@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import tiger from "../../assets/images/tiger.jpg";
 import Dropdown from "../Dropdown/Dropdown";
+import ImageContainer from "../Images/ImageContainer";
 
 type Tab =
   | "Biodiversity"
@@ -16,18 +16,22 @@ const tabs: Tab[] = [
   "Cultural Diversity",
   "Threats and Conservation",
 ];
+
+
 const Section = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
   return (
-    <div className="h-screen snap-start p-6">
+    <div className="h-screen snap-start p-6 flex">
       <Dropdown
         clickSelectedTab={clickSelectedTab}
         selectedTab={selectedTab}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
       />
-      <img className="h-64" src={tiger} alt="" />
+      <ImageContainer 
+      isOpen={isOpen}
+      selectedImage={selectedTab} />
     </div>
   );
 };
