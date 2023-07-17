@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import ImageContainer from "../Images/ImageContainer";
+import { LayoutGroup } from "framer-motion";
 
 type Tab =
   | "Amazon's Remarkable Canopy"
@@ -30,6 +31,7 @@ const Section = () => {
   }, [selectedTab]);
   return (
     <div className="h-screen snap-start p-6 flex justify-start gap-10">
+      <LayoutGroup>
       <Dropdown
         clickSelectedTab={clickSelectedTab}
         selectedTab={selectedTab}
@@ -37,6 +39,7 @@ const Section = () => {
         isOpen={isOpen}
       />
       <ImageContainer isOpen={isOpen} selectedImage={selectedTab} />
+      </LayoutGroup>
     </div>
   );
 };

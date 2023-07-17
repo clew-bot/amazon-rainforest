@@ -24,7 +24,7 @@ const Header = ({ content }: HeaderProps) => {
   const [scope, animate] = useAnimate();
   const staggerSpanLettersEven = stagger(0.3, { startDelay: 4 });
   const staggerSpanLettersOdd = stagger(0.2, { startDelay: 3 });
-  const staggerTopicItems = stagger(0.2, { startDelay: .1 });
+  const staggerTopicItems = stagger(0.2, { startDelay: 0 });
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
   const [reset, setReset] = useState(true);
@@ -140,6 +140,7 @@ const Header = ({ content }: HeaderProps) => {
         );
      
         void animate("p, li", { opacity: 1, scale: [0, 0.9] }, { type: "spring", duration: .4, delay: staggerTopicItems });
+        void animate(".section-img", { opacity: 1, scale: [0, 0.9] }, { type: "spring", duration: .4, delay: staggerTopicItems });
       }
 
       
