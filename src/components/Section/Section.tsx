@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import ImageContainer from "../Images/ImageContainer";
 import { LayoutGroup } from "framer-motion";
+import LearnItem from "../LearnItem/LearnItem";
 
 type Tab =
   | "Amazon's Remarkable Canopy"
@@ -38,7 +39,8 @@ const Section = () => {
         setIsOpen={setIsOpen}
         isOpen={isOpen}
       />
-      <ImageContainer isOpen={isOpen} selectedImage={selectedTab} />
+      <LearnItem selectedTab={selectedTab} />
+      {/* <ImageContainer isOpen={isOpen} selectedImage={selectedTab} /> */}
       </LayoutGroup>
     </div>
   );
