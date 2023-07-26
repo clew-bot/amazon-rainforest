@@ -7,7 +7,6 @@ interface LearnItemProps {
 
 
 const LearnItem = ({ selectedTab }: LearnItemProps) => {
-    console.log(learn)
   return (
     <div className="right-0 absolute w-1/2 border-4 border-black rounded-md h-full font-display">
       <div className="bg-white">
@@ -17,9 +16,16 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
         <div>
          {learn.map((item) => (
             item && item.title === selectedTab && (
+                <>
                <div className="text-center text-xl font-bold pt-2">
                     <h3>{item.title}</h3>
+             
                </div>
+                <div className="font-bold">Did you know?</div>
+                <div className="text-left">
+                    <p>{item.sections[0].funFact}</p>
+                </div>
+                      </>
             )
          ))}
         </div>
