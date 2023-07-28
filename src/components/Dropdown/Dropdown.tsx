@@ -20,7 +20,7 @@ const useMenuAnimation = (isOpen: boolean) => {
       {
         clipPath: isOpen
           ? "inset(0% 0% 0% 0% round 0px)"
-          : "inset(100% 50% 90% 50% round 10px)",
+          : "",
       },
       {
         type: "spring",
@@ -35,10 +35,11 @@ const useMenuAnimation = (isOpen: boolean) => {
         ? { opacity: 1, scale: 1, filter: "blur(0px)" }
         : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
       {
-        duration: 0.2,
+        duration: 0.3,
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
+    
   }, [animate, isOpen]);
 
   return scope;
