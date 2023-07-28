@@ -31,7 +31,7 @@ const Section = () => {
     console.log("selectedTab", selectedTab);
   }, [selectedTab]);
   return (
-    <div className="h-screen snap-start p-6 flex justify-start gap-10">
+    <div className="h-screen snap-start p-6 flex justify-start gap-1">
       <LayoutGroup>
       <Dropdown
         clickSelectedTab={clickSelectedTab}

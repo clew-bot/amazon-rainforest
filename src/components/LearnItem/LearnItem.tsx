@@ -6,7 +6,7 @@ interface LearnItemProps {
 }
 
 
-const staggerLearnItems = stagger(0.1, { startDelay: 0.15 });
+const staggerLearnItems = stagger(0.1, { startDelay: 0.2 });
 
 
 const LearnItem = ({ selectedTab }: LearnItemProps) => {
@@ -18,7 +18,6 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
         const [scope, animate] = useAnimate();
         useEffect(() => {
             if (isInView) {
-                console.log("run")
             void animate(
                 ".learnItem",
                 {  opacity: 1, scale: [0, 0.9] },
@@ -42,11 +41,11 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
     <div
     
     ref={scope}
-    className="right-0 absolute w-1/2 border-4 border-black rounded-md font-display">
+    className="w-1/2 border-4 border-black rounded-md font-display">
       <div 
          ref={ref}
       className="bg-black">
-        <h2 className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline ">
+        <h2  className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline">
           Discover
         </h2>
         <div className="bg-white">
@@ -57,7 +56,7 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
                 <div key={item.title} className="learn-container h-60">
                   <div
                  
-                  className="learnItem text-center text-xl font-bold pt-2">
+                  className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline">
                     <h3>{item.title}</h3>
                   </div>
                   <div className="learnItem p-4 opacity-0">
