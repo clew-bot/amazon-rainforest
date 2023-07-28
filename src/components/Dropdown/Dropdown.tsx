@@ -87,7 +87,7 @@ const Dropdown = ({
 
   return (
     <div
-      className="w-1/2"
+      className="w-full md:w-1/2"
       ref={scope}
     >
       <div

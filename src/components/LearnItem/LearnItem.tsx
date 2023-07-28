@@ -41,7 +41,7 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
     <div
     
     ref={scope}
-    className="w-1/2 border-4 border-black rounded-md font-display">
+    className="w-full md:w-1/2 border-4 border-black rounded-md font-display">
       <div 
          ref={ref}
       className="bg-black">
