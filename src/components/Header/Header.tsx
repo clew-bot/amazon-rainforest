@@ -149,8 +149,7 @@ const Header = ({ content }: HeaderProps) => {
 
   return (
   
-    <div
-      id="section"
+    <section
       ref={scope}
       className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
     >
@@ -238,7 +237,7 @@ const Header = ({ content }: HeaderProps) => {
         />
 
       </div>
-    </div>
+    </section>
 
   );
 };

@@ -11,10 +11,11 @@ body {
 
 html {
   scroll-snap-type: y mandatory;
-  height: 100vh; 
+  height: 100svh; 
+  height: 100vh;
 }
 
-section {
+.firstSection {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -23,6 +24,13 @@ section {
   scroll-snap-align: center;
   perspective: 500px;
 }
+
+section {
+  scroll-snap-align: center;
+}
+
+  
+
 
 .height {
   height: calc(100vh - 20px);

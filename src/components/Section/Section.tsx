@@ -3,6 +3,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import ImageContainer from "../Images/ImageContainer";
 import { LayoutGroup } from "framer-motion";
 import LearnItem from "../LearnItem/LearnItem";
+import Quiz from "../Quiz/Quiz";
 
 type Tab =
   | "Amazon's Remarkable Canopy"
@@ -31,7 +32,7 @@ const Section = () => {
     console.log("selectedTab", selectedTab);
   }, [selectedTab]);
   return (
-    <div className="h-screen snap-start p-6 flex justify-start gap-1 flex-wrap md:flex-nowrap">
+    <section className="h-screen p-6 grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2">
       <LayoutGroup>
       <Dropdown
         clickSelectedTab={clickSelectedTab}
@@ -39,10 +40,12 @@ const Section = () => {
         setIsOpen={setIsOpen}
         isOpen={isOpen}
       />
-      <LearnItem selectedTab={selectedTab} />
+       <LearnItem selectedTab={selectedTab} />
+      {/* <Quiz/> */}
+     
       {/* <ImageContainer isOpen={isOpen} selectedImage={selectedTab} /> */}
       </LayoutGroup>
-    </div>
+    </section>
   );
 };
 

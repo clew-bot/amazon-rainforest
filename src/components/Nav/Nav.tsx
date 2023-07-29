@@ -54,7 +54,7 @@ const Nav = () => {
   };
 
   return (
-    <section className="height border-4 rounded-xl border-black -z-10 w-full" ref={scope}>
+    <section className="firstSection height border-4 rounded-xl border-black -z-10 w-full" ref={scope}>
       <motion.div 
       className="relative w-full h-full pb-10"
       >

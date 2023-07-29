@@ -25,7 +25,7 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
               );
               void animate(
                 ".learn-container",
-                {  opacity: 1, height: "40rem" },
+                {  opacity: 1},
                 { type: "spring", duration: .3, delay: staggerLearnItems }
               );
             }
@@ -41,7 +41,7 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
     <div
     
     ref={scope}
-    className="w-full md:w-1/2 border-4 border-black rounded-md font-display">
+    className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3">
       <div 
          ref={ref}
       className="bg-black">
@@ -53,7 +53,7 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
             (item) =>
               item &&
               item.title === selectedTab && (
-                <div key={item.title} className="learn-container h-60">
+                <div key={item.title} className="learn-container">
                   <div
                  
                   className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline">

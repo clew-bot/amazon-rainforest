@@ -10,24 +10,41 @@ type Tab =
   | "Whispering Trees"
   | "Resourceful Epiphytes";
 
-
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const useMenuAnimation = (isOpen: boolean) => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
+    console.log("hhh", isOpen);
     void animate(
       "ul",
-      {
-        clipPath: isOpen
-          ? "inset(0% 0% 0% 0% round 0px)"
-          : "",
-      },
+      isOpen
+        ? {
+            height: "auto",
+          }
+        : 
+        {
+            height: "0px",
+          },
       {
         type: "spring",
         bounce: 0,
         duration: 0.5,
       }
     );
+    // void animate(
+    //   "ul",
+    //   {
+
+    //     clipPath: isOpen
+    //       ? "inset(0% 0% 0% 0% round 0px)"
+    //       : "inset(0% 0% 100% 0% round 0px)",
+    //   },
+    //   {
+    //     type: "spring",
+    //     bounce: 0,
+    //     duration: 0.5,
+    //   }
+    // );
 
     void animate(
       "li",
@@ -39,7 +56,6 @@ const useMenuAnimation = (isOpen: boolean) => {
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
-    
   }, [animate, isOpen]);
 
   return scope;
@@ -67,7 +83,7 @@ const Dropdown = ({
     "Amazon's Nightlife",
     "The 'Garden Cities' of Leafcutter Ants",
     "Whispering Trees",
-    "Resourceful Epiphytes"
+    "Resourceful Epiphytes",
   ];
 
   useEffect(() => {
@@ -86,10 +102,7 @@ const Dropdown = ({
   };
 
   return (
-    <div
-      className="w-full md:w-1/2"
-      ref={scope}
-    >
+    <div className="w-full sm:col-start-1 sm:col-end-2" ref={scope}>
       <div
         style={{
           transform: isInView ? "none" : "translateX(-200px)",
@@ -104,7 +117,7 @@ const Dropdown = ({
         >
           Learn
         </button>
-        <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black sm:text-2xl">
+        <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black sm:text-2xl h-full">
           {tabs.map((tab) => {
             return (
               <motion.li
@@ -112,7 +125,7 @@ const Dropdown = ({
                 className={`${
                   selectedTab === tab ? "text-white" : "text-slate-900"
                 } relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
-                  onClick={() => {
+                onClick={() => {
                   clickSelectedTab(tab);
                   setIsOpen(true);
                 }}
