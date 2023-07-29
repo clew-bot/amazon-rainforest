@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import learn from "../../json/learn.json";
+import { useMediaQuery } from "usehooks-ts";
 interface LearnItemProps {
   selectedTab: string;
   isOpen: boolean;
@@ -21,8 +22,14 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
   const isInView = useInView(ref, { once: true });
 
   const toggleDropdown = () => {
+    if (isDesktop) {
+      setIsOpen(true);
+    } else {
     setIsOpen(!isOpen);
+    }
+
   };
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const useLearnAnimation = () => {
     const [scope, animate] = useAnimate();
     useEffect(() => {
@@ -39,7 +46,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
         );
         void animate(
           ".learn-items",
-          isOpen
+          isOpen && !isDesktop
             ? {
                 height: "0px",
               }
@@ -54,7 +61,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
         );
         void animate(
           ".learn-container",
-          isOpen
+          isOpen && !isDesktop
             ? {
                 visibility: "hidden",
                 opacity: 0,
@@ -82,7 +89,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
   };
 
   const scope = useLearnAnimation();
-
+  
   return (
     <div
       ref={scope}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { animate, motion, stagger, useAnimate, useInView } from "framer-motion";
-
+import { useMediaQuery } from "usehooks-ts";
 type Tab =
   | "Amazon's Remarkable Canopy"
   | "Flying Rivers"
@@ -11,6 +11,7 @@ type Tab =
   | "Resourceful Epiphytes";
 
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
+
 const useMenuAnimation = (isOpen: boolean) => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
@@ -88,7 +89,7 @@ const Dropdown = ({
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
     <div className="row-start-1 row-end-2" ref={scope}>
       <div
@@ -115,7 +116,12 @@ const Dropdown = ({
                 } relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
                 onClick={() => {
                   clickSelectedTab(tab);
-                  setIsOpen(!isOpen);
+                  if (isDesktop) {
+                    setIsOpen(true);
+                  } else {
+                    setIsOpen(!isOpen);
+                  }
+
                 }}
               >
                 {selectedTab === tab && (
