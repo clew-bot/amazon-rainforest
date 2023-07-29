@@ -36,12 +36,13 @@ const useMenuAnimation = (isOpen: boolean) => {
       isOpen
         ? { visibility: "visible", opacity: 1, scale: 1, filter: "blur(0px)", pointerEvents: 'auto' }
         : {
-          visibility: "hidden", opacity: 0, scale: 0.3, filter: "blur(20px)", pointerEvents: 'none'
+          visibility: "hidden", opacity: 0, scale: 0, filter: "blur(20px)", pointerEvents: 'none'
           },
       {
         type: "spring",
         bounce: 0,
         duration: 0.5,
+        delay: isOpen ? staggerMenuItems : 0,
       }
     );
     
@@ -91,16 +92,9 @@ const Dropdown = ({
   };
   const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <div className="row-start-1 row-end-2" ref={scope}>
-      <div
-        // style={{
-        //   transform: isInView ? "none" : "translateX(-200px)",
-        //   opacity: isInView ? 1 : 0,
-        //   transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-        // }}
-        ref={ref}
-      >
+    <div className=" self-start row-start-1 row-end-2 h-full" ref={scope}>
         <button
+        ref={ref}
           className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
           onClick={toggleDropdown}
         >
@@ -136,7 +130,6 @@ const Dropdown = ({
             );
           })}
         </ul>
-      </div>
     </div>
   );
 };

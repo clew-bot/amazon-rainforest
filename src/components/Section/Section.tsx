@@ -28,13 +28,13 @@ const tabs: Tab[] = [
 const Section = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
-  
+
   useEffect(() => {
     console.log("selectedTab", selectedTab);
   }, [selectedTab]);
   return (
-    <section className="h-screen p-6 grid sm:grid-cols-2 sm:grid-rows-2 gap-2">
-      <LayoutGroup>
+    <section className="h-screen p-6 ">
+<div className="grid grid-flow-row-dense items-start gap-2">
       <Dropdown
         clickSelectedTab={clickSelectedTab}
         selectedTab={selectedTab}
@@ -46,9 +46,9 @@ const Section = () => {
        isOpen={isOpen}
        selectedTab={selectedTab} />
       <FunFact/>
-     
+      </div>
       {/* <ImageContainer isOpen={isOpen} selectedImage={selectedTab} /> */}
-      </LayoutGroup>
+
     </section>
   );
 };

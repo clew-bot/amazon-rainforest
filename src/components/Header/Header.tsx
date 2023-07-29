@@ -84,11 +84,6 @@ const Header = ({ content }: HeaderProps) => {
 
   useEffect(() => {
     if (reset && isInView) {
-      void animate(
-        ".desc",
-        { y: [0, -240], opacity: 1 },
-        { type: "spring", duration: 2, delay: 2 }
-      );
 
       void animate(
         ".grassy",
@@ -199,10 +194,6 @@ const Header = ({ content }: HeaderProps) => {
           src={elephantLottie}
         ></Player>
       </div>
-
-      <p className="desc head-content font-display font-bold text-black text-xl text-center flex justify-center items-center z-10 opacity-">
-        This is the Amazon
-      </p>
       <div className="absolute inset-16 flex justify-center flex-col items-center h-screen z-10">
         {topics.map((topic) => (
           <motion.div

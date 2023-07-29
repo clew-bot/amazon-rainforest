@@ -102,12 +102,12 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
         >
           Discover
         </button>
-        <div className="bg-white learn-items border-4">
+        <div className="bg-white learn-items">
           {learn.map(
             (item) =>
               item &&
               item.title === selectedTab && (
-                <div key={item.title} className="learn-container">
+                <div key={item.title} className="learn-container max-h-96 overflow-scroll">
                   <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline">
                     <h3>{item.title}</h3>
                   </div>
