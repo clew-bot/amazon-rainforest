@@ -1,62 +1,107 @@
-import { AnimatePresence, motion, animate, stagger, useAnimate, useInView } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  animate,
+  stagger,
+  useAnimate,
+  useInView,
+} from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import learn from "../../json/learn.json";
 interface LearnItemProps {
   selectedTab: string;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
-
 
 const staggerLearnItems = stagger(0.1, { startDelay: 0.2 });
 
+const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
-const LearnItem = ({ selectedTab }: LearnItemProps) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+  const useLearnAnimation = () => {
+    const [scope, animate] = useAnimate();
+    useEffect(() => {
+      if (isInView) {
+        void animate(
+          ".learnItem",
+          { opacity: 1, scale: [0, 0.9] },
+          { type: "spring", duration: 0.3, delay: staggerLearnItems }
+        );
+        void animate(
+          ".learn-container",
+          { opacity: 1 },
+          { type: "spring", duration: 0.3, delay: staggerLearnItems }
+        );
+        void animate(
+          ".learn-items",
+          isOpen
+            ? {
+                height: "0px",
+              }
+            : {
+                height: "auto",
+              },
+          {
+            type: "spring",
+            bounce: 0,
+            duration: 0.5,
+          }
+        );
+        void animate(
+          ".learn-container",
+          isOpen
+            ? {
+                visibility: "hidden",
+                opacity: 0,
+                scale: 0.3,
+                filter: "blur(20px)",
+                pointerEvents: "none",
+              }
+            : {
+                visibility: "visible",
+                opacity: 1,
+                scale: 1,
+                filter: "blur(0px)",
+                pointerEvents: "auto",
+              },
+          {
+            type: "spring",
+            bounce: 0,
+            duration: 0.5,
+          }
+        );
+      }
+    }, [animate, isInView, selectedTab, isOpen]);
 
-    const useLearnAnimation = () => {
-   
-        const [scope, animate] = useAnimate();
-        useEffect(() => {
-            if (isInView) {
-            void animate(
-                ".learnItem",
-                {  opacity: 1, scale: [0, 0.9] },
-                { type: "spring", duration: .3, delay: staggerLearnItems }
-              );
-              void animate(
-                ".learn-container",
-                {  opacity: 1},
-                { type: "spring", duration: .3, delay: staggerLearnItems }
-              );
-            }
-          }, [animate, isInView, selectedTab]);
+    return scope;
+  };
 
-          return scope;
-    }
-
-    const scope = useLearnAnimation();
-
+  const scope = useLearnAnimation();
 
   return (
     <div
-    
-    ref={scope}
-    className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3">
-      <div 
-         ref={ref}
-      className="bg-black">
-        <h2  className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline">
+      ref={scope}
+      className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3"
+    >
+      <div ref={ref} className="bg-black">
+        <button
+          className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
+          onClick={toggleDropdown}
+        >
           Discover
-        </h2>
-        <div className="bg-white">
+        </button>
+        <div className="bg-white learn-items border-4">
           {learn.map(
             (item) =>
               item &&
               item.title === selectedTab && (
                 <div key={item.title} className="learn-container">
-                  <div
-                 
-                  className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline">
+                  <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline">
                     <h3>{item.title}</h3>
                   </div>
                   <div className="learnItem p-4 opacity-0">
@@ -64,7 +109,9 @@ const LearnItem = ({ selectedTab }: LearnItemProps) => {
                       Details: <span>{item.sections[0].details}</span>
                     </h3>
                   </div>
-                  <div className="learnItem opacity-0 font-bold">Did you know?</div>
+                  <div className="learnItem opacity-0 font-bold">
+                    Did you know?
+                  </div>
                   <div className="learnItem text-left">
                     <p>{item.sections[0].funFact}</p>
                   </div>

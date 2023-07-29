@@ -4,6 +4,7 @@ import ImageContainer from "../Images/ImageContainer";
 import { LayoutGroup } from "framer-motion";
 import LearnItem from "../LearnItem/LearnItem";
 import Quiz from "../Quiz/Quiz";
+import FunFact from "../FunFact/FunFact";
 
 type Tab =
   | "Amazon's Remarkable Canopy"
@@ -27,12 +28,12 @@ const tabs: Tab[] = [
 const Section = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
-
+  
   useEffect(() => {
     console.log("selectedTab", selectedTab);
   }, [selectedTab]);
   return (
-    <section className="h-screen p-6 grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2">
+    <section className="h-screen p-6 grid sm:grid-cols-2 sm:grid-rows-2 gap-2">
       <LayoutGroup>
       <Dropdown
         clickSelectedTab={clickSelectedTab}
@@ -40,8 +41,11 @@ const Section = () => {
         setIsOpen={setIsOpen}
         isOpen={isOpen}
       />
-       <LearnItem selectedTab={selectedTab} />
-      {/* <Quiz/> */}
+       <LearnItem 
+       setIsOpen={setIsOpen}
+       isOpen={isOpen}
+       selectedTab={selectedTab} />
+      <FunFact/>
      
       {/* <ImageContainer isOpen={isOpen} selectedImage={selectedTab} /> */}
       </LayoutGroup>

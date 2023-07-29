@@ -21,8 +21,7 @@ const useMenuAnimation = (isOpen: boolean) => {
         ? {
             height: "auto",
           }
-        : 
-        {
+        : {
             height: "0px",
           },
       {
@@ -31,31 +30,20 @@ const useMenuAnimation = (isOpen: boolean) => {
         duration: 0.5,
       }
     );
-    // void animate(
-    //   "ul",
-    //   {
-
-    //     clipPath: isOpen
-    //       ? "inset(0% 0% 0% 0% round 0px)"
-    //       : "inset(0% 0% 100% 0% round 0px)",
-    //   },
-    //   {
-    //     type: "spring",
-    //     bounce: 0,
-    //     duration: 0.5,
-    //   }
-    // );
-
     void animate(
       "li",
       isOpen
-        ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-        : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+        ? { visibility: "visible", opacity: 1, scale: 1, filter: "blur(0px)", pointerEvents: 'auto' }
+        : {
+          visibility: "hidden", opacity: 0, scale: 0.3, filter: "blur(20px)", pointerEvents: 'none'
+          },
       {
-        duration: 0.3,
-        delay: isOpen ? staggerMenuItems : 0,
+        type: "spring",
+        bounce: 0,
+        duration: 0.5,
       }
     );
+    
   }, [animate, isOpen]);
 
   return scope;
@@ -102,13 +90,13 @@ const Dropdown = ({
   };
 
   return (
-    <div className="w-full sm:col-start-1 sm:col-end-2" ref={scope}>
+    <div className="row-start-1 row-end-2" ref={scope}>
       <div
-        style={{
-          transform: isInView ? "none" : "translateX(-200px)",
-          opacity: isInView ? 1 : 0,
-          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-        }}
+        // style={{
+        //   transform: isInView ? "none" : "translateX(-200px)",
+        //   opacity: isInView ? 1 : 0,
+        //   transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+        // }}
         ref={ref}
       >
         <button
@@ -117,7 +105,7 @@ const Dropdown = ({
         >
           Learn
         </button>
-        <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black sm:text-2xl h-full">
+        <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black text-md md:text-xl h-full">
           {tabs.map((tab) => {
             return (
               <motion.li
@@ -127,7 +115,7 @@ const Dropdown = ({
                 } relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
                 onClick={() => {
                   clickSelectedTab(tab);
-                  setIsOpen(true);
+                  setIsOpen(!isOpen);
                 }}
               >
                 {selectedTab === tab && (
