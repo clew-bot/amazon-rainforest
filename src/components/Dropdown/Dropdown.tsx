@@ -15,7 +15,6 @@ const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const useMenuAnimation = (isOpen: boolean) => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    console.log("hhh", isOpen);
     void animate(
       "ul",
       isOpen
@@ -88,6 +87,9 @@ const Dropdown = ({
 
   const scope = useMenuAnimation(isOpen);
   const toggleDropdown = () => {
+    if(isDesktop) {
+      return;
+    }
     setIsOpen(!isOpen);
   };
   const isDesktop = useMediaQuery("(min-width: 768px)");

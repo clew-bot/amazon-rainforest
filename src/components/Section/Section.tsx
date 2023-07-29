@@ -28,10 +28,6 @@ const tabs: Tab[] = [
 const Section = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
-
-  useEffect(() => {
-    console.log("selectedTab", selectedTab);
-  }, [selectedTab]);
   return (
     <section className="h-screen p-6 ">
 <div className="grid grid-flow-row-dense items-start gap-2">

@@ -33,7 +33,8 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
   const useLearnAnimation = () => {
     const [scope, animate] = useAnimate();
     useEffect(() => {
-      if (isInView) {
+      console.log("isOpen", isOpen)
+      if (isInView && isOpen) {
         void animate(
           ".learnItem",
           { opacity: 1, scale: [0, 0.9] },
@@ -107,8 +108,8 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
             (item) =>
               item &&
               item.title === selectedTab && (
-                <div key={item.title} className="learn-container max-h-96 overflow-scroll">
-                  <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline">
+                <div key={item.title} className="learn-container overflow-scroll">
+                  <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline opacity-0">
                     <h3>{item.title}</h3>
                   </div>
                   <div className="learnItem p-4 opacity-0">
@@ -119,7 +120,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
                   <div className="learnItem opacity-0 font-bold">
                     Did you know?
                   </div>
-                  <div className="learnItem text-left">
+                  <div className="learnItem text-left opacity-0">
                     <p>{item.sections[0].funFact}</p>
                   </div>
                 </div>
