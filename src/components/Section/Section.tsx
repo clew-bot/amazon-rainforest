@@ -41,7 +41,9 @@ const Section = () => {
        setIsOpen={setIsOpen}
        isOpen={isOpen}
        selectedTab={selectedTab} />
-      <FunFact/>
+      <FunFact 
+      isOpen={isOpen}
+      selectedTab={selectedTab}/>
       </div>
       {/* <ImageContainer isOpen={isOpen} selectedImage={selectedTab} /> */}
 

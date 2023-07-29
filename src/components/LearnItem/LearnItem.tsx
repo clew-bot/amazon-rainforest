@@ -25,16 +25,15 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
     if (isDesktop) {
       setIsOpen(true);
     } else {
-    setIsOpen(!isOpen);
+      setIsOpen(!isOpen);
     }
-
   };
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const useLearnAnimation = () => {
     const [scope, animate] = useAnimate();
     useEffect(() => {
-      console.log("isOpen", isOpen)
-      if (isInView && isOpen) {
+      console.log("isOpen", isOpen);
+      if (isInView) {
         void animate(
           ".learnItem",
           { opacity: 1, scale: [0, 0.9] },
@@ -90,11 +89,12 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
   };
 
   const scope = useLearnAnimation();
-  
+
   return (
     <div
       ref={scope}
-      className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3"
+      className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3 min-w-[1000px]
+      min-h-[300px] sm:min-w-[400px] sm:min-h-[400px]"
     >
       <div ref={ref} className="bg-black">
         <button
@@ -103,25 +103,23 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
         >
           Discover
         </button>
-        <div className="bg-white learn-items">
+        <div className="bg-white learn-items border-4 h-full">
           {learn.map(
             (item) =>
               item &&
               item.title === selectedTab && (
-                <div key={item.title} className="learn-container overflow-scroll">
+                <div
+                  key={item.title}
+                  className="learn-container overflow-scroll"
+                >
                   <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline opacity-0">
                     <h3>{item.title}</h3>
                   </div>
                   <div className="learnItem p-4 opacity-0">
                     <h3 className="text-left font-bold text-lg">
-                      Details: <span>{item.sections[0].details}</span>
+                      {item.sections[0].details}
                     </h3>
-                  </div>
-                  <div className="learnItem opacity-0 font-bold">
-                    Did you know?
-                  </div>
-                  <div className="learnItem text-left opacity-0">
-                    <p>{item.sections[0].funFact}</p>
+                    <p>{item.sections[1].content}</p>
                   </div>
                 </div>
               )
