@@ -93,8 +93,8 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
   return (
     <div
       ref={scope}
-      className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3 min-w-[1000px]
-      min-h-[300px] sm:min-w-[400px] sm:min-h-[400px]"
+      className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3 md:min-w-[600px]
+      md:min-h-[300px] max-h-64 sm:max-h-max overflow-scroll sm:overflow-visible"
     >
       <div ref={ref} className="bg-black">
         <button
@@ -103,7 +103,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
         >
           Discover
         </button>
-        <div className="bg-white learn-items border-4 h-full">
+        <div className="bg-white learn-items h-full">
           {learn.map(
             (item) =>
               item &&
