@@ -8,6 +8,7 @@ import topics from "../../json/topics.json";
 import climate from "../../assets/topicImgs/climate.jpeg";
 import spectrum from "../../assets/topicImgs/spectrum.jpeg";
 import biodiversity from "../../assets/topicImgs/biodiversity.jpg";
+import x2 from "../../assets/images/x2.png";
 const imageVariants = {
   hidden: { filter: "blur(10px)", opacity: 0 },
   visible: { filter: "blur(0px)", opacity: 1 },
@@ -54,38 +55,37 @@ const TopicItem = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="height2 absolute my-10  w-full min-w-[320px] top-0 right-[50%]] z-[99999] bg-black opacity-5 rounded-lg border-dotted bg-opacity-10 backdrop-filter backdrop-blur-lg font-display overflow-scroll
-          lg:overflow-auto text-container"
+          className="absolute z-50  h-screen -mt-32 w-screen p-2"
         >
             <motion.div
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 1, ease: "easeOut" }}
               key={theTopic}
-              className="h-full relative"
+              className="h-full relative bg-green-100 rounded-md"
             >
-              <h2 className="pt-4 text-center text-lg lg:text-3xl font-bold text-blue-00">
+              <h2 className="pt-4 text-center text-2xl lg:text-3xl font-bold text-zinc-900">
                 {theTopic}
               </h2>
               <div
                 onClick={closeTopic}
                 className="cursor-pointer absolute top-2 right-2"
               >
-                X
+                <img src={x2} width="30px" className="hover:transition-all hover:animate-pulse" alt="" />
               </div>
 
               {topics.map(
                 (topic) =>
                   topic.title === theTopic && (
                     <div className="overflow-hidden height3">
-                      <div className="flex flex-col-reverse md:flex-row justify-center mt-5 sm:mx-5 h-full gap-2">
-                        <div className="w-full md:w-1/2 p-4 mb-4 md:mb-0 rounded-md shadow-md bg-white bg-opacity-50 overflow-scroll lg:overflow-auto 2xl:height3 text-container 2xl:h-full ">
-                          <p className="opacity-0 font-bold text-2xl text-slate-900 mb-2">
+                      <div className="flex flex-col-reverse md:flex-row justify-center mt-5 sm:mx-5 h-full gap-2 ">
+                        <div className="w-full md:w-1/2 p-2 mb-4 overflow-scroll lg:overflow-auto  text-container text-zinc-800">
+                          <p className="opacity-0 font-bold text-2xl mb-2">
                             {topic.sections[0].title}
                           </p>
-                          <p className="opacity-0 font-medium text-lg text-slate-900 mb-4">
+                          <p className="opacity-0 font-medium text-lg">
                             {topic.sections[0].content}
                           </p>
-                          <ul className="list-disc pl-5 text-gray-700">
+                          <ul className="list-disc pl-5">
                             {topic.sections.slice(1).map((section, index) => (
                               <li key={index} className="mb-2">
                                 {section.content}
@@ -94,7 +94,7 @@ const TopicItem = ({
                           </ul>
                         </div>
                         <div className="w-full md:w-1/2 flex flex-col h-1/2">
-                          <div className="max-h-96">
+                          <div className="max-h-96 2xl:max-h-max">
                             <motion.img
                               
                               src={imageMapper[topic.title]}
