@@ -13,11 +13,13 @@ interface LearnItemProps {
   selectedTab: string;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  shouldAnimate: boolean;
+  setShouldAnimate: (shouldAnimate: boolean) => void;
 }
 
-const staggerLearnItems = stagger(0.1, { startDelay: 0.2 });
+const staggerLearnItems = stagger(0.1, { startDelay: .2 });
 
-const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
+const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate, setShouldAnimate }: LearnItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -32,58 +34,53 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
   const useLearnAnimation = () => {
     const [scope, animate] = useAnimate();
     useEffect(() => {
-      console.log("isOpen", isOpen);
-      if (isInView && isOpen) {
-        void animate(
-          ".learnItem",
-          { opacity: 1, scale: [0, 0.9] },
-          { type: "spring", duration: 0.3, delay: staggerLearnItems }
-        );
-        void animate(
-          ".learn-container",
-          { opacity: 1 },
-          { type: "spring", duration: 0.3, delay: staggerLearnItems }
-        );
-        void animate(
-          ".learn-items",
-          isOpen && !isDesktop
-            ? {
-                height: "0px",
-              }
-            : {
-                height: "auto",
-              },
-          {
-            type: "spring",
-            bounce: 0,
-            duration: 0.5,
+      // Mobile //
+
+      if (!isDesktop) {
+        console.log("HH", isOpen, "SHOULD: ", shouldAnimate);
+        if(isInView && shouldAnimate) {
+          if(!isOpen && shouldAnimate) {
+            void animate(
+              ".learnItem",
+              { opacity: 1, scale: [0, 0.9] },
+              { type: "spring", duration: 0.3, delay: staggerLearnItems }
+            );
+            void animate(
+              ".learn-container",
+              { opacity: 1 },
+              { type: "spring", duration: 0.3, delay: staggerLearnItems }
+            );
           }
-        );
-        void animate(
-          ".learn-container",
-          isOpen && !isDesktop
-            ? {
-                visibility: "hidden",
-                opacity: 0,
-                scale: 0.3,
-                filter: "blur(20px)",
-                pointerEvents: "none",
-              }
-            : {
-                visibility: "visible",
-                opacity: 1,
-                scale: 1,
-                filter: "blur(0px)",
-                pointerEvents: "auto",
-              },
-          {
-            type: "spring",
-            bounce: 0,
-            duration: 0.5,
+          void animate(
+            ".learn-items",
+            isOpen ? 
+            {
+              height: "0px",
+            } : {
+              height: "auto",
+            },
+            {
+              type: "spring",
+              duration: 1,
+              bounce: 0,
+            }
+          );
           }
-        );
+      } else if (isDesktop) {
+        if (isInView && isOpen) {
+          void animate(
+            ".learnItem",
+            { opacity: 1, scale: [0, 0.9] },
+            { type: "spring", duration: 0.3, delay: staggerLearnItems }
+          );
+          void animate(
+            ".learn-container",
+            { opacity: 1 },
+            { type: "spring", duration: 0.3, delay: staggerLearnItems }
+          );
+        }
       }
-    }, [animate, isInView, selectedTab, isOpen]);
+    }, [animate, isInView, selectedTab, isOpen, shouldAnimate]);
 
     return scope;
   };
@@ -103,7 +100,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
         >
           Discover
         </button>
-        <div className="bg-white learn-items h-full">
+        <div className="bg-white learn-items h-0 sm:h-full">
           {learn.map(
             (item) =>
               item &&

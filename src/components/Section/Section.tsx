@@ -28,16 +28,21 @@ const tabs: Tab[] = [
 const Section = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
   return (
     <section className="h-screen p-6 ">
 <div className="grid grid-flow-row-dense items-start gap-2">
       <Dropdown
+        shouldAnimate={shouldAnimate}
+        setShouldAnimate={setShouldAnimate}
         clickSelectedTab={clickSelectedTab}
         selectedTab={selectedTab}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
       />
        <LearnItem 
+       shouldAnimate={shouldAnimate}
+       setShouldAnimate={setShouldAnimate}
        setIsOpen={setIsOpen}
        isOpen={isOpen}
        selectedTab={selectedTab} />

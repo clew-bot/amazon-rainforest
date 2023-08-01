@@ -55,6 +55,8 @@ interface DropdownProps {
   setIsOpen: (isOpen: boolean) => void;
   selectedTab: Tab;
   clickSelectedTab: (tab: Tab) => void;
+  shouldAnimate: boolean;
+  setShouldAnimate: (shouldAnimate: boolean) => void;
 }
 
 const Dropdown = ({
@@ -62,6 +64,8 @@ const Dropdown = ({
   setIsOpen,
   selectedTab,
   clickSelectedTab,
+  shouldAnimate,
+  setShouldAnimate,
 }: DropdownProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -87,6 +91,9 @@ const Dropdown = ({
 
   const scope = useMenuAnimation(isOpen);
   const toggleDropdown = () => {
+
+  
+
     if(isDesktop) {
       return;
     }
@@ -116,6 +123,9 @@ const Dropdown = ({
                     setIsOpen(true);
                   } else {
                     setIsOpen(!isOpen);
+                    if (isOpen) {
+                      setShouldAnimate(true);
+                    }
                   }
 
                 }}
