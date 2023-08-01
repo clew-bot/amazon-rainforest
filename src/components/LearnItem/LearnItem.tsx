@@ -33,7 +33,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen }: LearnItemProps) => {
     const [scope, animate] = useAnimate();
     useEffect(() => {
       console.log("isOpen", isOpen);
-      if (isInView) {
+      if (isInView && isOpen) {
         void animate(
           ".learnItem",
           { opacity: 1, scale: [0, 0.9] },
