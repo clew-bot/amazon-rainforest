@@ -28,22 +28,22 @@ const Nav = () => {
 
     void animate(
       "span",
-      { filter: "blur(0px)",  opacity: 1, padding: "2px" },
+      { filter: "blur(0px)",  opacity: 1 },
       { type: "spring", duration: 2, delay: staggerHeaderLetters }
     );
     void animate(
       "span",
-      { filter: "blur(0px)", opacity: 1, padding: "2px" },
+      { filter: "blur(0px)", opacity: 1 },
       { type: "spring", duration: 2, delay: staggerHeaderLetters }
     );
 
-    setTimeout(() => {
-      void animate(
-        "span",
-        {  padding: "2px" },
-        { type: "spring", duration: 0.5, delay: staggerHeaderLetters2 }
-      );
-    }, 3000);
+    // setTimeout(() => {
+    //   void animate(
+    //     "span",
+    //     {  padding: "2px" },
+    //     { type: "spring", duration: 0.5, delay: staggerHeaderLetters2 }
+    //   );
+    // }, 3000);
   }, [animate]);
 
   const scrollToSection = () => {
@@ -54,7 +54,7 @@ const Nav = () => {
   };
 
   return (
-    <section className="firstSection height border-4 rounded-xl border-black -z-10 w-full" ref={scope}>
+    <section className="firstSection rounded-xl border-black -z-10 w-full" ref={scope}>
       <motion.div 
       className="relative w-full h-full pb-10"
       >
@@ -72,7 +72,7 @@ const Nav = () => {
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <p
             ref={ref}
-            className="font-display font-extrabold text-slate-100 text-4xl rounded opacity-0 p-11"
+            className="font-display font-extrabold text-slate-100 bg-red-500 text-4xl rounded opacity-0 p-11"
           >
             <span className="opacity-0">A</span>
             <span className="opacity-0">M</span>

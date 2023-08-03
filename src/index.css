@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    padding-left: 20px;
-    padding-right: 20px;
+.secondSection {
+    padding-left: 50px;
+    padding-right: 50px;
     padding-top: 10px;
-    background-color: #FFF
+    background-color: black;
   }
 
 html {
@@ -22,7 +22,7 @@ html {
   align-items: center;
   position: relative;
   scroll-snap-align: center;
-  perspective: 500px;
+  padding: 0px !important; 
 }
 
 section {

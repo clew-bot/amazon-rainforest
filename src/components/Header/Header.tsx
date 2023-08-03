@@ -146,8 +146,10 @@ const Header = ({ content }: HeaderProps) => {
   
     <section
       ref={scope}
-      className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
-    >
+      className="px-[20px]"
+      >
+      <div className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px] secondSection`}
+      >
       <div className="rain-container">
       {Array.from({ length: 4 }, (_, index) => (
   <Player
@@ -163,7 +165,7 @@ const Header = ({ content }: HeaderProps) => {
 
       <h2
         ref={ref}
-        className="content head-content font-display font-bold text-black text-center flex justify-center items-center z-10"
+        className="content head-content font-display font-bold text-white text-center flex justify-center items-center z-10"
       >
         {content}
       </h2>
@@ -227,6 +229,7 @@ const Header = ({ content }: HeaderProps) => {
             isFirstTopic={isFirstTopic}
         />
 
+      </div>
       </div>
     </section>
 
