@@ -146,7 +146,7 @@ const Header = ({ content }: HeaderProps) => {
   
     <section
       ref={scope}
-      className="px-[20px]"
+      className="px-[20px] sectionTwo relative"
       >
       <div className={`h-screen my-16 flex justify-center flex-col relative -ml-[20px] mr-[-20px] secondSection`}
       >
