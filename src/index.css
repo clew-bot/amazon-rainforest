@@ -4,8 +4,14 @@
 
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: none;
   background-color: black;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
 }
 
 
@@ -33,9 +39,6 @@ section {
   background-color: #70BF8D; 
 } */
 
-.height {
-  height: calc(100vh - 20px);
-}
 .height2 {
   height: calc(100% - 10%);
 }
