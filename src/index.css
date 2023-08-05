@@ -4,7 +4,7 @@
 
 
 html {
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   height: 100svh; 
   height: 100vh;
   background-color: black;

@@ -21,7 +21,7 @@ const Header = ({ content }: HeaderProps) => {
   const isNotMobile = useMediaQuery("(min-width: 768px)");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [scope, animate] = useAnimate();
+  
   const staggerSpanLettersEven = stagger(0.3, { startDelay: 4 });
   const staggerSpanLettersOdd = stagger(0.2, { startDelay: 3 });
   const staggerTopicItems = stagger(0.2, { startDelay: 0 });
@@ -79,81 +79,89 @@ const Header = ({ content }: HeaderProps) => {
     return topics.indexOf(theTopic) === 0;
   };
 
-  useEffect(() => {
-    if (reset && isInView) {
-      void animate(
-        ".grassy",
-        { opacity: 1 },
-        { type: "spring", duration: 1.5, delay: 2.2 }
-      );
-    }
-    if (reset && !isNotMobile) {
-      void animate(
-        ".sub-text",
-        { opacity: 1 },
-        { type: "spring", duration: 0.4, delay: staggerSpanLettersOdd }
-      );
-      void animate(
-        ".content",
-        { y: [0, -220], opacity: 1, fontSize: ["2rem", "1.5rem"] },
-        { type: "spring", duration: 2, delay: 1.5 }
-      );
-      void animate(
-        ".env",
-        { opacity: 1, scale: [0, 0.9], y: -30 },
-        { type: "keyframes", duration: 1.2, delay: 3 }
-      );
-    }
+  const useHeaderAnimations = () => {
+    const [scope, animate] = useAnimate();
 
-    if (reset && isNotMobile) {
-      void animate(
-        ".sub-text",
-        { opacity: 1 },
-        { type: "spring", duration: 0.6, delay: staggerSpanLettersEven }
-      );
-      void animate(
-        ".content",
-        { y: [0, -250], opacity: 1, fontSize: ["6rem", "4rem"] },
-        { type: "spring", duration: 2, delay: 1.5 }
-      );
-      void animate(
-        ".env",
-        { opacity: 1, scale: [0, 0.9], y: 12 },
-        { type: "keyframes", duration: 1.2, delay: 3 }
-      );
-    }
 
-    if (openTopic) {
-      void animate(
-        ".topic",
-        { opacity: 1 },
-        { type: "spring", duration: 2, delay: 0 }
-      );
+    useEffect(() => {
+      if (reset && isInView) {
+        void animate(
+          ".grassy",
+          { opacity: 1 },
+          { type: "spring", duration: 1.5, delay: 2.2 }
+        );
+      }
+      if (reset && !isNotMobile && isInView) {
+        void animate(
+          ".sub-text",
+          { opacity: 1 },
+          { type: "spring", duration: 0.4, delay: staggerSpanLettersOdd }
+        );
+        void animate(
+          ".content",
+          { y: [0, -220], opacity: 1, fontSize: ["2rem", "1.5rem"] },
+          { type: "spring", duration: 2, delay: 1.5 }
+        );
+        void animate(
+          ".env",
+          { opacity: 1, scale: [0, 0.9], y: -30 },
+          { type: "keyframes", duration: 1.2, delay: 3 }
+        );
+      }
+  
+      if (reset && isNotMobile && isInView) {
+        void animate(
+          ".sub-text",
+          { opacity: 1 },
+          { type: "spring", duration: 0.6, delay: staggerSpanLettersEven }
+        );
+        void animate(
+          ".content",
+          { y: [0, -250], opacity: 1, fontSize: ["6rem", "4rem"] },
+          { type: "spring", duration: 2, delay: 1.5 }
+        );
+        void animate(
+          ".env",
+          { opacity: 1, scale: [0, 0.9], y: 12 },
+          { type: "keyframes", duration: 1.2, delay: 3 }
+        );
+      }
+  
+      if (openTopic) {
+        void animate(
+          ".topic",
+          { opacity: 1 },
+          { type: "spring", duration: 2, delay: 0 }
+        );
+  
+        void animate(
+          "p, li",
+          { opacity: 1, scale: [0, 0.9] },
+          { type: "spring", duration: 0.4, delay: staggerTopicItems }
+        );
+        void animate(
+          ".section-img",
+          { opacity: 1, scale: [0, 0.9] },
+          { type: "spring", duration: 0.4, delay: staggerTopicItems }
+        );
+      }
+    }, [
+      animate,
+      isInView,
+      isNotMobile,
+      openTopic,
+      reset,
+      scrollYProgress,
+      staggerSpanLettersEven,
+      staggerSpanLettersOdd,
+      staggerTopicItems,
+      theTopic,
+    ]);
 
-      void animate(
-        "p, li",
-        { opacity: 1, scale: [0, 0.9] },
-        { type: "spring", duration: 0.4, delay: staggerTopicItems }
-      );
-      void animate(
-        ".section-img",
-        { opacity: 1, scale: [0, 0.9] },
-        { type: "spring", duration: 0.4, delay: staggerTopicItems }
-      );
-    }
-  }, [
-    animate,
-    isInView,
-    isNotMobile,
-    openTopic,
-    reset,
-    scrollYProgress,
-    staggerSpanLettersEven,
-    staggerSpanLettersOdd,
-    staggerTopicItems,
-    theTopic,
-  ]);
-
+    return scope;
+  }
+ 
+  const scope = useHeaderAnimations();
   return (
     <section ref={scope} className="px-[20px] sectionTwo relative">
       <div
