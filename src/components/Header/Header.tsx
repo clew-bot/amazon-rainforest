@@ -28,7 +28,6 @@ const Header = ({ content }: HeaderProps) => {
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
   const [reset, setReset] = useState(true);
-  const [textReset, setTextReset] = useState(false);
   const topics: string[] = [
     "River of Life",
     "Threats",

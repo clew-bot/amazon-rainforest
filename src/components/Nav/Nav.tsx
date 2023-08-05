@@ -2,20 +2,13 @@ import Header from "./header.jpg";
 import {
   stagger,
   useAnimate,
-  useScroll,
-  useTransform,
   motion
 } from "framer-motion";
 import { useEffect, useRef } from "react";
-import downArrow from "../../assets/downArrow.svg";
-
 
 const staggerHeaderLetters = stagger(0.1, { startDelay: 0.5 });
-const staggerHeaderLetters2 = stagger(0.1, { startDelay: 1 });
 
 const Nav = () => {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1], ["0%", "100%"]);
   const ref = useRef<HTMLDivElement>(null);
 
   const useHeaderAnimation = () => {
@@ -30,14 +23,6 @@ const Nav = () => {
 
     return scope;
   }
-
-
-  const scrollToSection = () => {
-    window.scrollTo({
-      top: window.innerHeight + 50,
-      behavior: "smooth"
-    });
-  };
 
   const scope = useHeaderAnimation();
   return (

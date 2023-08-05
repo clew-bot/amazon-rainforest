@@ -1,9 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
-import ImageContainer from "../Images/ImageContainer";
-import { LayoutGroup } from "framer-motion";
 import LearnItem from "../LearnItem/LearnItem";
-import Quiz from "../Quiz/Quiz";
 import FunFact from "../FunFact/FunFact";
 
 type Tab =

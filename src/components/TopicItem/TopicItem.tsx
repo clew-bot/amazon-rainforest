@@ -9,10 +9,6 @@ import climate from "../../assets/topicImgs/climate.jpeg";
 import spectrum from "../../assets/topicImgs/spectrum.jpeg";
 import biodiversity from "../../assets/topicImgs/biodiversity.jpg";
 import x2 from "../../assets/images/x2.png";
-const imageVariants = {
-  hidden: { filter: "blur(10px)", opacity: 0 },
-  visible: { filter: "blur(0px)", opacity: 1 },
-};
 
 interface TopicItemProps {
   theTopic: string;
@@ -34,8 +30,6 @@ const TopicItem = ({
   closeTopic,
   handleNextTopic,
   handlePrevTopic,
-  isLastTopic,
-  isFirstTopic,
 }: TopicItemProps) => {
   const imageMapper: imageMapper = {
     "River of Life": river,
