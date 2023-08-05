@@ -163,7 +163,7 @@ const Header = ({ content }: HeaderProps) => {
  
   const scope = useHeaderAnimations();
   return (
-    <section ref={scope} className="px-[20px] sectionTwo relative">
+    <section ref={scope} className="px-[20px] sectionTwo relative height4">
       <div
         className={`h-screen flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
       >
