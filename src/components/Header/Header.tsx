@@ -12,7 +12,7 @@ import elephant from "../../assets/elephant.svg";
 import { useMediaQuery } from "usehooks-ts";
 import { Player } from "@lottiefiles/react-lottie-player";
 import elephantLottie from "../../assets/lottie/animation_lk01znle.json";
-import rainLottie from "../../assets/lottie/1PzCCI3SjG.json";
+// import rainLottie from "../../assets/lottie/1PzCCI3SjG.json";
 interface HeaderProps {
   content: string;
 }
@@ -38,7 +38,7 @@ const Header = ({ content }: HeaderProps) => {
     "Spectrum",
     "Biodiversity",
   ];
-  const lottieRainRef = useRef(null);
+  // const lottieRainRef = useRef(null);
   const { scrollYProgress } = useScroll();
 
   const handleTopicItemClick = (topic: string) => {
