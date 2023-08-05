@@ -37,7 +37,7 @@ const Nav = () => {
           className="absolute inset-0 object-cover w-full h-full z-10 rounded-lg bg-black opacity-50"
         />
         
-        <div className="absolute inset-0 flex z-20 flex-col p-4 justify-end">
+        <div className="absolute inset-0 flex z-20 flex-col p-4 md:justify-end justify-start">
           
           <p
             ref={ref}

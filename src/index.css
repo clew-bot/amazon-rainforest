@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.secondSection {
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-    background-color: black;
-  }
 
 html {
   scroll-snap-type: y mandatory;
@@ -18,6 +12,7 @@ html {
 
 
 .firstSection {
+  height: 100svh;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -31,7 +26,7 @@ section {
   scroll-snap-align: center;
 }
 
-.sectionTwo::after {
+/* .sectionTwo::after {
   content: "";
   position: absolute;
   bottom: -65px;
@@ -39,7 +34,7 @@ section {
   width: 100%;
   height: 100px; 
   background-color: #70BF8D; 
-}
+} */
 
 .height {
   height: calc(100vh - 20px);

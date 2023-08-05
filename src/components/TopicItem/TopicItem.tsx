@@ -49,7 +49,7 @@ const TopicItem = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="absolute z-50  h-screen -mt-32 w-screen p-2"
+          className="absolute z-50 h-full w-full p-2 height3"
         >
             <motion.div
               exit={{ opacity: 0, scale: 0.8 }}
@@ -102,16 +102,18 @@ const TopicItem = ({
                   )
               )}
             </motion.div>
+            
           <div
             onClick={handleNextTopic}
-            className="absolute bottom-2 right-2 cursor-pointer rotate-180 text-xl"
+            className="absolute bottom-4 right-6
+            cursor-pointer rotate-180 text-xl"
           >
             ⬅
           </div>
 
           <div
             onClick={handlePrevTopic}
-            className="absolute bottom-2 right-10 cursor-pointer text-xl"
+            className="absolute bottom-4 right-14 cursor-pointer text-xl"
           >
             ⬅
           </div>
