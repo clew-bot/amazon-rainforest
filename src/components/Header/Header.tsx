@@ -97,11 +97,11 @@ const Header = ({ content }: HeaderProps) => {
           { opacity: 1 },
           { type: "spring", duration: 0.4, delay: staggerSpanLettersOdd }
         );
-        void animate(
-          ".content",
-          { y: [0, -220], opacity: 1, fontSize: ["2rem", "1.5rem"] },
-          { type: "spring", duration: 2, delay: 1.5 }
-        );
+        // void animate(
+        //   ".content",
+        //   { y: [0, -220], opacity: 1, fontSize: ["2rem", "1.5rem"] },
+        //   { type: "spring", duration: 2, delay: 1.5 }
+        // );
         void animate(
           ".env",
           { opacity: 1, scale: [0, 0.9], y: -30 },
@@ -110,29 +110,29 @@ const Header = ({ content }: HeaderProps) => {
       }
   
       if (reset && isNotMobile && isInView) {
-        void animate(
-          ".sub-text",
-          { opacity: 1 },
-          { type: "spring", duration: 0.6, delay: staggerSpanLettersEven }
-        );
-        void animate(
-          ".content",
-          { y: [0, -250], opacity: 1, fontSize: ["6rem", "4rem"] },
-          { type: "spring", duration: 2, delay: 1.5 }
-        );
-        void animate(
-          ".env",
-          { opacity: 1, scale: [0, 0.9], y: 12 },
-          { type: "keyframes", duration: 1.2, delay: 3 }
-        );
+        // void animate(
+        //   ".sub-text",
+        //   { opacity: 1 },
+        //   { type: "spring", duration: 0.6, delay: staggerSpanLettersEven }
+        // );
+        // void animate(
+        //   "h2",
+        //   { y: [0, -250], opacity: 1, fontSize: ["6rem", "4rem"] },
+        //   { type: "spring", duration: 2, delay: 1.5 }
+        // );
+        // void animate(
+        //   ".env",
+        //   { opacity: 1, scale: [0, 0.9], y: 12 },
+        //   { type: "keyframes", duration: 1.2, delay: 3 }
+        // );
       }
   
       if (openTopic) {
-        void animate(
-          ".topic",
-          { opacity: 1 },
-          { type: "spring", duration: 2, delay: 0 }
-        );
+        // void animate(
+        //   ".topic",
+        //   { opacity: 1 },
+        //   { type: "spring", duration: 2, delay: 0 }
+        // );
   
         void animate(
           "p, li",
@@ -182,7 +182,7 @@ const Header = ({ content }: HeaderProps) => {
 
         <h2
           ref={ref}
-          className="content head-content font-display font-bold text-white text-center flex justify-center items-center z-10"
+          className="font-display font-bold text-white text-center flex justify-center items-center z-10"
         >
           {content}
         </h2>
@@ -213,16 +213,16 @@ const Header = ({ content }: HeaderProps) => {
             src={elephantLottie}
           ></Player>
         </div>
-        <div className="absolute inset-16 flex justify-center flex-col items-center h-screen z-10">
+        <div className="absolute inset-0 flex flex-col items-center h-full z-10">
           {topics.map((topic) => (
             <motion.div
               key={topic}
-              className={`topic relative display-font sub-text opacity-0 w-fit cursor-pointer p-1 mb-2 z-50`}
+              className={`relative sub-text opacity-0 w-full cursor-pointer z-50 text-4xl`}
             >
-              <div className="absolute top-2 left-2 w-full h-full bg-slate-600 -z-10 rounded border-2 border-black rounded-br-xl blur-sm"></div>
+             
               <motion.div
                 whileTap={{ x: 5, y: 5 }}
-                className="inner-div relative z-0 p-2 rounded border-2 border-slate-800 rounded-br-xl text-slate-100 "
+                className="inner-div relative z-0 p-2 rounded rounded-br-xl text-slate-100 font-display "
                 style={{ backgroundColor: "black" }}
                 onClick={() => handleTopicItemClick(topic)}
               >

@@ -4,15 +4,15 @@
 
 
 html {
-  scroll-snap-type: none;
+  scroll-snap-type: y mandatory;
   background-color: black;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   html {
     scroll-snap-type: y mandatory;
   }
-}
+} */
 
 
 .firstSection {
