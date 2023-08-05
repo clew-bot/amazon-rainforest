@@ -3,8 +3,8 @@ import riverSystem from "../../assets/images/riversystem.jpg";
 import climate from "../../assets/images/climate.jpg";
 import biodiversity from "../../assets/images/biodiversity.jpg";
 import threat from "../../assets/images/threat.jpg";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useAnimate } from "framer-motion";
+import { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 interface ImageContainerProps {
   selectedImage: keyof typeof imageMap;
   isOpen: boolean;
@@ -18,7 +18,7 @@ const imageMap = {
   "Threats and Conservation": threat,
 };
 
-const ImageContainer = ({ selectedImage, isOpen }: ImageContainerProps) => {
+const ImageContainer = ({ selectedImage }: ImageContainerProps) => {
 
   useEffect(() => {
     console.log("selectedImage", selectedImage);

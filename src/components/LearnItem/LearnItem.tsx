@@ -1,12 +1,9 @@
 import {
-  AnimatePresence,
-  motion,
-  animate,
   stagger,
   useAnimate,
   useInView,
 } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import learn from "../../json/learn.json";
 import { useMediaQuery } from "usehooks-ts";
 interface LearnItemProps {
@@ -19,7 +16,7 @@ interface LearnItemProps {
 
 const staggerLearnItems = stagger(0.1, { startDelay: .2 });
 
-const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate, setShouldAnimate }: LearnItemProps) => {
+const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 

@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { animate, motion, stagger, useAnimate, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, stagger, useAnimate, useInView } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
 type Tab =
   | "Amazon's Remarkable Canopy"
@@ -64,7 +64,6 @@ const Dropdown = ({
   setIsOpen,
   selectedTab,
   clickSelectedTab,
-  shouldAnimate,
   setShouldAnimate,
 }: DropdownProps) => {
   const ref = useRef(null);

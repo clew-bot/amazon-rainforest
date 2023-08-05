@@ -1,10 +1,6 @@
 import {useEffect, useRef} from 'react'
 import learn from "../../json/learn.json";
 import {
-  AnimatePresence,
-  motion,
-  animate,
-  stagger,
   useAnimate,
   useInView,
 } from "framer-motion";
