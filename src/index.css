@@ -10,8 +10,8 @@ html {
 
 
 .firstSection {
-  height: 100dvh;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +46,8 @@ section {
 }
 
 .height4 {
-  height: 100dvh;
   height: 100vh;
+  height: 100dvh;
 }
 
 
