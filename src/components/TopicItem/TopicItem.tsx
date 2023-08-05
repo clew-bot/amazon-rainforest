@@ -70,7 +70,7 @@ const TopicItem = ({
               {topics.map(
                 (topic) =>
                   topic.title === theTopic && (
-                    <div className="overflow-hidden height3">
+                    <div className="overflow-hidden height2">
                       <div className="flex flex-col-reverse md:flex-row justify-center mt-5 sm:mx-5 h-full gap-2 ">
                         <div className="w-full md:w-1/2 p-2 mb-4 overflow-scroll lg:overflow-auto  text-container text-zinc-800">
                           <p className="opacity-0 font-bold text-2xl mb-2">

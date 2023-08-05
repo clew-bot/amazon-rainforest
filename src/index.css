@@ -39,9 +39,12 @@ section {
 .height {
   height: calc(100vh - 20px);
 }
+.height2 {
+  height: calc(100% - 10%);
+}
 
 .height3 {
-  height: calc(100% - 10%);
+  height: calc(100% - 20%);
 }
 
 

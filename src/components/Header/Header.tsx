@@ -159,7 +159,7 @@ const Header = ({ content }: HeaderProps) => {
       <div
         className={`h-screen flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
       >
-        <div className="rain-container">
+        {/* <div className="rain-container">
           {Array.from({ length: 4 }, (_, index) => (
             <Player
               ref={lottieRainRef}
@@ -170,7 +170,7 @@ const Header = ({ content }: HeaderProps) => {
               src={rainLottie}
             />
           ))}
-        </div>
+        </div> */}
 
         <h2
           ref={ref}
