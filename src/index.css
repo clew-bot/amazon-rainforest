@@ -5,14 +5,14 @@
 
 html {
   scroll-snap-type: y mandatory;
-  height: 100svh; 
+  height: 100dvh; 
   height: 100vh;
   background-color: black;
 }
 
 
 .firstSection {
-  height: 100svh;
+  height: 100dvh;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -45,6 +45,11 @@ section {
 
 .height3 {
   height: calc(100% - 20%);
+}
+
+.height4 {
+  height: 100dvh;
+  height: 100vh;
 }
 
 
