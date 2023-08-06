@@ -26,7 +26,7 @@ const Nav = () => {
 
   const scope = useHeaderAnimation();
   return (
-    <section className="firstSection rounded-xl border-black -z-10 w-full" ref={scope}>
+    <section className="firstSection rounded-xl -z-10 w-full border-4 border-red-900" ref={scope}>
       <motion.div 
       className="relative w-full h-full pb-10"
       >

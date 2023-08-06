@@ -21,7 +21,7 @@ const Header = ({ content }: HeaderProps) => {
   const isNotMobile = useMediaQuery("(min-width: 768px)");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  
+
   const staggerSpanLettersEven = stagger(0.3, { startDelay: 4 });
   const staggerSpanLettersOdd = stagger(0.2, { startDelay: 3 });
   const staggerTopicItems = stagger(0.2, { startDelay: 0 });
@@ -41,7 +41,12 @@ const Header = ({ content }: HeaderProps) => {
   // const lottieRainRef = useRef(null);
   const { scrollYProgress } = useScroll();
 
+  const example = () => {
+    console.log("hi")
+  }
+
   const handleTopicItemClick = (topic: string) => {
+    console.log("Hi")
     setReset(() => false);
     setTheTopic(topic);
     setOpenTopic(() => true);
@@ -82,14 +87,13 @@ const Header = ({ content }: HeaderProps) => {
   const useHeaderAnimations = () => {
     const [scope, animate] = useAnimate();
 
-
     useEffect(() => {
       if (reset && isInView) {
-        void animate(
-          ".grassy",
-          { opacity: 1 },
-          { type: "spring", duration: 1.5, delay: 2.2 }
-        );
+        // void animate(
+        //   ".grassy",
+        //   { opacity: 1 },
+        //   { type: "spring", duration: 1.5, delay: 2.2 }
+        // );
       }
       if (reset && !isNotMobile && isInView) {
         void animate(
@@ -102,38 +106,38 @@ const Header = ({ content }: HeaderProps) => {
         //   { y: [0, -220], opacity: 1, fontSize: ["2rem", "1.5rem"] },
         //   { type: "spring", duration: 2, delay: 1.5 }
         // );
-        void animate(
-          ".env",
-          { opacity: 1, scale: [0, 0.9], y: -30 },
-          { type: "keyframes", duration: 1.2, delay: 3 }
-        );
-      }
-  
-      if (reset && isNotMobile && isInView) {
-        // void animate(
-        //   ".sub-text",
-        //   { opacity: 1 },
-        //   { type: "spring", duration: 0.6, delay: staggerSpanLettersEven }
-        // );
-        // void animate(
-        //   "h2",
-        //   { y: [0, -250], opacity: 1, fontSize: ["6rem", "4rem"] },
-        //   { type: "spring", duration: 2, delay: 1.5 }
-        // );
         // void animate(
         //   ".env",
-        //   { opacity: 1, scale: [0, 0.9], y: 12 },
+        //   { opacity: 1, scale: [0, 0.9], y: -30 },
         //   { type: "keyframes", duration: 1.2, delay: 3 }
         // );
       }
-  
+
+      if (reset && isNotMobile && isInView) {
+        void animate(
+          ".sub-text",
+          { opacity: 1 },
+          { type: "spring", duration: 0.6, delay: staggerSpanLettersEven }
+        );
+        void animate(
+          "h2",
+          { y: [0, -250], opacity: 1, fontSize: ["6rem", "4rem"] },
+          { type: "spring", duration: 2, delay: 1.5 }
+        );
+        void animate(
+          ".env",
+          { opacity: 1, scale: [0, 0.9], y: 12 },
+          { type: "keyframes", duration: 1.2, delay: 3 }
+        );
+      }
+
       if (openTopic) {
         // void animate(
         //   ".topic",
         //   { opacity: 1 },
         //   { type: "spring", duration: 2, delay: 0 }
         // );
-  
+
         void animate(
           "p, li",
           { opacity: 1, scale: [0, 0.9] },
@@ -159,14 +163,15 @@ const Header = ({ content }: HeaderProps) => {
     ]);
 
     return scope;
-  }
- 
+  };
+
   const scope = useHeaderAnimations();
   return (
-    <section ref={scope} className="px-[20px] sectionTwo relative height4">
-      <div
-        className={`h-screen flex justify-center flex-col relative -ml-[20px] mr-[-20px]`}
-      >
+    <section
+      className="firstSection rounded-xl w-full border-4 border-red-900"
+      ref={scope}
+    >
+      <div className="relative flex flex-col justify-start items-start pt-8 gap-3">
         {/* <div className="rain-container">
           {Array.from({ length: 4 }, (_, index) => (
             <Player
@@ -182,11 +187,11 @@ const Header = ({ content }: HeaderProps) => {
 
         <h2
           ref={ref}
-          className="font-display font-bold text-white text-center flex justify-center items-center z-10"
+          className="font-display font-bold text-white text-3xl underline"
         >
           {content}
         </h2>
-        <div className="grassy absolute bottom-0 left-0 w-full h-full bg-bottom flex justify-center items-end snap-center opacity-0">
+        {/* <div className="absolute bottom-4 left-0 w-full h-full bg-bottom flex justify-center items-end snap-center opacity-0">
           <Player
             autoplay
             loop
@@ -212,39 +217,35 @@ const Header = ({ content }: HeaderProps) => {
             loop
             src={elephantLottie}
           ></Player>
-        </div>
-        <div className="absolute inset-0 flex flex-col items-center h-full z-10">
+        </div> */}
+
           {topics.map((topic) => (
             <motion.div
               key={topic}
-              className={`relative sub-text opacity-0 w-full cursor-pointer z-50 text-4xl`}
+              className="relative sub-text opacity-1 w-full cursor-pointer text-2xl z-50"
             >
-             
               <motion.div
                 whileTap={{ x: 5, y: 5 }}
-                className="inner-div relative z-0 p-2 rounded rounded-br-xl text-slate-100 font-display "
-                style={{ backgroundColor: "black" }}
+                className="relative text-slate-100 font-display"
                 onClick={() => handleTopicItemClick(topic)}
               >
                 {topic}
-                {/* {theTopic === topic && (
-              <TopicItem/>
-            )} */}
               </motion.div>
+
             </motion.div>
           ))}
 
-       
-        </div>
+   
+
         <TopicItem
-            isOpen={openTopic}
-            closeTopic={closeTopic}
-            theTopic={theTopic}
-            handleNextTopic={handleNext}
-            handlePrevTopic={handlePrev}
-            isLastTopic={isLastTopic}
-            isFirstTopic={isFirstTopic}
-          />
+          isOpen={openTopic}
+          closeTopic={closeTopic}
+          theTopic={theTopic}
+          handleNextTopic={handleNext}
+          handlePrevTopic={handlePrev}
+          isLastTopic={isLastTopic}
+          isFirstTopic={isFirstTopic}
+        />
       </div>
     </section>
   );

@@ -49,7 +49,7 @@ const TopicItem = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="absolute z-50 h-full w-full p-2 height3"
+          className="absolute z-50 p-2 border-4 height5"
         >
             <motion.div
               exit={{ opacity: 0, scale: 0.8 }}
@@ -70,7 +70,9 @@ const TopicItem = ({
               {topics.map(
                 (topic) =>
                   topic.title === theTopic && (
-                    <div className="overflow-hidden height2">
+                    <div
+                    key={topic.title}
+                    className="height2">
                       <div className="flex flex-col-reverse md:flex-row justify-center mt-5 sm:mx-5 h-full gap-2 ">
                         <div className="w-full md:w-1/2 p-2 mb-4 overflow-scroll lg:overflow-auto  text-container text-zinc-800">
                           <p className="opacity-0 font-bold text-2xl mb-2">
@@ -79,7 +81,7 @@ const TopicItem = ({
                           <p className="opacity-0 font-medium text-lg">
                             {topic.sections[0].content}
                           </p>
-                          <ul className="list-disc pl-5">
+                          <ul className="list-disc pl-5 overflow-scroll">
                             {topic.sections.slice(1).map((section, index) => (
                               <li key={index} className="mb-2">
                                 {section.content}

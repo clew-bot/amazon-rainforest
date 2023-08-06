@@ -27,8 +27,8 @@ const Section = () => {
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   return (
-    <section className="height4 p-6 bg-white">
-<div className="grid grid-flow-row-dense items-start gap-2">
+    <section className="height4 p-6 bg-white border-4 border-green-900 snap-start">
+<div className="grid grid-flow-row-dense items-start gap-2 snap-end">
       <Dropdown
         shouldAnimate={shouldAnimate}
         setShouldAnimate={setShouldAnimate}

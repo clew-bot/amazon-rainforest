@@ -6,27 +6,25 @@
 html {
   scroll-snap-type: y mandatory;
   background-color: black;
+  scroll-behavior: smooth;
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   html {
     scroll-snap-type: y mandatory;
   }
-} */
+}
 
 
 .firstSection {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   padding: 0px !important; 
 }
 
 section {
-  scroll-snap-align: center;
+  /* scroll-snap-align: start; */
 }
 
 /* .sectionTwo::after {
@@ -39,6 +37,14 @@ section {
   background-color: #70BF8D; 
 } */
 
+.firstSection {
+ margin-bottom: 100px;
+}
+
+.sectionTwo {
+  height: calc(100vh + 10rem) !important;
+}
+
 .height2 {
   height: calc(100% - 10%);
 }
@@ -49,6 +55,11 @@ section {
 
 .height4 {
   height: 100vh;
+}
+
+.height5 {
+  height: 85vh;
+
 }
 
 
