@@ -18,6 +18,7 @@ function App() {
       />
     <Nav />
     <Header content="Explore the Rainforest" />
+    
     <Section />
     
     </>

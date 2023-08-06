@@ -77,7 +77,7 @@ const FunFact = ({selectedTab, isOpen}: FunFactProps) => {
   return (
     <div
     ref={scope}
-    className="w-full border-4 border-black rounded-md font-display md:min-h-[15rem]">
+    className="w-full border-4 border-black rounded-md font-display md:min-h-[15rem] h-auto">
       <div 
       ref={ref}
       className="bg-black">

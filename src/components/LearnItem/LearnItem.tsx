@@ -34,7 +34,6 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
       // Mobile //
 
       if (!isDesktop) {
-        console.log("HH", isOpen, "SHOULD: ", shouldAnimate);
         if(isInView && shouldAnimate) {
           if(!isOpen && shouldAnimate) {
             void animate(
@@ -88,7 +87,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
     <div
       ref={scope}
       className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3 md:min-w-[600px]
-      md:min-h-[300px] max-h-64 sm:max-h-max overflow-scroll sm:overflow-visible"
+      md:min-h-[300px] sm:max-h-max overflow-scroll sm:overflow-visible max-h-96"
     >
       <div ref={ref} className="bg-black">
         <button

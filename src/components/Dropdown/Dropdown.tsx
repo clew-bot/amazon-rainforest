@@ -15,21 +15,21 @@ const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const useMenuAnimation = (isOpen: boolean) => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    void animate(
-      "ul",
-      isOpen
-        ? {
-            height: "auto",
-          }
-        : {
-            height: "0px",
-          },
-      {
-        type: "spring",
-        bounce: 0,
-        duration: 0.5,
-      }
-    );
+    // void animate(
+    //   "ul",
+    //   isOpen
+    //     ? {
+    //         height: "auto",
+    //       }
+    //     : {
+    //         height: "0px",
+    //       },
+    //   {
+    //     type: "spring",
+    //     bounce: 0,
+    //     duration: 0.5,
+    //   }
+    // );
     void animate(
       "li",
       isOpen
@@ -78,15 +78,15 @@ const Dropdown = ({
     "Resourceful Epiphytes",
   ];
 
-  useEffect(() => {
-    if (isInView) {
-      setTimeout(() => {
-        setIsOpen(true);
-      }, 1500);
-    } else {
-      setIsOpen(false);
-    }
-  }, [isInView, setIsOpen]);
+  // useEffect(() => {
+  //   if (isInView) {
+  //     setTimeout(() => {
+  //       setIsOpen(true);
+  //     }, 1500);
+  //   } else {
+  //     setIsOpen(false);
+  //   }
+  // }, [isInView, setIsOpen]);
 
   const scope = useMenuAnimation(isOpen);
   const toggleDropdown = () => {
@@ -100,7 +100,7 @@ const Dropdown = ({
   };
   const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <div className=" self-start row-start-1 row-end-2 h-full" ref={scope}>
+    <div className="" ref={scope}>
         <button
         ref={ref}
           className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"

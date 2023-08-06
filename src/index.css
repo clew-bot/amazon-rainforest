@@ -23,6 +23,16 @@ html {
   padding: 0px !important; 
 }
 
+.secondSection {
+  height: 100vh;
+  position: relative;
+  scroll-snap-align: start;
+  padding: 0px !important; 
+  background-image: url("./components/Header/header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 section {
   /* scroll-snap-align: start; */
 }
@@ -73,6 +83,8 @@ section {
   background-repeat: repeat-x;
   width: 100%;;
 }
+
+
 .yes {
   height: inherit !important;
 }
