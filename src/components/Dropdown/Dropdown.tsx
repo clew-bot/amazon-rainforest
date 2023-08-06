@@ -78,29 +78,29 @@ const Dropdown = ({
     "Resourceful Epiphytes",
   ];
 
-  // useEffect(() => {
-  //   if (isInView) {
-  //     setTimeout(() => {
-  //       setIsOpen(true);
-  //     }, 1500);
-  //   } else {
-  //     setIsOpen(false);
-  //   }
-  // }, [isInView, setIsOpen]);
+  useEffect(() => {
+    if (isInView) {
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 1500);
+    } else {
+      setIsOpen(false);
+    }
+  }, [isInView, setIsOpen]);
 
   const scope = useMenuAnimation(isOpen);
   const toggleDropdown = () => {
 
   
 
-    if(isDesktop) {
-      return;
-    }
+    // if(isDesktop) {
+    //   return;
+    // }
     setIsOpen(!isOpen);
   };
   const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <div className="" ref={scope}>
+    <div className="w-full" ref={scope}>
         <button
         ref={ref}
           className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
@@ -118,15 +118,7 @@ const Dropdown = ({
                 } relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
                 onClick={() => {
                   clickSelectedTab(tab);
-                  if (isDesktop) {
                     setIsOpen(true);
-                  } else {
-                    setIsOpen(!isOpen);
-                    if (isOpen) {
-                      setShouldAnimate(true);
-                    }
-                  }
-
                 }}
               >
                 {selectedTab === tab && (

@@ -11,7 +11,7 @@ html {
 
 @media screen and (min-width: 768px) {
   html {
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y mandatory; */
   }
 }
 
@@ -21,6 +21,7 @@ html {
   position: relative;
   scroll-snap-align: start;
   padding: 0px !important; 
+  margin-bottom: 100px;
 }
 
 .secondSection {
@@ -31,6 +32,14 @@ html {
   background-image: url("./components/Header/header.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 100px;
+}
+
+.thirdSection {
+  height: 100vh;
+  position: relative;
+  scroll-snap-align: start;
+  margin-bottom: 100px;
 }
 
 section {
@@ -48,7 +57,7 @@ section {
 } */
 
 .firstSection {
- margin-bottom: 100px;
+
 }
 
 .sectionTwo {

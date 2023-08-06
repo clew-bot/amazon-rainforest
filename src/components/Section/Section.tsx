@@ -27,8 +27,8 @@ const Section = () => {
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   return (
-    <section className="firstSection rounded-xl w-full bg-white">
-<div className="grid grid-flow-row-dense items-start gap-2 pt-1">
+    <section className="thirdSection rounded-xl w-full bg-white">
+<div className="flex items-start gap-2 p-4 flex-col sm:flex-row">
       <Dropdown
         shouldAnimate={shouldAnimate}
         setShouldAnimate={setShouldAnimate}
@@ -43,9 +43,9 @@ const Section = () => {
        setIsOpen={setIsOpen}
        isOpen={isOpen}
        selectedTab={selectedTab} />
-      <FunFact 
+      {/* <FunFact 
       isOpen={isOpen}
-      selectedTab={selectedTab}/>
+      selectedTab={selectedTab}/> */}
       </div>
       {/* <ImageContainer isOpen={isOpen} selectedImage={selectedTab} /> */}
 

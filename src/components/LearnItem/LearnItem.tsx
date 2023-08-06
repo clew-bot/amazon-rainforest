@@ -32,10 +32,20 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
     const [scope, animate] = useAnimate();
     useEffect(() => {
       // Mobile //
+      void animate(
+        ".learnItem",
+        { opacity: 1, scale: [0, 0.9] },
+        { type: "spring", duration: 0.3, delay: staggerLearnItems }
+      );
+      void animate(
+        ".learn-container",
+        { opacity: 1 },
+        { type: "spring", duration: 0.3, delay: staggerLearnItems }
+      );
 
       if (!isDesktop) {
         if(isInView && shouldAnimate) {
-          if(!isOpen && shouldAnimate) {
+          if(shouldAnimate) {
             void animate(
               ".learnItem",
               { opacity: 1, scale: [0, 0.9] },
@@ -86,40 +96,37 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
   return (
     <div
       ref={scope}
-      className="w-full border-4 border-black rounded-md font-display sm:col-start-2 sm:row-start-1 sm:row-end-3 md:min-w-[600px]
-      md:min-h-[300px] sm:max-h-max overflow-scroll sm:overflow-visible max-h-96"
+      className="w-fullmax-h-96"
     >
-      <div ref={ref} className="bg-black">
         <button
+        ref={ref}
           className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
           onClick={toggleDropdown}
         >
           Discover
         </button>
-        <div className="bg-white learn-items h-0 sm:h-full">
+
           {learn.map(
             (item) =>
               item &&
               item.title === selectedTab && (
                 <div
                   key={item.title}
-                  className="learn-container overflow-scroll"
+                  className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll max-h-80"
                 >
                   <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline opacity-0">
                     <h3>{item.title}</h3>
                   </div>
-                  <div className="learnItem p-4 opacity-0">
+                  <div className="learnItem p-4 opacity-0 h-full">
                     <h3 className="text-left font-bold text-lg">
                       {item.sections[0].details}
                     </h3>
-                    <p>{item.sections[1].content}</p>
+                    <p className="overflow-scroll">{item.sections[1].content}</p>
                   </div>
                 </div>
               )
           )}
         </div>
-      </div>
-    </div>
   );
 };
 

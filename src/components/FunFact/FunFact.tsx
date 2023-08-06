@@ -44,29 +44,29 @@ const FunFact = ({selectedTab, isOpen}: FunFactProps) => {
             duration: 0.5,
           }
         );
-        void animate(
-          ".learn-container",
-          isOpen && !isDesktop
-            ? {
-                visibility: "hidden",
-                opacity: 0,
-                scale: 0.3,
-                filter: "blur(20px)",
-                pointerEvents: "none",
-              }
-            : {
-                visibility: "visible",
-                opacity: 1,
-                scale: 1,
-                filter: "blur(0px)",
-                pointerEvents: "auto",
-              },
-          {
-            type: "spring",
-            bounce: 0,
-            duration: 0.5,
-          }
-        );
+        // void animate(
+        //   ".learn-container",
+        //   isOpen && !isDesktop
+        //     ? {
+        //         visibility: "hidden",
+        //         opacity: 0,
+        //         scale: 0.3,
+        //         filter: "blur(20px)",
+        //         pointerEvents: "none",
+        //       }
+        //     : {
+        //         visibility: "visible",
+        //         opacity: 1,
+        //         scale: 1,
+        //         filter: "blur(0px)",
+        //         pointerEvents: "auto",
+        //       },
+        //   {
+        //     type: "spring",
+        //     bounce: 0,
+        //     duration: 0.5,
+        //   }
+        // );
       }
     }, [animate, isInView, selectedTab, isOpen]);
 
