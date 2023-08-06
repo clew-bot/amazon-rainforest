@@ -96,7 +96,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
   return (
     <div
       ref={scope}
-      className="w-fullmax-h-96"
+      className="w-full max-h-96"
     >
         <button
         ref={ref}
@@ -112,7 +112,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
               item.title === selectedTab && (
                 <div
                   key={item.title}
-                  className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll max-h-80"
+                  className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll max-h-80 sm:max-h-full"
                 >
                   <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline opacity-0">
                     <h3>{item.title}</h3>
