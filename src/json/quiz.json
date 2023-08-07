@@ -1,0 +1,92 @@
+[
+    {
+      "question": "What percentage of the world's species is found in the Amazon Rainforest?",
+      "answers": ["10%", "25%", "50%", "75%"],
+      "correctAnswer": "50%",
+      "correctDescription": "Correct! The Amazon Rainforest is home to approximately 50% of the world's species.",
+      "incorrectDescription": "Oops! The correct answer is 50%. The Amazon Rainforest is incredibly diverse, harboring half of the world's species."
+    },
+    {
+      "question": "Which river is known as the 'River of Life' in the Amazon Rainforest?",
+      "answers": ["Nile River", "Amazon River", "Mississippi River", "Congo River"],
+      "correctAnswer": "Amazon River",
+      "correctDescription": "Exactly right! The Amazon River is often referred to as the 'River of Life' in the Amazon Rainforest.",
+      "incorrectDescription": "Not quite! The correct answer is the Amazon River, known as the 'River of Life' in the Amazon ecosystem."
+    },
+    {
+      "question": "Why is the Amazon Rainforest often referred to as the 'Lungs of the Earth'?",
+      "answers": [
+        "It releases oxygen during photosynthesis",
+        "It's the largest rainforest in the world",
+        "It's home to the Amazon River",
+        "All of the above"
+      ],
+      "correctAnswer": "It releases oxygen during photosynthesis",
+      "correctDescription": "You got it! The Amazon Rainforest is called the 'Lungs of the Earth' because it releases oxygen during photosynthesis.",
+      "incorrectDescription": "That's not the correct answer. The Amazon Rainforest is called the 'Lungs of the Earth' because it releases oxygen during photosynthesis."
+    },
+    {
+      "question": "Which country does NOT contain part of the Amazon Rainforest?",
+      "answers": ["Brazil", "Peru", "Chile", "Colombia"],
+      "correctAnswer": "Chile",
+      "correctDescription": "Correct! Chile is not one of the countries that contain part of the Amazon Rainforest.",
+      "incorrectDescription": "Oops! The correct answer is Chile. It does not contain part of the Amazon Rainforest."
+    },
+    {
+      "question": "What major threat is impacting the Amazon Rainforest?",
+      "answers": ["Deforestation", "Floods", "Hurricanes", "Snowstorms"],
+      "correctAnswer": "Deforestation",
+      "correctDescription": "You're right! Deforestation is a major threat impacting the Amazon Rainforest.",
+      "incorrectDescription": "That's not right. The correct answer is Deforestation, a major threat impacting the Amazon."
+    },
+    {
+      "question": "Which of these animals is NOT found in the Amazon Rainforest?",
+      "answers": ["Jaguar", "Gorilla", "Sloth", "Toucan"],
+      "correctAnswer": "Gorilla",
+      "correctDescription": "Correct! Gorillas are not found in the Amazon Rainforest; they live in Africa.",
+      "incorrectDescription": "No, the correct answer is Gorilla. Gorillas are native to Africa and are not found in the Amazon Rainforest."
+    },
+    {
+      "question": "How many indigenous tribes are estimated to live in the Amazon?",
+      "answers": ["150", "400", "800", "1000"],
+      "correctAnswer": "400",
+      "correctDescription": "Exactly right! There are estimated to be around 400 indigenous tribes living in the Amazon.",
+      "incorrectDescription": "Not quite. The correct answer is 400. There are estimated to be around 400 indigenous tribes living in the Amazon."
+    },
+    {
+      "question": "What's the primary reason the Amazon Rainforest is being deforested?",
+      "answers": ["Tourism", "Urbanization", "Mining", "Agriculture"],
+      "correctAnswer": "Agriculture",
+      "correctDescription": "You're right! Agriculture is the primary reason for deforestation in the Amazon Rainforest.",
+      "incorrectDescription": "That's not right. Agriculture is the primary reason for deforestation in the Amazon Rainforest."
+    },
+    {
+      "question": "What type of climate is most common in the Amazon Rainforest?",
+      "answers": ["Desert", "Tundra", "Tropical Rainforest", "Temperate Forest"],
+      "correctAnswer": "Tropical Rainforest",
+      "correctDescription": "Correct! The Amazon Rainforest has a Tropical Rainforest climate.",
+      "incorrectDescription": "Oops! The correct answer is Tropical Rainforest. The Amazon has a tropical climate with high humidity."
+    },
+    {
+      "question": "What's the main river that flows through the Amazon Rainforest?",
+      "answers": ["Nile", "Mississippi", "Amazon", "Thames"],
+      "correctAnswer": "Amazon",
+      "correctDescription": "Exactly right! The Amazon River is the main river that flows through the Amazon Rainforest.",
+      "incorrectDescription": "Not quite! The correct answer is the Amazon River. It's the main river that flows through the Amazon Rainforest."
+    },
+    {
+      "question": "What is the most common type of plant found in the Amazon Rainforest?",
+      "answers": ["Cacti", "Orchids", "Ferns", "Bamboo"],
+      "correctAnswer": "Orchids",
+      "correctDescription": "You're right! Orchids are the most common type of plant found in the Amazon Rainforest.",
+      "incorrectDescription": "That's not right. Orchids are the most common type of plant found in the Amazon Rainforest."
+    },
+    {
+      "question": "Which of the following is NOT a conservation effort in the Amazon?",
+      "answers": ["Protected areas", "Sustainable logging", "Illegal mining", "Community-based conservation"],
+      "correctAnswer": "Illegal mining",
+      "correctDescription": "Correct! Illegal mining is not a conservation effort; it's actually a threat to the Amazon Rainforest.",
+      "incorrectDescription": "No, the correct answer is Illegal mining. It is a threat, not a conservation effort, in the Amazon."
+    }
+  ]
+  
