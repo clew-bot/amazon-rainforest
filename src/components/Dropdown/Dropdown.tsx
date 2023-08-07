@@ -15,21 +15,7 @@ const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const useMenuAnimation = (isOpen: boolean) => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    // void animate(
-    //   "ul",
-    //   isOpen
-    //     ? {
-    //         height: "auto",
-    //       }
-    //     : {
-    //         height: "0px",
-    //       },
-    //   {
-    //     type: "spring",
-    //     bounce: 0,
-    //     duration: 0.5,
-    //   }
-    // );
+
     void animate(
       "li",
       isOpen
@@ -64,7 +50,6 @@ const Dropdown = ({
   setIsOpen,
   selectedTab,
   clickSelectedTab,
-  setShouldAnimate,
 }: DropdownProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -82,7 +67,7 @@ const Dropdown = ({
     if (isInView) {
       setTimeout(() => {
         setIsOpen(true);
-      }, 1500);
+      }, 100);
     } else {
       setIsOpen(false);
     }

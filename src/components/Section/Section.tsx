@@ -23,7 +23,7 @@ const tabs: Tab[] = [
 ];
 
 const Section = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   return (

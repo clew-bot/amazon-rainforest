@@ -42,69 +42,75 @@ const TopicItem = ({
     Biodiversity: biodiversity,
   };
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="absolute z-50 p-2 border-4 height5"
-        >
-            <motion.div
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              key={theTopic}
-              className="h-full relative bg-green-100 rounded-md"
-            >
-              <h2 className="pt-4 text-center text-2xl lg:text-3xl font-bold text-zinc-900">
-                {theTopic}
-              </h2>
-              <div
-                onClick={closeTopic}
-                className="cursor-pointer absolute top-2 right-2"
-              >
-                <img src={x2} width="30px" className="hover:transition-all hover:animate-pulse" alt="" />
-              </div>
+<AnimatePresence>
 
-              {topics.map(
-                (topic) =>
-                  topic.title === theTopic && (
-                    <div
+      {isOpen && (
+              <motion.div
+              initial={{ opacity: 0}}
+              animate={{ opacity: 1, x: [1000, 0]}}
+              exit={{ opacity: 0, x: [0, -1000],}}
+              key={theTopic}
+              className="absolute z-50 height5 bg-white w-full sm:w-2/3 sm:mx-auto sm:left-1/4 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 rounded-md shadow-lg opacity-0"
+            >
+              <AnimatePresence>
+          <motion.div
+      
+            key={theTopic}
+            className="h-full relative rounded-md"
+          >
+            <div
+              onClick={closeTopic}
+              className="cursor-pointer absolute top-2 right-2"
+            >
+              <img
+                src={x2}
+                width="30px"
+                className="hover:transition-all hover:animate-pulse"
+                alt=""
+              />
+            </div>
+
+            {topics.map(
+              (topic) =>
+                topic.title === theTopic && (
+                  <motion.div
+                
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     key={topic.title}
-                    className="height2">
-                      <div className="flex flex-col-reverse md:flex-row justify-center mt-5 sm:mx-5 h-full gap-2 ">
-                        <div className="w-full md:w-1/2 p-2 mb-4 overflow-scroll lg:overflow-auto  text-container text-zinc-800">
-                          <p className="opacity-0 font-bold text-2xl mb-2">
-                            {topic.sections[0].title}
-                          </p>
-                          <p className="opacity-0 font-medium text-lg">
-                            {topic.sections[0].content}
-                          </p>
-                          <ul className="list-disc pl-5 overflow-scroll">
-                            {topic.sections.slice(1).map((section, index) => (
-                              <li key={index} className="mb-2">
-                                {section.content}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="w-full md:w-1/2 flex flex-col h-1/2">
-                          <div className="max-h-96 2xl:max-h-max">
-                            <motion.img
-                              
-                              src={imageMapper[topic.title]}
-                              className="section-img object-cover max-h-full w-full rounded-md shadow-md mb-2"
-                              alt={topic.sections[0].title}
-                            />
-                          </div>
-                        </div>
+                    className="h-full flex "
+                  >
+                    <div className="relative w-1/3">
+                      <motion.img
+                        src={imageMapper[topic.title]}
+                        className="section-img absolute opacity-0 object-cover w-full h-full z-50 rounded-tl-md rounded-bl-md"
+                        alt={topic.sections[0].title}
+                      />
+                    </div>
+
+                    <div className="w-full md:w-1/2 p-2 overflow-scroll lg:overflow-auto  text-container text-zinc-800 grow">
+                      <p className="topic-content opacity-0 font-bold text-3xl my-4 italic text-slate-800">
+                        {topic.sections[0].title}
+                      </p>
+                      <p className="opacity-0 font-medium text-lg topic-content">
+                        {topic.sections[0].content}
+                      </p>
+                      <ul className="topic-content pl-5 overflow-scroll list-none">
+                        {topic.sections.slice(1).map((section, index) => (
+                          <li key={index} className="mb-2">
+                            {section.content}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="w-full md:w-1/2 flex flex-col h-1/2">
+                        <div className="max-h-96 2xl:max-h-max"></div>
                       </div>
                     </div>
-                  )
-              )}
-            </motion.div>
-            
+                  </motion.div>
+                )
+            )}
+          </motion.div>
+          </AnimatePresence>
           <div
             onClick={handleNextTopic}
             className="absolute bottom-4 right-6
@@ -119,9 +125,11 @@ const TopicItem = ({
           >
             ⬅
           </div>
-        </motion.div>
+          </motion.div>
       )}
-    </AnimatePresence>
+        
+</AnimatePresence>
+
   );
 };
 

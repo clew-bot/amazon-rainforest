@@ -1,17 +1,12 @@
 import {
   stagger,
   useAnimate,
-  useScroll,
   motion,
   useInView,
 } from "framer-motion";
 import TopicItem from "../TopicItem/TopicItem";
 import { useEffect, useRef, useState } from "react";
-import tree from "../../assets/tree.svg";
-import elephant from "../../assets/elephant.svg";
 import { useMediaQuery } from "usehooks-ts";
-import { Player } from "@lottiefiles/react-lottie-player";
-import elephantLottie from "../../assets/lottie/animation_lk01znle.json";
 // import rainLottie from "../../assets/lottie/1PzCCI3SjG.json";
 interface HeaderProps {
   content: string;
@@ -83,8 +78,7 @@ const Header = ({ content }: HeaderProps) => {
     const [scope, animate] = useAnimate();
 
     useEffect(() => {
-      console.log("hi", isInView)
-      if (isInView) {
+      if (isInView && !openTopic) {
       void animate(
         ".content",
         { opacity: 1, x: [-220, 0] },
@@ -98,20 +92,21 @@ const Header = ({ content }: HeaderProps) => {
       }
 
 
-
+      console.log("openTopic", openTopic);
       if (openTopic) {
+       
         void animate(
-          "p, li",
+          ".topic-content",
           { opacity: 1, scale: [0, 0.9] },
           { type: "spring", duration: 0.4, delay: staggerTopicItems }
         );
         void animate(
           ".section-img",
-          { opacity: 1, scale: [0, 0.9] },
+          { opacity: 1 },
           { type: "spring", duration: 0.4, delay: staggerTopicItems }
         );
       }
-    }, [animate, isInView]);
+    }, [animate, isInView, openTopic, topics]);
 
     return scope;
   };
@@ -125,10 +120,10 @@ const Header = ({ content }: HeaderProps) => {
       ref={scope}
     >
       <div className="absolute bg-black w-full h-full opacity-30"></div>
-      <div className="relative flex flex-col justify-start items-start pt-8 gap-3">
+      <div className=" mx-2 relative flex flex-col justify-start items-start pt-8 gap-3">
         <h2
           ref={ref}
-          className="font-display font-bold text-white text-3xl underline content opacity-0 pl-4"
+          className="font-display text-white text-3xl underline content opacity-0 pl-4"
         >
           {content}
         </h2>
@@ -139,7 +134,7 @@ const Header = ({ content }: HeaderProps) => {
             >
               <motion.div
                 whileTap={{ x: 5, y: 5 }}
-                className="relative text-slate-100 font-display"
+                className="relative text-slate-100 font-display font-light"
                 onClick={() => handleTopicItemClick(topic)}
               >
                 {topic}
