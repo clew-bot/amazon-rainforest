@@ -1,6 +1,6 @@
 import quiz from "../../json/quiz.json";
 import { useState, useEffect, useRef } from "react";
-import { motion, useAnimate, useInView, stagger, AnimatePresence } from "framer-motion";
+import { motion, useAnimate, useInView, AnimatePresence } from "framer-motion";
 import checkmark from "../../assets/lottie/checkmark.json";
 import wrong from "../../assets/lottie/wrong.json";
 
