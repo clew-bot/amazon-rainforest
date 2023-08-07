@@ -97,13 +97,16 @@ const Results = ( ) => {
                     <p>
                       The worlds biggest community of people for you to connect
                     </p>
+                    <div className="flex gap-1">
                     <input
                     placeholder="Email"
-                    className="border-2 w-full rounded-md p-1 m-1 border-green-600 outline-none"
+                    className="border-2 w-full rounded-md p-1  border-green-600 outline-none"
                     type="email" />
+                    <button className="border-2 border-black rounded-md p-1 ">Submit</button>
+                    </div>
                   </div>
                   <div className="text-right">
-                  <button onClick={() => setShowModal(false)} className="bg-yellow-300 p-2 rounded-xl mt-4 ">Close</button>
+                  <button onClick={() => setShowModal(false)} className="cursor-pointer bg-yellow-300 p-2 rounded-xl mt-4 z-50">Close</button>
                   </div>
                
                 </div>

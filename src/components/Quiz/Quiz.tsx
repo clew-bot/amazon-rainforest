@@ -1,8 +1,12 @@
 import quiz from "../../json/quiz.json";
 import { useState, useEffect, useRef } from "react";
-import { motion, useAnimate, useInView, AnimatePresence } from "framer-motion";
+import { motion, useAnimate, useInView, AnimatePresence,stagger } from "framer-motion";
 import checkmark from "../../assets/lottie/checkmark.json";
 import wrong from "../../assets/lottie/wrong.json";
+import tryagain from "../../assets/lottie/tryagain.json";
+import success from "../../assets/lottie/success.json";
+
+
 
 import { Player } from "@lottiefiles/react-lottie-player";
 
@@ -15,7 +19,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState("");
-  // const staggerButtons = stagger(0.1, { startDelay: 0 });
+  const staggerResults = stagger(0.3, { startDelay: 1.8 });
 
   const handleAnswerClick = (answer: string) => {
     setSelectedAnswer(answer);
@@ -38,9 +42,19 @@ const Quiz = () => {
     }
   };
 
+  const restartQuiz = () => {
+    console.log("hi")
+    setCurrentQuestion(0);
+    setShowScore(false);
+    setScore(0);
+    setShowAnswer(false);
+  };
+
+
   const handleFinalScoreClick = () => {
    localStorage.setItem("score", score.toString());
   };
+
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -48,7 +62,8 @@ const Quiz = () => {
     const [scope, animate] = useAnimate();
 
     useEffect(() => {
-      if (isInView && showAnswer) {
+      if (isInView && showAnswer && !showScore) {
+
         void animate(
           ".correctIncorrect",
           { opacity: 1 },
@@ -60,7 +75,15 @@ const Quiz = () => {
         //   { type: "spring", duration: 0.3, delay: 0.2 }
         // );
       }
-    }, [isInView, animate, showAnswer]);
+
+      if(isInView && showScore) {
+        void animate(
+          ".wrong-labels",
+          { opacity: 1 },
+          { type: "spring", duration: 0.8, delay: staggerResults }
+        );
+      }
+    }, [isInView, animate, showAnswer, showScore]);
 
     return scope;
   };
@@ -68,7 +91,7 @@ const Quiz = () => {
   return (
     <div
       ref={scope}
-      className="relative w-full border-4 border-black rounded-md font-display h-80 max-h-96"
+      className="relative w-full border-4 border-black rounded-md font-display h-[22rem] lg:h-[19rem] max-h-96"
     >
       <div className="bg-black">
         <h2
@@ -83,14 +106,81 @@ const Quiz = () => {
         
         
 
-        <div className="text-xl h-2/3 text-slate-900 font-bold flex justify-center items-center flex-col">
-        <div className="text-red-600">You scored {score} out of {quizData.length}&nbsp;</div>
+        <div className="md:text-xl h-2/3 text-slate-900 font-bold flex justify-center items-center flex-col mt-3">
         {score === quizData.length ? (
-          <div className="text-green-600">Congratulations! You've aced the quiz! You can signup</div>
+          <>
+          <Player
+      loop={false}
+      autoplay
+      keepLastFrame
+      className="md:w-1/3 w-1/2"
+      src={success}
+    />
+        <div className=" text-green-700 flex
+        flex-col items-center">
+        <div className='wrong-labels opacity-0'>You scored a {score} out of {quizData.length}!&nbsp;</div>
+        <div className='wrong-labels opacity-0'>
+        Congratulations! You got a perfect score!
+        </div>
+        <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={restartQuiz}
+        className="wrong-labels opacity-0 shadow-md p-2 m-2 rounded bg-white">Retry</motion.button>
+   </div>
+  
+    
+        </>
+
+
         ) : score > quizData.length / 2 ? (
-          <div className="text-orange-600">Great job! You're on the right track!</div>
+          <>
+          <Player
+      loop={false}
+      autoplay
+      keepLastFrame
+      className="md:w-1/3 w-1/2"
+      src={tryagain}
+    />
+        <div className=" text-red-600 flex
+        flex-col items-center">
+        <div className='wrong-labels opacity-0'>You scored a whopping {score} out of {quizData.length}&nbsp;</div>
+        <div className='wrong-labels opacity-0'>
+        Don't worry, keep trying and you'll get there!
+        </div>
+        <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={restartQuiz}
+        className="wrong-labels opacity-0 shadow-md p-2 m-2 rounded bg-white">Retry</motion.button>
+   </div>
+  
+    
+        </>
         ) : (
-          <div className="text-red-600">Don't worry, keep trying and you'll get there!</div>
+          <>
+              <Player
+          loop={false}
+          autoplay
+          keepLastFrame
+          className="md:w-1/3 w-1/2"
+          src={tryagain}
+        />
+            <div className=" text-red-600 flex
+            flex-col items-center">
+            <div className='wrong-labels opacity-0'>You scored a whopping {score} out of {quizData.length}&nbsp;</div>
+            <div className='wrong-labels opacity-0'>
+            Don't worry, keep trying and you'll get there!
+            </div>
+            <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={restartQuiz}
+            className="wrong-labels opacity-0 shadow-md p-2 m-2 rounded bg-white">Retry</motion.button>
+       </div>
+      
+        
+            </>
         )}
       </div>
       ) : showAnswer ? (
@@ -144,12 +234,11 @@ const Quiz = () => {
                       animate={{ opacity: 1, scale: 1, x: 0 }}
                       transition={{ type: "spring", delay: index * 0.1 }}
                       exit={{ opacity: 0, scale: 0.5, x: -100 }}
-                      whileHover={{ scale: 1.2 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="answers font-light p-2 text-lg rounded-full"
+                      whileTap={{ scale: 0.9,  } }
+                      className="answers font-semibold p-2 text-lg rounded-full hover:bg-slate-800 hover:text-white transition-colors md:ml-2 px-5"
                       onClick={() => handleAnswerClick(answer)}
                     >
-                      <span className="font-bold text-xl text-red-600">
+                      <span className="font-bold text-xl text-green-700">
                         {index + 1}.
                       </span>{" "}
                       {answer}
