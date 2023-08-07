@@ -7,6 +7,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       display: ['Raleway', 'sans-serif'],
+      topicItems: ['Pacifico', 'cursive'],
     }
   },
   plugins: [],

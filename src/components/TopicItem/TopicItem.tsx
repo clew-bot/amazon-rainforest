@@ -46,9 +46,9 @@ const TopicItem = ({
 
       {isOpen && (
               <motion.div
-              initial={{ opacity: 0}}
-              animate={{ opacity: 1, x: [1000, 0]}}
-              exit={{ opacity: 0, x: [0, -1000],}}
+              initial={{ opacity: 0, y: -40 }}
+              animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
+              exit={{ opacity: 0, y: 10, transition: { duration: 0.5 } }}
               key={theTopic}
               className="absolute z-50 height5 bg-white w-full sm:w-2/3 sm:mx-auto sm:left-1/4 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 rounded-md shadow-lg opacity-0"
             >
