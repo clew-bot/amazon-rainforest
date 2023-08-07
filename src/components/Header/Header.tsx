@@ -132,7 +132,7 @@ const Header = ({ content }: HeaderProps) => {
               className="relative sub-text opacity-1 w-full   text-2xl md:text-4xl z-10 opacity-0 topics pl-4"
             >
               <motion.div
-                whileHover={{ y: -5, backgroundColor: "#1f1f1f" }}
+                whileHover={{ y: -5, backgroundColor: "#065f46", borderRadius: "5px" }}
                 whileTap={{ x: 5, y: 5 }}
                 className="cursor-pointer relative text-yellow-200 font-display font-semibold w-fit p-1"
                 onClick={() => handleTopicItemClick(topic)}

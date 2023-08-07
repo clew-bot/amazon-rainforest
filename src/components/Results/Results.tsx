@@ -4,6 +4,7 @@ import {
   useAnimate,
   motion,
   useInView,
+  AnimatePresence
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -90,27 +91,36 @@ const Results = ( ) => {
           }
           {
             showModal && quizFinished && (
+          
               <div className="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0">
-                <div className="bg-white rounded-xl p-4">
+                    <AnimatePresence>
+                <motion.div 
+                exit={{ opacity: 0 }}
+                className="font-display bg-white rounded-xl p-4">
                   <p className="text-center text-xl font-display font-bold">Get Notified</p>
                   <div>
-                    <p>
-                      The worlds biggest community of people for you to connect
+                    <p className="font-semibold my-4">
+                      The worlds biggest community of people for you to connect. Coming soon.
                     </p>
                     <div className="flex gap-1">
                     <input
                     placeholder="Email"
                     className="border-2 w-full rounded-md p-1  border-green-600 outline-none"
                     type="email" />
-                    <button className="border-2 border-black rounded-md p-1 ">Submit</button>
+                    <motion.button
+                    whileHover={{ y: -5, shadow: "0px 0px 8px rgb(255,255,255)" }}
+                    whileTap={{ y: 5 }}
+                    className="border-2 bg-green-600 rounded-md p-1 border-green-600 font-semibold">Submit</motion.button>
                     </div>
                   </div>
                   <div className="text-right">
-                  <button onClick={() => setShowModal(false)} className="cursor-pointer bg-yellow-300 p-2 rounded-xl mt-4 z-50">Close</button>
+                  <motion.button onClick={() => setShowModal(false)} className=" text-white bg-black rounded-md p-1 font-semibold mt-4">Close</motion.button>
                   </div>
                
-                </div>
+                </motion.div>
+                </AnimatePresence>
               </div>
+         
             )
           }
         </div>
