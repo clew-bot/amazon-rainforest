@@ -71,7 +71,7 @@ const Quiz = () => {
       </div>
       
       {showScore ? (
-        <div>You scored {score} out of {quizData.length}</div>
+        <div className="text-xl h-2/3 text-yellow-900 font-bold flex justify-center items-center">You scored {score} out of {quizData.length}</div>
       ) : showAnswer ? (
         <motion.div 
         className="opacity-0 font-bold text-2xl text-left p-2 correctIncorrect">
