@@ -7,7 +7,6 @@ import {
 import TopicItem from "../TopicItem/TopicItem";
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-// import rainLottie from "../../assets/lottie/1PzCCI3SjG.json";
 interface HeaderProps {
   content: string;
 }
