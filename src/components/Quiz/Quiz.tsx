@@ -101,7 +101,7 @@ const Quiz = () => {
           loop={false}
           autoplay
           keepLastFrame
-          className="w-14"
+          className="w-16"
           src={wrong}  />
         <span>{quizData[currentQuestion].incorrectDescription}</span>
  
