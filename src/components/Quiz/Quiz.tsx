@@ -1,6 +1,10 @@
 import quiz from "../../json/quiz.json";
 import { useState, useEffect, useRef } from "react";
 import { motion, useAnimate, useInView, stagger, AnimatePresence } from "framer-motion";
+import checkmark from "../../assets/lottie/checkmark.json";
+import wrong from "../../assets/lottie/wrong.json";
+
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const Quiz = () => {
   const [quizData] = useState(quiz);
@@ -42,7 +46,7 @@ const Quiz = () => {
       if (isInView && showAnswer) {
         void animate(
           ".correctIncorrect",
-          { opacity: 1, y: [150, 0], filter: ["blur(10px)", "blur(0px)"] },
+          { opacity: 1 },
           { type: "spring", duration: 0.8, delay: 0.1 }
         );
         // void animate(
@@ -60,7 +64,7 @@ const Quiz = () => {
     
     <div
       ref={scope}
-     className="w-full border-4 border-black rounded-md font-display h-80 max-h-96">
+     className="relative w-full border-4 border-black rounded-md font-display h-80 max-h-96">
       <div className="bg-black">
         <h2
         ref={ref}
@@ -73,19 +77,52 @@ const Quiz = () => {
         <div className="text-xl h-2/3 text-yellow-900 font-bold flex justify-center items-center">You scored {score} out of {quizData.length}</div>
       ) : showAnswer ? (
         <motion.div 
-        className="opacity-0 font-bold sm:text-2xl text-left p-2 correctIncorrect">
+        className="flex justify-center opacity-0 font-bold sm:text-2xl text-left p-2 correctIncorrect mt-[3%]">
           {selectedAnswer === quizData[currentQuestion].correctAnswer
-            ? quizData[currentQuestion].correctDescription
-            : quizData[currentQuestion].incorrectDescription}
-            <br/>
-          <motion.button
-          whileHover={{ scale: 1.2 }}
-          className="underline rounded-md p-1 text-red-800"
-          onClick={handleNextClick}>Next</motion.button>
+            ? 
+            <div className="flex items-center gap-2 text-green-700">
+                  <Player
+                loop={false}
+                autoplay
+                keepLastFrame
+                className="w-12"
+                src={checkmark}  />
+              <span>{quizData[currentQuestion].correctDescription}</span>
+       
+            </div>
+          
+            : 
+            
+            
+            
+            
+            <div className="flex items-center gap-1 text-red-500">
+            <Player
+          loop={false}
+          autoplay
+          keepLastFrame
+          className="w-14"
+          src={wrong}  />
+        <span>{quizData[currentQuestion].incorrectDescription}</span>
+ 
+      </div>
+
+            
+            }
+         
+         <motion.button
+  whileTap={{ scale: 0.9 }}
+  whileHover={{ scale: 1.2 }}
+  className="absolute bottom-3 left-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out text-lg"
+  onClick={handleNextClick}
+>
+  Next
+</motion.button>
+
         </motion.div>
       ) : (
         <>
-          <div className="text-bold text-left underline sm:text-2xl font-bold p-2">{quizData[currentQuestion].question}</div>
+          <div className="text-bold text-left underline sm:text-2xl font-bold p-2">{currentQuestion + 1}. {quizData[currentQuestion].question}</div>
          
           <motion.div className="quiz-container flex flex-col justify-start items-start">
            
@@ -94,10 +131,10 @@ const Quiz = () => {
     quizData[currentQuestion].answers.map((answer, index) => (
       <motion.button
         key={answer}
-        initial={{ opacity: 0, scale: 0.9, x: 100, filter: "blur(10px)" }}
-        animate={{ opacity: 1, scale: 1, x: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, scale: 0.9, x: 100,  }}
+        animate={{ opacity: 1, scale: 1, x: 0,}}
         transition={{ type: "spring", delay: index * 0.1 }}
-        exit={{ opacity: 0, scale: 0.5, x: -100, filter: "blur(10px)" }}
+        exit={{ opacity: 0, scale: 0.5, x: -100,  }}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.9 }}
         className="answers font-light p-2 text-lg rounded-full"
