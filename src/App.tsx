@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import Section from './components/Section/Section'
 import Result from './components/Results/Results'
 import { useScroll, motion } from 'framer-motion'
+import { useState } from 'react'
 
 
 
@@ -22,9 +23,9 @@ function App() {
     {/* Topics */}
     <Header content="Explore the Rainforest" />
     {/* Dropdown with Quiz */}
-    <Section />
+    <Section/>
     {/* Quiz Results */}
-    <Result />
+    <Result/>
     
     
     </>
