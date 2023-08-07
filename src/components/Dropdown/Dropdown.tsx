@@ -86,7 +86,7 @@ const Dropdown = ({
     <div className="w-full sm:w-1/2 flex-1" ref={scope}>
         <button
         ref={ref}
-          className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
+          className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-yellow-200 shadow-md text-left text-4xl underline"
           onClick={toggleDropdown}
         >
           Learn
@@ -98,7 +98,7 @@ const Dropdown = ({
                 key={tab}
                 className={`${
                   selectedTab === tab ? "text-white" : "text-slate-900"
-                } relative cursor-pointer hover:text-green-500 transition-colors duration-300 underlineease-in-out p-1`}
+                } relative cursor-pointer hover:text-green-600 transition-colors duration-300 underlineease-in-out p-1`}
                 onClick={() => {
                   clickSelectedTab(tab);
                     setIsOpen(true);

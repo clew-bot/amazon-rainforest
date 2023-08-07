@@ -27,7 +27,8 @@ const Section = () => {
   const [selectedTab, clickSelectedTab] = useState<Tab>(tabs[0]);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   return (
-    <section className="thirdSection rounded-xl w-full bg-white">
+    <section className="thirdSection rounded-xl w-full bg-white relative z-10">
+      <div className="absolute h-full w-full -z-10 bg-amber-200 opacity-50 rounded-xl"></div>
 <div className="flex items-start gap-2 flex-col sm:flex-row flex-wrap p-4">
       <Dropdown
         shouldAnimate={shouldAnimate}

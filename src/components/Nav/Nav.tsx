@@ -41,12 +41,12 @@ const Nav = () => {
           
           <p
             ref={ref}
-            className=" self-start justify-self-start font-display font-extrabold text-slate-100  text-6xl rounded opacity-0"
+            className=" self-start justify-self-start font-topicItems font-extrabold text-yellow-300  text-6xl rounded opacity-0"
           >
             Unveil the Secrets of Amazon Rainforest
           </p>
           <p
-            className=" justify-self-start font-display font-extrabold text-slate-200  text-3xl rounded opacity-0"
+            className=" justify-self-start font-display font-extrabold text-yellow-200  text-3xl rounded opacity-0"
           >
             Travel through time, witness the magic, and unlock nature's best-kept secrets in the grandeur of the Amazon.
           </p>

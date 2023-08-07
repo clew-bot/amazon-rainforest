@@ -68,7 +68,7 @@ const Quiz = () => {
       <div className="bg-black">
         <h2
         ref={ref}
-        className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline">
+        className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-yellow-200 shadow-md text-left text-4xl underline">
           Test your knowledge
         </h2>
       </div>

@@ -100,7 +100,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
     >
         <button
         ref={ref}
-          className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
+          className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-yellow-200 shadow-md text-left text-4xl underline"
           onClick={toggleDropdown}
         >
           Discover
@@ -114,7 +114,7 @@ const LearnItem = ({ selectedTab, isOpen, setIsOpen, shouldAnimate }: LearnItemP
                   key={item.title}
                   className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll max-h-80 sm:h-80"
                 >
-                  <div className="learnItem text-center text-3xl font-bold pt-2 text-green-500 underline opacity-0">
+                  <div className="learnItem text-center text-4xl font-bold pt-2 text-green-700 opacity-0 font-topicItems">
                     <h3>{item.title}</h3>
                   </div>
                   <div className="learnItem p-4 opacity-0 h-full">
