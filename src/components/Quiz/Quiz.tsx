@@ -55,7 +55,6 @@ const Quiz = () => {
 
     return  scope ;
   }
-  console.log(isInView) 
   const scope = useQuizAnimation();
   return (
     
@@ -74,7 +73,7 @@ const Quiz = () => {
         <div className="text-xl h-2/3 text-yellow-900 font-bold flex justify-center items-center">You scored {score} out of {quizData.length}</div>
       ) : showAnswer ? (
         <motion.div 
-        className="opacity-0 font-bold text-2xl text-left p-2 correctIncorrect">
+        className="opacity-0 font-bold sm:text-2xl text-left p-2 correctIncorrect">
           {selectedAnswer === quizData[currentQuestion].correctAnswer
             ? quizData[currentQuestion].correctDescription
             : quizData[currentQuestion].incorrectDescription}
@@ -86,7 +85,7 @@ const Quiz = () => {
         </motion.div>
       ) : (
         <>
-          <div className="text-bold text-left underline text-2xl font-bold p-2">{quizData[currentQuestion].question}</div>
+          <div className="text-bold text-left underline sm:text-2xl font-bold p-2">{quizData[currentQuestion].question}</div>
          
           <motion.div className="quiz-container flex flex-col justify-start items-start">
            

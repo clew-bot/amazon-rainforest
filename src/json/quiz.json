@@ -6,25 +6,7 @@
       "correctDescription": "Correct! The Amazon Rainforest is home to approximately 50% of the world's species.",
       "incorrectDescription": "Oops! The correct answer is 50%. The Amazon Rainforest is incredibly diverse, harboring half of the world's species."
     },
-    {
-      "question": "Which river is known as the 'River of Life' in the Amazon Rainforest?",
-      "answers": ["Nile River", "Amazon River", "Mississippi River", "Congo River"],
-      "correctAnswer": "Amazon River",
-      "correctDescription": "Exactly right! The Amazon River is often referred to as the 'River of Life' in the Amazon Rainforest.",
-      "incorrectDescription": "Not quite! The correct answer is the Amazon River, known as the 'River of Life' in the Amazon ecosystem."
-    },
-    {
-      "question": "Why is the Amazon Rainforest often referred to as the 'Lungs of the Earth'?",
-      "answers": [
-        "It releases oxygen during photosynthesis",
-        "It's the largest rainforest in the world",
-        "It's home to the Amazon River",
-        "All of the above"
-      ],
-      "correctAnswer": "It releases oxygen during photosynthesis",
-      "correctDescription": "You got it! The Amazon Rainforest is called the 'Lungs of the Earth' because it releases oxygen during photosynthesis.",
-      "incorrectDescription": "That's not the correct answer. The Amazon Rainforest is called the 'Lungs of the Earth' because it releases oxygen during photosynthesis."
-    },
+ 
     {
       "question": "Which country does NOT contain part of the Amazon Rainforest?",
       "answers": ["Brazil", "Peru", "Chile", "Colombia"],

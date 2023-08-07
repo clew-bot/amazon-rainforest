@@ -36,10 +36,18 @@ html {
 }
 
 .thirdSection {
-  height: 100vh;
+  height: 100%;
   position: relative;
-  scroll-snap-align: start;
   margin-bottom: 100px;
+  scroll-snap-align: start;
+  scroll-padding: 100px;
+  padding-bottom: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .thirdSection {
+    height: 100vh;
+  }
 }
 
 section {
