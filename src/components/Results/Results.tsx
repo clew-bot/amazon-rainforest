@@ -82,9 +82,11 @@ const Results = ( ) => {
           {
             showModal && !quizFinished && (
               <div className="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0">
-                <div className="bg-white rounded-xl p-4">
-                  <p className="text-center">You need 100% to go any further.</p>
-                  <button onClick={() => setShowModal(false)} className="bg-yellow-300 p-2 rounded-xl mt-4">Close</button>
+                <div className="bg-white rounded-xl p-4 font-display text-red-500 font-semibold">
+                  <p className="text-center text-xl">You'll need 100% on the Quiz to continue.</p>
+                  <div className="text-right">
+                  <motion.button onClick={() => setShowModal(false)} className=" text-white bg-black rounded-md p-1 font-semibold mt-4">Close</motion.button>
+                  </div>
                 </div>
               </div>
             )
