@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
-import { useMediaQuery } from "usehooks-ts";
 type Tab =
   | "Amazon's Remarkable Canopy"
   | "Flying Rivers"

@@ -19,6 +19,7 @@ const Header = ({ content }: HeaderProps) => {
   const [theTopic, setTheTopic] = useState("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [reset, setReset] = useState(true);
+  console.log(reset)
   const topics: string[] = [
     "River of Life",
     "Threats",
