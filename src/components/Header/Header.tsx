@@ -6,19 +6,18 @@ import {
 } from "framer-motion";
 import TopicItem from "../TopicItem/TopicItem";
 import { useEffect, useRef, useState } from "react";
-import { useMediaQuery } from "usehooks-ts";
 interface HeaderProps {
   content: string;
 }
 
 const Header = ({ content }: HeaderProps) => {
-  const isNotMobile = useMediaQuery("(min-width: 768px)");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const staggerTopicItems = stagger(0.2, { startDelay: 0 });
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [reset, setReset] = useState(true);
   const topics: string[] = [
     "River of Life",

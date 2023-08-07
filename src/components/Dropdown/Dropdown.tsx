@@ -83,7 +83,6 @@ const Dropdown = ({
     // }
     setIsOpen(!isOpen);
   };
-  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
     <div className="w-full sm:w-1/2 flex-1" ref={scope}>
         <button

@@ -13,7 +13,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState("");
-  const staggerButtons = stagger(0.1, { startDelay: 0 });
+  // const staggerButtons = stagger(0.1, { startDelay: 0 });
 
 
 
