@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import LearnItem from "../LearnItem/LearnItem";
-import FunFact from "../FunFact/FunFact";
+import Quiz from "../Quiz/Quiz";
 
 type Tab =
   | "Amazon's Remarkable Canopy"
@@ -28,7 +28,7 @@ const Section = () => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   return (
     <section className="thirdSection rounded-xl w-full bg-white">
-<div className="flex items-start gap-2 p-4 flex-col sm:flex-row">
+<div className="flex items-start gap-2 flex-col sm:flex-row flex-wrap p-4">
       <Dropdown
         shouldAnimate={shouldAnimate}
         setShouldAnimate={setShouldAnimate}
@@ -43,6 +43,7 @@ const Section = () => {
        setIsOpen={setIsOpen}
        isOpen={isOpen}
        selectedTab={selectedTab} />
+       <Quiz/>
       {/* <FunFact 
       isOpen={isOpen}
       selectedTab={selectedTab}/> */}

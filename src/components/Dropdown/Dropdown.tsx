@@ -85,7 +85,7 @@ const Dropdown = ({
   };
   const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <div className="w-full" ref={scope}>
+    <div className="w-full sm:w-1/2 flex-1" ref={scope}>
         <button
         ref={ref}
           className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-slate-100 shadow-md text-left text-4xl underline"
@@ -93,7 +93,7 @@ const Dropdown = ({
         >
           Learn
         </button>
-        <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black text-md md:text-xl h-full">
+        <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black text-md md:text-xl sm:h-80">
           {tabs.map((tab) => {
             return (
               <motion.li
