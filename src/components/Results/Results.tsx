@@ -31,6 +31,11 @@ const Results = () => {
           { opacity: 1, padding: "10px" },
           { type: "spring", duration: 0.3, delay: staggerHeaderLetters }
         );
+        void animate(
+          ".modal-content",
+          { opacity: 1,  y: [-20, 0] },
+          { type: "spring", duration: 0.3, delay: staggerHeaderLetters }
+        );
       }
     }, [animate, isInView, showModal]);
 
@@ -72,8 +77,8 @@ const Results = () => {
             Get Notified
           </motion.p>
           {showModal && !quizFinished && (
-            <div className="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0">
-              <div className="bg-white rounded-xl p-4 font-display text-red-500 font-semibold">
+            <div className="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 z-50">
+              <div className="modal-content bg-white rounded-xl p-4 font-display text-red-500 font-semibold z-[100]">
                 <p className="text-center text-xl">
                   You'll need 100% on the Quiz to continue.
                 </p>
