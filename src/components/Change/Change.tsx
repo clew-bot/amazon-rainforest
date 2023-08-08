@@ -40,7 +40,7 @@ const Change = () => {
       <motion.div className="relative w-full h-full pb-10">
         <motion.img
           src={Header}
-          alt=""
+          alt="The Amazon Rainforest"
           className="absolute inset-0 object-cover w-full h-full z-10 rounded-lg bg-black opacity-50"
         />
 

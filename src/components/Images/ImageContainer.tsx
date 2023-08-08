@@ -37,11 +37,6 @@ const ImageContainer = ({ selectedImage }: ImageContainerProps) => {
     exit={{ opacity: 0, scale: 0 }}
     transition={{ duration: .3, ease: "easeOut" }}
     >
-  
-lorem*99
-      {/* <img className="absolute opacity-1 object-fit inset-1" src={imageMap[selectedImage]} alt="" /> */}
-
-    
     </motion.div>
     </div>
     </AnimatePresence>

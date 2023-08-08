@@ -66,7 +66,7 @@ const TopicItem = ({
                 src={x2}
                 width="30px"
                 className="hover:transition-all hover:animate-pulse"
-                alt=""
+                alt="Close"
               />
             </div>
 

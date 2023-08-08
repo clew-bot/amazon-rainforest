@@ -33,7 +33,7 @@ const Nav = () => {
         <motion.img
      
           src={Header}
-          alt=""
+          alt="The Amazon Rainforest"
           className="absolute inset-0 object-cover w-full h-full z-10 rounded-lg bg-black opacity-50"
         />
         
@@ -51,10 +51,6 @@ const Nav = () => {
             Travel through time, witness the magic, and unlock nature's best-kept secrets in the grandeur of the Amazon.
           </p>
         </div>
-        {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-60 z-20 bg-green-500 rounded-xl p-4 cursor-pointer" onClick={scrollToSection}>
-           <img className="animate-pulse" width="45px" src={downArrow} alt="" />
-      
-        </div> */}
       </motion.div>
     </section>
   );
