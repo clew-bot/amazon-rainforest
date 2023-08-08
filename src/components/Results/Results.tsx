@@ -72,7 +72,7 @@ const Results = () => {
             whileHover={{ y: -5, shadow: "0px 0px 8px rgb(255,255,255)" }}
             whileTap={{ y: 5 }}
             onClick={handleNotify}
-            className="notify justify-self-start font-display text-black  text-xl rounded opacity-0 mt-6 font-semibold  bg-yellow-100 cursor-pointer"
+            className="notify justify-self-start font-display text-slate-200  text-xl rounded opacity-0 mt-6 font-semibold cursor-pointer italic bg-zinc-900"
           >
             Get Notified
           </motion.p>
@@ -98,20 +98,22 @@ const Results = () => {
               <AnimatePresence>
                 <motion.div
                   exit={{ opacity: 0 }}
-                  className="font-display bg-white rounded-xl p-4"
+                  className="modal-content font-display bg-white rounded-xl p-4"
                 >
-                  <p className="text-center text-xl font-display font-bold">
+                  <p className="text-center text-xl font- font-bold">
                     Get Notified
                   </p>
                   <div>
                     <p className="font-semibold my-4">
-                      The worlds biggest community of people for you to connect.
-                      Coming soon.
+
+                    </p>
+                    <p className="font-semibold my-4 text-center text-red-700 text-2xl font-topicItems">
+                    Coming soon.
                     </p>
                     <div className="flex gap-1">
                       <input
                         placeholder="Email"
-                        className="border-2 w-full rounded-md p-1  border-green-600 outline-none"
+                        className="border-2 rounded-md p-1  border-green-600 outline-none"
                         type="email"
                       />
                       <motion.button
