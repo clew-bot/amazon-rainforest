@@ -1,33 +1,31 @@
 import Header from "./header.jpg";
-import { stagger, useAnimate, motion,  useInView, } from "framer-motion";
+import { stagger, useAnimate, motion, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 import change from "../../json/change.json";
 
-
-
-const staggerHeaderLetters = stagger(0.1, { startDelay: 0.2 });
-const staggeChangeText = stagger(0, { startDelay: .7 });
+const staggerChange = stagger(0.1, { startDelay: 0.2 });
+const staggeChangeText = stagger(0, { startDelay: 0.7 });
 const Change = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const useChangeAnimation = () => {
     const [scope, animate] = useAnimate();
     useEffect(() => {
-        if(!isInView) return;
+      if (!isInView) return;
       void animate(
         "p",
         { filter: "blur(0px)", opacity: 1, padding: "10px", x: [-300, 0] },
-        { type: "spring", duration: 2, delay: staggerHeaderLetters }
+        { type: "spring", duration: 2, delay: staggerChange }
       );
       void animate(
         ".change-container",
-        { opacity: 1, y: [-20, 0], x: [-20, 0]},
-        { type: "spring", duration: 2, delay: staggerHeaderLetters }
+        { opacity: 1, y: [-20, 0], x: [-20, 0] },
+        { type: "spring", duration: 2, delay: staggerChange }
       );
       void animate(
         ".change-text",
-        { opacity: 1, scale: [0, 1]},
-        { type: "spring", duration: .3, delay: staggeChangeText }
+        { opacity: 1, scale: [0, 1] },
+        { type: "spring", duration: 0.3, delay: staggeChangeText }
       );
     }, [animate, isInView]);
 
@@ -69,7 +67,9 @@ const Change = () => {
                 <div className="change-text z-50 text-slate-300 pt-4">
                   <span className="font-bold">Action: </span> {item.action}
                 </div>
-                <div className="change-text z-50 px-6 text-center text-white font-semibold p-3 italic opacity-0">{item.points[0].description}</div>
+                <div className="change-text z-50 px-6 text-center text-white font-semibold p-3 italic opacity-0">
+                  {item.points[0].description}
+                </div>
               </div>
             ))}
           </div>
