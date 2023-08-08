@@ -91,7 +91,7 @@ const Quiz = () => {
   return (
     <div
       ref={scope}
-      className="relative w-full border-4 border-black rounded-md font-display h-[22rem] lg:h-[19rem] max-h-96"
+      className="relative w-full border-4 border-black rounded-md font-display h-[22rem] max-h-96"
     >
       <div className="bg-black">
         <h2

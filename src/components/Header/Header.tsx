@@ -14,7 +14,7 @@ const Header = ({ content }: HeaderProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const staggerTopicItems = stagger(0.2, { startDelay: 0 });
+  const staggerTopicItems = stagger(0.1, { startDelay: .4 });
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

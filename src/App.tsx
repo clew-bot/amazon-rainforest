@@ -3,6 +3,7 @@ import  Nav from './components/Nav/Nav'
 import Header from './components/Header/Header'
 import Section from './components/Section/Section'
 import Result from './components/Results/Results'
+import Change from './components/Change/Change'
 import { useScroll, motion } from 'framer-motion'
 
 
@@ -23,7 +24,8 @@ function App() {
     <Section/>
     {/* Quiz Results */}
     <Result/>
-    
+    {/* Make a Change */}
+    <Change/>
     
     </>
   )
