@@ -17,7 +17,7 @@
     },
     {
       "question": "What animals can be found in the Amazon rainforest?",
-      "answer": "The Amazon is home to a dazzling array of wildlife, including jaguars, sloths, macaws, toucans, river dolphins, poison dart frogs, and capybaras. Its rivers teem with over 2,200 species of fish, more than all the Atlantic Ocean's fish species combined. This diverse fauna makes the Amazon a rich and unparalleled ecosystem."
+      "answer": "The Amazon is home to a dazzling array of wildlife, including <b>jaguars, sloths, macaws, toucans, river dolphins, poison dart frogs, and capybaras.</b> Its rivers teem with over 2,200 species of fish, more than all the Atlantic Ocean's fish species combined. This diverse fauna makes the Amazon a rich and unparalleled ecosystem."
     },
     {
       "question": "How can I contribute to the protection of the Amazon rainforest?",
@@ -26,6 +26,10 @@
     {
       "question": "What is the importance of the Amazon River in the rainforest ecosystem?",
       "answer": "The Amazon River, the second-longest in the world, is the lifeline of the rainforest. It nourishes an expansive network of tributaries and wetlands that hydrate the land, support a diverse range of aquatic life, and provide transportation routes. The river's flow also affects weather patterns and helps distribute nutrients throughout the forest, making it a vital component of the ecosystem."
+    },
+    {
+      "question": "Who are you?",
+      "answer": "I'm Chad Lew. I'm a Full Stack Dev who loves the Amazon and wants to help save it. If you want to contribute directly to me you can  <a href='https://www.buymeacoffee.com/srgngddhs6F' target='_blank' rel='noopener noreferrer' className='text-red-500'><b>click here </b></a>by buying me a coffee."
     }
   ]
   
