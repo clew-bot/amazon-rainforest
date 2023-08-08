@@ -96,7 +96,7 @@ const LearnItem = ({
   const scope = useLearnAnimation();
 
   return (
-    <div ref={scope} className="w-full sm:w-1/2 max-h-96 flex-1">
+    <div ref={scope} className="w-full sm:w-1/2 max-h-96 flex-1 bg-zinc-300 bg-opacity-80">
       <button
         ref={ref}
         className="w-full p-2 rounded-t-md bg-blend-luminosity bg-black font-display font-bold text-yellow-200 shadow-md text-left text-4xl underline"
@@ -111,9 +111,9 @@ const LearnItem = ({
           item.title === selectedTab && (
             <div
               key={item.title}
-              className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll max-h-80 sm:h-80 relative"
+              className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll lg:overflow-auto max-h-80 sm:h-80 relative  opacity-80 z-10"
             >
-              <div className="h-96 absolute w-full bg-zinc-300 opacity-60"></div>
+       {/* <div className="h-full absolute w-full "></div> */}
               <div className="learnItem text-center text-4xl font-bold pt-6 lg:pt-4 text-green-700 opacity-0 font-topicItems">
                 <h3>{item.title}</h3>
               </div>
@@ -122,7 +122,9 @@ const LearnItem = ({
                   {item.sections[0].details}
                 </h3>
                 <p className="overflow-scroll">{item.sections[1].content}</p>
+                
               </div>
+             
             </div>
           )
       )}

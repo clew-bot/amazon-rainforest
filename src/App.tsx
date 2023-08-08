@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Section from "./components/Section/Section";
 import Result from "./components/Results/Results";
 import Change from "./components/Change/Change";
+import Faq from "./components/Faq/Faq";
 import { useScroll, motion } from "framer-motion";
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
       <Change />
       {/* Quiz Results */}
       <Result />
+      {/* Frequently Asked Questions */}
+      <Faq />
     </>
   );
 }

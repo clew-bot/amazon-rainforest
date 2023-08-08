@@ -149,7 +149,28 @@ section {
 @media screen and (min-width: 768px) {
 
 .sub-text {
-  transition: transform 0.2s ease 0s, border-radius ease .3s !important;
+  transition: transform 0.5s ease 0s, border-radius ease .3s !important;
   font-weight: bolder;
 }
+}
+
+.faq-item {
+  position: relative;
+}
+
+.faq-question {
+  display: block;
+  width: 100%;
+  /* Other styling here */
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;;
+  /* Other styling here */
+}
+
+.faq-answer.show {
+  max-height: 200px; /* Adjust this value based on your content */
 }
