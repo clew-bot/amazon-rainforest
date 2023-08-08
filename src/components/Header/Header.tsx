@@ -35,7 +35,6 @@ const Header = ({ content }: HeaderProps) => {
 
 
   const handleTopicItemClick = (topic: string) => {
-    console.log("Hi")
     setReset(() => false);
     setTheTopic(topic);
     setOpenTopic(() => true);
@@ -90,8 +89,6 @@ const Header = ({ content }: HeaderProps) => {
       );
       }
 
-
-      console.log("openTopic", openTopic);
       if (openTopic) {
        
         void animate(

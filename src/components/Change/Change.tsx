@@ -10,7 +10,7 @@ const staggeChangeText = stagger(0, { startDelay: .7 });
 const Change = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
-  const useHeaderAnimation = () => {
+  const useChangeAnimation = () => {
     const [scope, animate] = useAnimate();
     useEffect(() => {
         if(!isInView) return;
@@ -21,7 +21,7 @@ const Change = () => {
       );
       void animate(
         ".change-container",
-        { filter: "blur(0px)", opacity: 1, y: [-20, 0], x: [-20, 0]},
+        { opacity: 1, y: [-20, 0], x: [-20, 0]},
         { type: "spring", duration: 2, delay: staggerHeaderLetters }
       );
       void animate(
@@ -34,7 +34,7 @@ const Change = () => {
     return scope;
   };
 
-  const scope = useHeaderAnimation();
+  const scope = useChangeAnimation();
   return (
     <section className="firstSection rounded-xl w-full" ref={scope}>
       <motion.div className="relative w-full h-full pb-10">
@@ -57,10 +57,10 @@ const Change = () => {
         </div>
         <div className="flex-1 h-full flex justify-center items-center ">
           <div className="mt-36 h-[32rem] sm:h-fit flex xl:w-1/2 justify-center items-start flex-wrap text-black font-display  overflow-scroll z-50">
-            {change.map((item, index) => (
+            {change.map((item) => (
               <div
                 key={item.section}
-                className="change-container blur-sm opacity-0 flex flex-col justify-center items-center sm:w-1/2 relative p-2 xxl:p-6"
+                className="change-container opacity-0 flex flex-col justify-center items-center sm:w-1/2 relative p-2 xxl:p-6"
               >
                 <div className="bg-black opacity-50 h-full w-full absolute"></div>
                 <h2 className="change-text text-xl font-semibold text-green-500 z-50 bg-black p-2 rounded-md">
