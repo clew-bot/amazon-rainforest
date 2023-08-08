@@ -92,6 +92,9 @@ const Dropdown = ({
           Learn
         </button>
         <ul className="bg-slate-00 font-display font-bold relative rounded-b-md shadow-md border-4 border-t-0 border-black text-md md:text-xl sm:h-80">
+          <div
+          className="h-full absolute w-full bg-zinc-300 opacity-60"
+          ></div>
           {tabs.map((tab) => {
             return (
               <motion.li

@@ -53,18 +53,19 @@ const Change = () => {
             We can all make a difference. Here are some ways you can help.
           </p>
         </div>
-        <div className="flex-1 h-full flex justify-center items-center ">
-          <div className="mt-36 h-[32rem] sm:h-fit flex xl:w-1/2 justify-center items-start flex-wrap text-black font-display  overflow-scroll z-20">
+        <div className="flex-1 h-full flex justify-center items-center xl:mx-44">
+          <div className="mt-36 h-[32rem] sm:h-fit flex justify-center items-start flex-wrap text-black font-display  overflow-scroll z-20 mx-auto relative">
+          {/* <div className="xl:bg-black opacity-50 h-full w-full absolute"></div> */}
             {change.map((item) => (
               <div
                 key={item.section}
-                className="change-container opacity-0 flex flex-col justify-center items-center sm:w-1/2 relative p-2 xxl:p-6"
+                className="change-container opacity-0 flex flex-col justify-center xl:justify-start items-center sm:w-1/3 relative p-2 xxl:p-6 min-h-[12rem]"
               >
-                <div className="bg-black opacity-50 h-full w-full absolute"></div>
-                <h2 className="change-text text-xl font-semibold text-green-500 z-20 bg-black p-2 rounded-md">
+     
+                <h2 className="change-text lg:text-xl font-semibold text-green-500 z-50 bg-black p-2 rounded-md">
                   {item.section}
                 </h2>
-                <div className="change-text z-50 text-slate-300 pt-4">
+                <div className="change-text z-50 text-slate-300 pt-4 text-center">
                   <span className="font-bold">Action: </span> {item.action}
                 </div>
                 <div className="change-text z-50 px-6 text-center text-white font-semibold p-3 italic opacity-0">

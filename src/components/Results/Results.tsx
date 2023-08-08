@@ -7,6 +7,9 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import cs from "../../assets/lottie/cs.json";
+
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const staggerHeaderLetters = stagger(0.1, { startDelay: 0.2 });
 
@@ -33,7 +36,7 @@ const Results = () => {
         );
         void animate(
           ".modal-content",
-          { opacity: 1,  y: [-20, 0] },
+          { opacity: 1, y: [-20, 0] },
           { type: "spring", duration: 0.3, delay: staggerHeaderLetters }
         );
       }
@@ -104,11 +107,15 @@ const Results = () => {
                     Get Notified
                   </p>
                   <div>
-                    <p className="font-semibold my-4">
-
-                    </p>
+                    <Player
+                      loop={true}
+                      autoplay
+                      className=""
+                      style={{ width: 175, height: 175 }}
+                      src={cs}
+                    />
                     <p className="font-semibold my-4 text-center text-red-700 text-2xl font-topicItems">
-                    Coming soon.
+                      Coming soon.
                     </p>
                     <div className="flex gap-1">
                       <input
