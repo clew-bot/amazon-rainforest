@@ -5,6 +5,7 @@ import Section from "./components/Section/Section";
 import Result from "./components/Results/Results";
 import Change from "./components/Change/Change";
 import Faq from "./components/Faq/Faq";
+import Expert from "./components/Experts/Experts";
 import { useScroll, motion } from "framer-motion";
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
       <Result />
       {/* Frequently Asked Questions */}
       <Faq />
+      {/* Expert People */}
+      <Expert />
     </>
   );
 }

@@ -238,10 +238,10 @@ const Quiz = () => {
                       transition={{ type: "spring", delay: index * 0.1 }}
                       exit={{ opacity: 0, scale: 0.5, x: -100 }}
                       whileTap={{ scale: 0.9,  } }
-                      className="answers font-semibold p-2 text-2xl rounded-full hover:bg-slate-800 hover:text-white transition-colors md:ml-2 px-5"
+                      className="answers font-semibold p-2 text-base sm:text-2xl rounded-full hover:bg-slate-800 hover:text-white transition-colors md:ml-2 px-5"
                       onClick={() => handleAnswerClick(answer)}
                     >
-                      <span className="font-bold text-3xl text-green-900">
+                      <span className="font-bold md:text-3xl text-green-900">
                         {index + 1}.
                       </span>{" "}
                       {answer}
