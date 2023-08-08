@@ -46,9 +46,9 @@ const TopicItem = ({
 
       {isOpen && (
               <motion.div
-              initial={{ opacity: 0, y: -40 }}
-              animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
-              exit={{ opacity: 0, y: 10, transition: { duration: 0.5 } }}
+              initial={{ opacity: 0, scale: .6 }}
+              animate={{ opacity: 1,scale:1, transition: { duration: 0.3, type: "tween" } }}
+              exit={{ scale: .6, opacity: 0, transition: { duration: 0.3 } }}
               key={theTopic}
               className="absolute z-50 height5 bg-white w-full sm:w-2/3 sm:mx-auto sm:left-1/4 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 rounded-md shadow-lg opacity-0"
             >
@@ -87,7 +87,7 @@ const TopicItem = ({
                       />
                     </div>
 
-                    <div className="w-full md:w-1/2 p-2 overflow-scroll lg:overflow-auto  text-container text-zinc-800 grow">
+                    <div className="w-full md:w-1/2 p-2 overflow-scroll lg:overflow-auto  text-container text-zinc-800 grow font-display">
                       <p className="topic-content opacity-0 font-bold text-3xl my-4 italic text-slate-800">
                         {topic.sections[0].title}
                       </p>
@@ -114,16 +114,16 @@ const TopicItem = ({
           <div
             onClick={handleNextTopic}
             className="absolute bottom-4 right-6
-            cursor-pointer rotate-180 text-xl"
+            cursor-pointer  text-xl"
           >
-            ⬅
+            ➤
           </div>
 
           <div
             onClick={handlePrevTopic}
-            className="absolute bottom-4 right-14 cursor-pointer text-xl"
+            className="rotate-180 absolute bottom-4 right-14 cursor-pointer text-xl"
           >
-            ⬅
+            ➤
           </div>
           </motion.div>
       )}

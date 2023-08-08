@@ -113,11 +113,11 @@ const LearnItem = ({
               key={item.title}
               className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll max-h-80 sm:h-80 relative"
             >
-              <div className="h-full absolute w-full bg-zinc-300 opacity-60"></div>
-              <div className="learnItem text-center text-4xl font-bold pt-2 text-green-700 opacity-0 font-topicItems">
+              <div className="h-96 absolute w-full bg-zinc-300 opacity-60"></div>
+              <div className="learnItem text-center text-4xl font-bold pt-6 lg:pt-4 text-green-700 opacity-0 font-topicItems">
                 <h3>{item.title}</h3>
               </div>
-              <div className="learnItem p-4 opacity-0 h-full">
+              <div className="learnItem p-4 opacity-0 h-full pt-0">
                 <h3 className="text-left font-bold text-lg">
                   {item.sections[0].details}
                 </h3>

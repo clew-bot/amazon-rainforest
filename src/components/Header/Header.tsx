@@ -15,6 +15,7 @@ const Header = ({ content }: HeaderProps) => {
   const isInView = useInView(ref, { once: true });
 
   const staggerTopicItems = stagger(0.1, { startDelay: .4 });
+  const staggerTopicText = stagger(0.1, { startDelay: 0 });
   const [openTopic, setOpenTopic] = useState(false);
   const [theTopic, setTheTopic] = useState("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -94,12 +95,12 @@ const Header = ({ content }: HeaderProps) => {
         void animate(
           ".topic-content",
           { opacity: 1, scale: [0, 0.9] },
-          { type: "spring", duration: 0.4, delay: staggerTopicItems }
+          { type: "spring", duration: 0.4, delay: staggerTopicText }
         );
         void animate(
           ".section-img",
           { opacity: 1 },
-          { type: "spring", duration: 0.4, delay: staggerTopicItems }
+          { type: "spring", duration: 0.3, delay: 0 }
         );
       }
     }, [animate, isInView, openTopic, topics]);
@@ -129,8 +130,8 @@ const Header = ({ content }: HeaderProps) => {
               className="relative sub-text opacity-1 w-full   text-2xl md:text-4xl z-10 opacity-0 topics pl-4"
             >
               <motion.div
-                whileHover={{ y: -5, backgroundColor: "#065f46", borderRadius: "5px" }}
-                whileTap={{ x: 5, y: 5 }}
+                whileHover={{ y: -5, backgroundColor: "#09090b", borderRadius: "5px" }}
+                whileTap={{ y: 5, backgroundColor: "#f4f4f5", borderRadius: "5px", color: "#09090b" }}
                 className="cursor-pointer relative text-yellow-200 font-display font-semibold w-fit p-1"
                 onClick={() => handleTopicItemClick(topic)}
               >
