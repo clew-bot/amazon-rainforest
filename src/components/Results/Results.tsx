@@ -80,9 +80,13 @@ const Results = () => {
             Get Notified
           </motion.p>
           {showModal && !quizFinished && (
-            <div className="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 z-50">
-              <div className="modal-content bg-white rounded-xl p-4 font-display text-red-500 font-semibold z-[100]">
-                <p className="text-center text-xl">
+            <div className="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 z-50" 
+            
+              onClick={() => setShowModal(false)}>
+              <div 
+              onClick={e => e.stopPropagation()} 
+              className="modal-content bg-white rounded-xl p-4 font-display text-red-500 font-semibold z-[100]">
+                <p className="text-center sm:text-xl">
                   You'll need 100% on the Quiz to continue.
                 </p>
                 <div className="text-right">
