@@ -1,8 +1,29 @@
 import Header from "./header.jpg";
 import { stagger, useAnimate, motion, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+import chico from "../../assets/experts/chico.jpg";
+import jane from "../../assets/experts/jane.jpg";
+import marina from "../../assets/experts/marina.webp";
+import mark from "../../assets/experts/mark.png";
+import raoni from "../../assets/experts/raoni.jpg";
+import sonia from "../../assets/experts/sonia.jpg";
+import sydney from "../../assets/experts/sydney.jpg";
 
-const staggerHeaderLetters = stagger(0.1, { startDelay: 0.5 });
+
+
+const staggerExperts = stagger(0.1, { startDelay: 0.5 });
+
+const images = [chico, jane, marina, mark, raoni, sonia, sydney];
+
+const realNameMapFromImage = {
+    [chico]: {name: "Chico Mendes"},
+    [jane]: {name:"Jane Goodall"},
+    [marina]: {name:"Marina Silva"},
+    [mark]: {name:"Mark Plotkin"},
+    [raoni]: {name:"Raoni Metuktire"},
+    [sonia]: {name:"Sônia Guajajara"},
+    [sydney]:{name:"Sydney Possuelo"},
+    };
 
 const Experts = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -13,10 +34,15 @@ const Experts = () => {
     useEffect(() => {
       if (isInView) {
         void animate(
-          "p",
-          { filter: "blur(.2px)", opacity: 1, y: [-20, 20] },
-          { type: "spring", duration: 2, delay: staggerHeaderLetters }
+          ".title",
+          { filter: "blur(.12px)", opacity: 1 },
+          { type: "spring", duration: 2, delay: 0.1 }
         );
+        void animate(
+            ".expert",
+            { y: [-55, 0], opacity: 1 },
+            { type: "spring", duration: 2, delay: staggerExperts }
+          );
       }
     }, [animate, isInView]);
 
@@ -25,27 +51,39 @@ const Experts = () => {
 
   const scope = useExpertsAnimation();
   return (
-    <section className="firstSection rounded-xl w-full" ref={scope}>
-      <motion.div className="relative w-full h-full pb-10">
+    <section className="thirdSection rounded-xl w-full" ref={scope}>
+    
         <motion.img
           src={Header}
           alt="The Amazon Rainforest"
-          className="absolute inset-0 object-cover w-full h-full z-10 rounded-lg bg-black opacity-50"
+          className="absolute inset-0 object-cover w-full h-full rounded-lg bg-black opacity-60 -z-10"
         />
 
-        <div className="absolute inset-0 flex z-20 flex-col p-4 justify-start items-center pb-20">
+        <div className=" inset-0 flex z-20 flex-col p-4 justify-start items-center pb-20">
           <p
             ref={ref}
-            className="blur-sm font-display font-extrabold text-yellow-300  text-4xl md:text-6xl rounded opacity-0"
+            className="title blur-sm font-display font-extrabold text-yellow-300  text-4xl md:text-6xl rounded opacity-0 my-8 sm:my-4"
           >
             Meet the Experts
           </p>
-          {/* <p className="font-display font-semibold text-yellow-200 text-xl  md:text-3xl rounded opacity-0">
-            Travel through time, witness the magic, and unlock nature's
-            best-kept secrets in the grandeur of the Amazon.
-          </p> */}
+          <div className="flex gap-10 h-full flex-wrap justify-center">
+            {images.map((image, index) => (
+                <div
+                  key={index}
+                    className="flex flex-col items-center justify-center expert opacity-0"
+                >
+                    <img
+                        src={image}
+                        alt="Expert"
+                        className="rounded-full w-32 h-32 object-cover border-2"
+                    />
+                    <p className="font-light text-white text-lg">{ realNameMapFromImage[image].name }</p>
+
+                    </div>
+            ))}
+          </div>
         </div>
-      </motion.div>
+
     </section>
   );
 };
