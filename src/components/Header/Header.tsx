@@ -127,7 +127,7 @@ const Header = ({ content }: HeaderProps) => {
           {topics.map((topic) => (
             <motion.div
               key={topic}
-              className="relative sub-text opacity-1 w-full   text-2xl md:text-4xl z-10 opacity-0 topics pl-4"
+              className="relative opacity-1 w-full text-2xl md:text-4xl z-10 opacity-0 topics pl-4"
             >
               <motion.div
                 whileHover={{ y: -5, backgroundColor: "#09090b", borderRadius: "5px" }}

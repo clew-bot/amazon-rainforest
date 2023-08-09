@@ -50,7 +50,7 @@ const TopicItem = ({
               animate={{ opacity: 1,scale:1, transition: { duration: 0.3, type: "tween" } }}
               exit={{ scale: .6, opacity: 0, transition: { duration: 0.3 } }}
               key={theTopic}
-              className="absolute z-50 height5 bg-white w-full sm:w-2/3 sm:mx-auto sm:left-1/4 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 rounded-md shadow-lg opacity-0"
+              className="absolute z-50 h-[85vh] bg-white w-full sm:w-2/3 sm:mx-auto sm:left-1/4 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 rounded-md shadow-lg opacity-0"
             >
               <AnimatePresence>
           <motion.div
@@ -87,7 +87,7 @@ const TopicItem = ({
                       />
                     </div>
 
-                    <div className="noScrollBar w-full md:w-1/2 p-2 overflow-scroll lg:overflow-auto  text-container text-zinc-800 grow font-display">
+                    <div className="noScrollBar w-full md:w-1/2 p-2 overflow-scroll lg:overflow-auto text-zinc-800 grow font-display">
                       <p className="topic-content opacity-0 font-bold text-3xl my-4 italic text-slate-800">
                         {topic.sections[0].title}
                       </p>
