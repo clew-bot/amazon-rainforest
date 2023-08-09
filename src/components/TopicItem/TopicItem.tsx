@@ -87,14 +87,14 @@ const TopicItem = ({
                       />
                     </div>
 
-                    <div className="w-full md:w-1/2 p-2 overflow-scroll lg:overflow-auto  text-container text-zinc-800 grow font-display">
+                    <div className="noScrollBar w-full md:w-1/2 p-2 overflow-scroll lg:overflow-auto  text-container text-zinc-800 grow font-display">
                       <p className="topic-content opacity-0 font-bold text-3xl my-4 italic text-slate-800">
                         {topic.sections[0].title}
                       </p>
                       <p className="opacity-0 font-medium text-lg topic-content">
                         {topic.sections[0].content}
                       </p>
-                      <ul className="topic-content pl-5 overflow-scroll list-none">
+                      <ul className="noScrollBar topic-content pl-5 overflow-scroll list-none">
                         {topic.sections.slice(1).map((section, index) => (
                           <li key={index} className="mb-2">
                             {section.content}

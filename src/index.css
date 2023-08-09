@@ -174,3 +174,13 @@ section {
 .faq-answer.show {
   max-height: 200px; /* Adjust this value based on your content */
 }
+
+
+.noScrollBar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.noScrollBar::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}

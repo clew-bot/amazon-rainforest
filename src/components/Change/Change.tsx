@@ -54,7 +54,7 @@ const Change = () => {
           </p>
         </div>
         <div className="flex-1 h-full flex justify-center items-center xl:mx-44">
-          <div className="mt-36 h-[32rem] sm:h-fit flex justify-center items-start flex-wrap text-black font-display  overflow-scroll z-20 mx-auto relative">
+          <div className="noScrollBar mt-36 h-[32rem] sm:h-fit flex justify-center items-start flex-wrap text-black font-display  overflow-scroll z-20 mx-auto relative">
           {/* <div className="xl:bg-black opacity-50 h-full w-full absolute"></div> */}
             {change.map((item) => (
               <div

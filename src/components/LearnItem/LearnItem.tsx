@@ -111,7 +111,7 @@ const LearnItem = ({
           item.title === selectedTab && (
             <div
               key={item.title}
-              className="learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll lg:overflow-auto max-h-80 sm:h-80 relative  opacity-80 z-10"
+              className="noScrollBar learn-container border-4 border-black border-t-0 rounded-b-md overflow-scroll lg:overflow-auto max-h-80 sm:h-80 relative  opacity-80 z-10"
             >
        {/* <div className="h-full absolute w-full "></div> */}
               <div className="learnItem text-center text-4xl font-bold pt-6 lg:pt-4 text-green-700 opacity-0 font-topicItems">
@@ -121,7 +121,7 @@ const LearnItem = ({
                 <h3 className="text-left font-bold text-lg">
                   {item.sections[0].details}
                 </h3>
-                <p className="overflow-scroll">{item.sections[1].content}</p>
+                <p className="overflow-scroll noScrollBar">{item.sections[1].content}</p>
                 
               </div>
              
