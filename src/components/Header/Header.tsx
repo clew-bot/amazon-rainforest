@@ -108,7 +108,7 @@ const Header = ({ content }: HeaderProps) => {
       <div className=" mx-2 relative flex flex-col justify-start items-start pt-8 gap-3">
         <h2
           ref={ref}
-          className="font-topicItems text-yellow-300 text-[2.4rem] md:text-6xl underline content opacity-0 pl-6 mb-2"
+          className="font-topicItems text-yellow-300 text-[2.4rem] md:text-7xl underline content opacity-0 pl-6 mb-2"
         >
           {content}
         </h2>
