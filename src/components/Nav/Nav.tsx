@@ -5,11 +5,6 @@ import {
   motion
 } from "framer-motion";
 import { useEffect, useRef } from "react";
-import success from "../../assets/lottie/success.json";
-
-
-
-import { Player } from "@lottiefiles/react-lottie-player";
 import GoDown from "../GoDown/GoDown";
 
 const staggerHeaderLetters = stagger(0.1, { startDelay: 0.5 });
