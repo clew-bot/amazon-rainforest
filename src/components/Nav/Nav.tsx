@@ -5,6 +5,12 @@ import {
   motion
 } from "framer-motion";
 import { useEffect, useRef } from "react";
+import success from "../../assets/lottie/success.json";
+
+
+
+import { Player } from "@lottiefiles/react-lottie-player";
+import GoDown from "../GoDown/GoDown";
 
 const staggerHeaderLetters = stagger(0.1, { startDelay: 0.5 });
 
@@ -16,8 +22,13 @@ const Nav = () => {
     useEffect(() => {
       void animate(
         "p",
-        { filter: "blur(0px)", opacity: 1, padding: "10px", x: [-300,0] },
+        { filter: "blur(0px)", opacity: 1, padding: "5px" },
         { type: "spring", duration: 2, delay: staggerHeaderLetters }
+      );
+      void animate(
+        ".down",
+        { filter: "blur(0px)", opacity: 1, padding: "5px" },
+        { type: "spring", duration: 2, delay: 1 }
       );
     }, [animate]);
 
@@ -50,8 +61,11 @@ const Nav = () => {
           >
             Travel through time, witness the magic, and unlock nature's best-kept secrets in the grandeur of the Amazon.
           </p>
+          <GoDown height={1000}/>
         </div>
+     
       </motion.div>
+   
     </section>
   );
 };
