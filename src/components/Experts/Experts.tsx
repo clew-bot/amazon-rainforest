@@ -3,6 +3,11 @@ import { stagger, useAnimate, motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const staggerExperts = stagger(0.1, { startDelay: 0.5 });
+import comingsoon from "../../assets/lottie/comingsoon.json";
+
+
+
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const images = ["chico", "jane", "marina", "mark", "raoni", "sonia", "sydney"];
 
@@ -101,10 +106,14 @@ const Experts = () => {
           ))}
         </div>
         {selectedExpert && (
-          <div className="border-2 text-white h-full">
-            <h2>{selectedExpert.name}</h2>
-            {/* <p>{selectedExpert.info}</p> */}
-            <button onClick={() => setSelectedExpert(null)}>Close</button>
+          <div className="">
+          <Player
+              loop={true}
+              autoplay
+            src={comingsoon}
+            style={{  background: "transparent" }}
+            controls={true}
+            />
           </div>
         )}
       </div>
