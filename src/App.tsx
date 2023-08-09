@@ -25,12 +25,12 @@ function App() {
       <Section />
       {/* Make a Change */}
       <Change />
-      {/* Quiz Results */}
-      <Result />
-      {/* Frequently Asked Questions */}
-      <Faq />
       {/* Expert People */}
       <Expert />
+         {/* Frequently Asked Questions */}
+         <Faq />
+        {/* Quiz Results */}
+        <Result />
     </>
   );
 }
