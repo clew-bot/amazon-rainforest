@@ -106,7 +106,7 @@ const Experts = () => {
           ))}
         </div>
         {selectedExpert && (
-          <div className="">
+          <div className="absolute bottom-0">
           <Player
               loop={true}
               autoplay
