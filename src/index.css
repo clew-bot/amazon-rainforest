@@ -9,6 +9,13 @@ html {
   scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+  background: transparent;
+  z-index: 999;
+}
+
 .firstSection {
   height: 100vh;
   position: relative;
