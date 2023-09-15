@@ -11,7 +11,7 @@
 
 1. Clone the repo:
    ```bash
-   git clone git@github.com:clew-bot/newPort.git
+   git clone git@github.com:clew-bot/amazon-rainforest.git
 
 2. Install NPM packages:
    ```bash
